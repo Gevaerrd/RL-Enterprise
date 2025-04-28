@@ -1,0 +1,181 @@
+:root {
+    /* 🎥 Fundo principal com degradê (escuro roxo) */
+    --background-gradient-start: #1b073a;  /* parte superior */
+    --background-gradient-end: #3d1675;    /* parte inferior */
+
+    /* ✨ Cores principais */
+    --primary-purple: #9e4dff;             /* botões e destaques */
+    --primary-purple-hover: #b073ff;       /* hover dos botões */
+    --secondary-purple: #6c38b0;           /* ícones e textos secundários */
+
+    /* 🔤 Texto */
+    --text-light: #ffffff;                 /* texto principal claro */
+    --text-muted: #cccccc;                 /* texto secundário/descritivo */
+    --text-highlight: #e5d9ff;             /* pequenos detalhes ou elementos suaves */
+
+    /* 🔲 Cartões / Seções */
+    --card-background: #2b1056;            /* fundo dos cards (ex: depoimento) */
+    --card-shadow: rgba(0, 0, 0, 0.25);     /* sombra leve */
+
+    /* 💬 Testemunho */
+    --testimonial-background: #31125d;
+    --testimonial-border-radius: 12px;
+
+    /* 💵 Planos */
+    --pricing-basic: #8c4bd8;
+    --pricing-advanced: #d86cf0;
+
+    /* 🔘 Botões */
+    --button-color: #9e4dff;
+    --button-text-color: #ffffff;
+    --button-radius: 8px;
+
+    /* 🔲 Layout */
+    --section-padding: 2rem;
+    --container-max-width: 1200px;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .container {
+    width: 85%;
+    margin: 0 auto;
+    padding-top: 5rem;
+    border-radius: 20px;
+  }
+  
+  .why-choose-us h2, .testimonials h2, .pricing h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--text-light);
+  }
+  
+  /* Seções Info */
+  .info-section {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 80px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .why-choose-us, .testimonials {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  
+  .benefits, .testimonials {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .benefit, .testimonial-card {
+    background: var(--card-background);
+    border-radius: var(--testimonial-border-radius);
+    padding: 30px;
+    text-align: center;
+    height: 8rem;
+    border: 2px solid var(--primary-purple);
+    box-shadow: 0 6px 20px var(--card-shadow);
+    transition: transform 0.3s;
+  }
+  
+  .benefit:hover, .testimonial-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .benefit h3, .testimonals p {
+    color: var(--primary-purple);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .benefit p, .testimonial-card p {
+    color: var(--text-muted);
+  }
+  
+  .testimonial-card {
+    background: var(--testimonial-background);
+  }
+  
+  .testimonial-card h4 {
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--text-light);
+  }
+  
+  /* Pricing Plans */
+  .pricing .plans {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .plan {
+    background: var(--card-background);
+    border-radius: 20px;
+    padding: 40px 20px;
+    width: 260px;
+    text-align: center;
+    border: 2px solid var(--primary-purple);
+    box-shadow: 0 8px 25px var(--card-shadow);
+    transition: transform 0.3s;
+  }
+  
+  .plan:hover {
+    transform: translateY(-8px);
+  }
+  
+  .plan h3 {
+    color: var(--primary-purple);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .plan .price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-light);
+    margin-bottom: 20px;
+  }
+  
+  .plan ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  
+  .plan ul li {
+    margin-bottom: 12px;
+    color: var(--text-muted);
+  }
+  
+  .plan button {
+    background: var(--button-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: var(--button-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .plan button:hover {
+    background: var(--primary-purple-hover);
+    transform: scale(1.05);
+  }
