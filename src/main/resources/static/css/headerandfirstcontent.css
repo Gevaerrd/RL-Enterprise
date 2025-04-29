@@ -12,45 +12,20 @@ body {
 }
 
 :root {
-    /* 🎥 Fundo principal com degradê (escuro roxo) */
-    --background-gradient-start: #1b073a;  /* parte superior */
-    --background-gradient-end: #3d1675;    /* parte inferior */
 
-    /* ✨ Cores principais */
-    --primary-purple: #9e4dff;             /* botões e destaques */
-    --primary-purple-hover: #b073ff;       /* hover dos botões */
-    --secondary-purple: #6c38b0;           /* ícones e textos secundários */
+    --background-first-session: linear-gradient(145deg, #ffffff 90%, #0e0b2b 5%);
+    --background-second-session: linear-gradient(-45deg, #ffffff 90%, #0f1a42 5%);
 
-    /* 🔤 Texto */
-    --text-light: #ffffff;                 /* texto principal claro */
-    --text-muted: #cccccc;                 /* texto secundário/descritivo */
-    --text-highlight: #e5d9ff;             /* pequenos detalhes ou elementos suaves */
+    --background-header: #0e0b2b;
+    --color-letteres: #0f1a42;
 
-    /* 🔲 Cartões / Seções */
-    --card-background: #2b1056;            /* fundo dos cards (ex: depoimento) */
-    --card-shadow: rgba(0, 0, 0, 0.25);     /* sombra leve */
-
-    /* 💬 Testemunho */
-    --testimonial-background: #31125d;
-    --testimonial-border-radius: 12px;
-
-    /* 💵 Planos */
-    --pricing-basic: #8c4bd8;
-    --pricing-advanced: #d86cf0;
-
-    /* 🔘 Botões */
-    --button-color: #9e4dff;
-    --button-text-color: #ffffff;
-    --button-radius: 8px;
-
-    /* 🔲 Layout */
-    --section-padding: 2rem;
-    --container-max-width: 1200px;
+    -collor-ffff: #ffffff
+    
 }
 
 .header {
     width: 100%;
-    height: 5rem;
+    height: 7rem;
     background: #0e0b2b;
     border-radius: 0 0 0.5rem 0.5rem;
     padding: 0 4rem;

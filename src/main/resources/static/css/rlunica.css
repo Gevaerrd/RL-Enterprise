@@ -1,0 +1,61 @@
+body {
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sessao-oque-fazemos {
+  background: linear-gradient(-45deg, #ffffff 90%, #0f1a42 5%);
+  color: white;
+  padding: 100px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: left;
+}
+
+.sessao-oque-fazemos .conteudo {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.titulo {
+  font-size: 6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  color: #212121;
+}
+
+.titulo .destaque {
+  background: linear-gradient(to right, #00e0ff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.titulo .palavra-destacada {
+  display: inline-block;
+  border: 3px solid #a855f7;
+  border-radius: 25px;
+  padding: 4px 16px;
+  margin-left: 10px;
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: white;
+  background-color: #4b0082;
+}
+
+.descricao {
+  font-size: 1.5rem;
+  max-width: 700px;
+  line-height: 1.7;
+  color: #212121;
+}
