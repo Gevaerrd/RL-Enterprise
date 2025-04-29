@@ -1,6 +1,5 @@
 body {
     font-size: 62.5%;
-    background: var(--background-gradient-start);
 }
 
 * {
@@ -50,19 +49,24 @@ body {
 }
 
 .header {
-    width: 95%;
-    height: 7rem;
-    margin: 0 auto;
+    width: 100%;
+    height: 5rem;
+    background: #0e0b2b;
     border-radius: 0 0 0.5rem 0.5rem;
+    padding: 0 4rem;
     display: flex;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    /* background: #2d1c3a; */
 }
 
 .first-content-and-header {
     display: flex;
     flex-direction: column;
+    background: linear-gradient(145deg, #ffffff 90%, #0e0b2b 5%);
     height: 100dvh;
-    padding-bottom: 14rem;
 }
 
 .side-of-logo-and-site-name {
@@ -110,7 +114,7 @@ body {
 
 .organization-of-lis li a {
   font-size: 1.45rem;
-  color: var(--text-light);
+  color: #ffffff;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   font-weight: 300;
@@ -122,16 +126,15 @@ body {
   content: "";
   position: absolute;
   width: 0;
-  height: 2px;
+  height: 1px;
   bottom: -4px;
   left: 50%;
-  background-color: var(--text-highlight);
+  background-color: #ffffff;
   transition: 0.3s ease;
   transform: translateX(-50%);
 }
 
 .organization-of-lis li a:hover {
-  color: var(--text-highlight);
   letter-spacing: 0.08rem;
 }
 
@@ -145,9 +148,9 @@ body {
     margin-top: 4rem;
     max-height: 100%;
     display: flex;
-    background: linear-gradient(to bottom, var(--background-gradient-start), #39076b);
+    border: 1px solid #0e0b2b;
     border-radius: 15px;
-    box-shadow: 0px 0px 5px rgb(191, 132, 221);
+    box-shadow: 0px 0px 5px #0e0b2b;
 }
 
 .principal-message-and-representative-video {
@@ -164,24 +167,25 @@ body {
 .main-content-in-first-section h2 {
     font-size: 5.5rem;
     letter-spacing: 0.1rem;
-    color: var(--text-light);
+    color: #0f1a42;
     margin-bottom: 2rem;
-    font-weight: 700;
+    font-weight: bold;
     line-height: 1.2;
     cursor: pointer;
 }
 
 .main-content-in-first-section p {
     font-size: 1.8rem;
-    color: var(--text-light);
+    color: #0f1a42 ;
     letter-spacing: 0.05rem;
     margin-bottom: 3rem;
     line-height: 1.6;
     cursor: pointer;
+    font-weight: 500;
 }
 
 .main-button {
-    background: linear-gradient(90deg, #8a2be2, #7b68ee);
+    background: linear-gradient(to bottom, #0e0b2b, #0f1a42);
     padding: 1.5rem 4rem;
     border-radius: 12px;
     color: var(--button-text-color);
@@ -193,12 +197,12 @@ body {
 }
 
 .main-button:hover {
-    background: linear-gradient(90deg, #7b68ee, #8a2be2);
+    background: linear-gradient(to bottom, #0f1a42, #0f1a42);
     transform: scale(1.05);
 }
 
 .side-of-video {
-    background: #2e004f;
+    background: #0f1a42;
     width: 45%;
     height: 30rem;
     border-radius: 15px;
