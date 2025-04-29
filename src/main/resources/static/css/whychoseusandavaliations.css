@@ -1,101 +1,69 @@
 :root {
-    /* 🎥 Fundo principal com degradê (escuro roxo) */
-    --background-gradient-start: #1b073a;  /* parte superior */
-    --background-gradient-end: #3d1675;    /* parte inferior */
-
-    /* ✨ Cores principais */
-    --primary-purple: #9e4dff;             /* botões e destaques */
-    --primary-purple-hover: #b073ff;       /* hover dos botões */
-    --secondary-purple: #6c38b0;           /* ícones e textos secundários */
-
-    /* 🔤 Texto */
-    --text-light: #ffffff;                 /* texto principal claro */
-    --text-muted: #cccccc;                 /* texto secundário/descritivo */
-    --text-highlight: #e5d9ff;             /* pequenos detalhes ou elementos suaves */
-
-    /* 🔲 Cartões / Seções */
-    --card-background: #2b1056;            /* fundo dos cards (ex: depoimento) */
-    --card-shadow: rgba(0, 0, 0, 0.25);     /* sombra leve */
-
-    /* 💬 Testemunho */
-    --testimonial-background: #31125d;
-    --testimonial-border-radius: 12px;
-
-    /* 💵 Planos */
-    --pricing-basic: #8c4bd8;
-    --pricing-advanced: #d86cf0;
-
-    /* 🔘 Botões */
-    --button-color: #9e4dff;
-    --button-text-color: #ffffff;
-    --button-radius: 8px;
-
-    /* 🔲 Layout */
-    --section-padding: 2rem;
-    --container-max-width: 1200px;
+  --text-light: #ffffff; /* texto principal claro */
+  --text-muted: #cccccc; /* texto secundário/descritivo */
+  --text-highlight: #e5d9ff; /* pequenos detalhes ou elementos suaves */
 }
 
 /* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  
-  .container {
-    width: 100%;
-    border-radius: 20px;
-    display: flex;
-    gap: 2rem;
-  }
-  
-  .why-chose-us-and-plans {
-    z-index: 2;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(to bottom, #0e0b2b, #0f1a42);
-    padding-bottom: 5rem;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  /* Seções */
-  .info-section {
-    z-index: 2;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5rem;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-  .marquee {
-    z-index: 2;
-    display: flex;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    align-items: center;
-    padding-left: 14rem;
-    padding-top: 4rem;
-  }
+.container {
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  gap: 2rem;
+}
 
-  .marquee p {
-    z-index: 2;
-    display: inline-block;
-    margin-right: 50px;
-    color: transparent;
-    color: var(--text-light);
-    font-weight: bold;
-    font-size: 5rem;
-    text-transform: uppercase;
-  }
+.why-chose-us-and-plans {
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #0e0b2b, #0f1a42);
+  padding-bottom: 5rem;
+}
+
+/* Seções */
+.info-section {
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.marquee {
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  align-items: center;
+  padding-left: 14rem;
+  padding-top: 4rem;
+}
+
+.marquee p {
+  z-index: 2;
+  display: inline-block;
+  margin-right: 50px;
+  color: transparent;
+  color: var(--text-light);
+  font-weight: bold;
+  font-size: 5rem;
+  text-transform: uppercase;
+}
 
 /* Container geral */
 /* Container principal da seção "Por que escolher a gente" */
@@ -145,9 +113,9 @@
 }
 
 .img-benefit img {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 0 1px #00ffff);
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 1px #00ffff);
 }
 
 /* Conteúdo */
@@ -157,7 +125,8 @@
   align-items: center;
   gap: 1rem;
   text-align: center;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* Título */
@@ -182,144 +151,210 @@
   font-weight: 500;
 }
 
-/* Responsividade */
+/* Pricing Plans */
+
+.pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.pricing .plans {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.plan {
+  background: var(--card-background);
+  border-radius: 20px;
+  padding: 40px 20px;
+  flex: 0 0 calc(35% - 2rem);
+  text-align: center;
+  box-shadow: 0 8px 25px var(--card-shadow);
+  transition: transform 0.3s;
+}
+
+.plan:hover {
+  transform: translateY(-8px);
+}
+
+.plan h3 {
+  color: var(--primary-purple);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.plan .price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+.plan ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.plan ul li {
+  margin-bottom: 12px;
+  color: var(--text-muted);
+}
+
+.plan button {
+  background: var(--button-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 12px 25px;
+  border-radius: var(--button-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.plan button:hover {
+  background: var(--primary-purple-hover);
+  transform: scale(1.05);
+}
+
+.highlighted-title {
+  font-size: 2rem;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+}
+
+.highlighted-word {
+  position: relative;
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  color: #ff5733; /* Cor do texto */
+}
+
+.highlighted-word::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #000;
+  border: 2px solid #ff5733; /* Cor do contorno */
+  border-radius: 4px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+  z-index: -1;
+}
+
+.highlighted-word.animate::before {
+  transform: scaleX(1);
+}
+
+/* Animação */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* só metade → conteúdo duplicado */
+  }
+}
+
+/* Responsividade para telas pequenas (até 1024px, como tablets grandes e pequenos desktops) */
+@media (max-width: 1024px) {
+  .benefit {
+    flex: 1 1 calc(33.33% - 2rem); /* Três cards por linha */
+  }
+
+  .marquee p {
+    font-size: 2.5rem; /* Ajuste no tamanho da fonte para telas maiores */
+    padding-left: 1.5rem; /* Ajusta o padding para melhor alinhamento */
+  }
+
+  .benefit-content h3 {
+    font-size: 2rem; /* Títulos um pouco menores para se adaptar ao layout */
+  }
+
+  .benefit-content p {
+    font-size: 1.4rem; /* Texto ajustado para um tamanho mais adequado */
+  }
+}
+
+/* Responsividade para telas médias (até 1200px, como desktops grandes) */
+@media (max-width: 1200px) {
+
+  .side-of-video {
+    display: none;
+  }
+
+  .benefit {
+    flex: 1 1 calc(25% - 2rem); /* Três cards por linha */
+  }
+
+  .marquee p {
+    font-size: 3rem; /* Ajuste no tamanho da fonte para telas grandes */
+    padding-left: 2rem; /* Ajusta o padding para telas maiores */
+  }
+
+  .benefit-content h3 {
+    font-size: 2.2rem; /* Ajuste no tamanho do título */
+  }
+
+  .benefit-content p {
+    font-size: 1.5rem; /* Ajuste no texto */
+  }
+}
+
+/* Responsividade para telas pequenas (até 768px, como tablets) */
 @media (max-width: 768px) {
+
+  .side-of-video {
+    display: none;
+  }
+
   .benefit {
-      flex: 1 1 calc(50% - 2rem);
-  }
-}
-
-@media (max-width: 480px) {
-  .benefit {
-      flex: 1 1 100%;
-  }
-}
-  /* Animação */
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%); /* só metade → conteúdo duplicado */
-    }
+    flex: 1 1 calc(50% - 2rem); /* Dois cards por linha */
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /* Pricing Plans */
-
-  .pricing {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
+  .marquee p {
+    font-size: 2rem; /* Texto reduzido para telas menores */
+    padding-left: 1rem;
   }
 
-  .pricing .plans {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-  
-  .plan {
-    background: var(--card-background);
-    border-radius: 20px;
-    padding: 40px 20px;
-    flex: 0 0 calc(35% - 2rem);
-    text-align: center;
-    box-shadow: 0 8px 25px var(--card-shadow);
-    transition: transform 0.3s;
-  }
-  
-  .plan:hover {
-    transform: translateY(-8px);
-  }
-  
-  .plan h3 {
-    color: var(--primary-purple);
+  .benefit-content h3 {
     font-size: 1.8rem;
-    margin-bottom: 15px;
-  }
-  
-  .plan .price {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--text-light);
-    margin-bottom: 20px;
-  }
-  
-  .plan ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 30px;
-  }
-  
-  .plan ul li {
-    margin-bottom: 12px;
-    color: var(--text-muted);
-  }
-  
-  .plan button {
-    background: var(--button-color);
-    color: var(--button-text-color);
-    border: none;
-    padding: 12px 25px;
-    border-radius: var(--button-radius);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-  }
-  
-  .plan button:hover {
-    background: var(--primary-purple-hover);
-    transform: scale(1.05);
   }
 
-  .highlighted-title {
-    font-size: 2rem;
-    font-weight: bold;
-    position: relative;
-    overflow: hidden;
+  .benefit-content p {
+    font-size: 1.3rem;
   }
-  
-  .highlighted-word {
-    position: relative;
-    display: inline-block;
-    padding: 0.2em 0.4em;
-    color: #FF5733; /* Cor do texto */
+}
+
+/* Responsividade para telas muito pequenas (até 480px, como smartphones) */
+@media (max-width: 480px) {
+  .side-of-video {
+    display: none;
   }
-  
-  .highlighted-word::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 2px solid #000;
-    border: 2px solid #FF5733; /* Cor do contorno */
-    border-radius: 4px;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
-    z-index: -1;
+  .benefit {
+    flex: 1 1 100%; /* Um card por linha */
   }
-  
-  .highlighted-word.animate::before {
-    transform: scaleX(1);
+
+  .marquee p {
+    font-size: 1.5rem; /* Texto bem reduzido para dispositivos pequenos */
+    padding-left: 1rem;
   }
+
+  .benefit-content h3 {
+    font-size: 1.6rem;
+  }
+
+  .benefit-content p {
+    font-size: 1.2rem;
+  }
+}

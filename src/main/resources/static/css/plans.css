@@ -1,0 +1,157 @@
+body {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.planos-section {
+  width: 100%;
+  height: 100dvh;
+  padding-top: 4rem;
+  background: var(--background-second-session);
+}
+
+.learn-with-us {
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  align-items: center;
+  padding-left: 14rem;
+  padding-top: 4rem;
+}
+
+.learn-with-us p {
+  z-index: 2;
+  display: inline-block;
+  margin-right: 50px;
+  color: transparent;
+  color: var(--text-light);
+  font-weight: bold;
+  font-size: 5rem;
+  text-transform: uppercase;
+}
+
+.planos-titulo {
+  font-size: 2.8rem;
+  color: var(--text-light);
+}
+
+.planos-container {
+  z-index: 2;
+  display: flex;
+  width: 85%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+}
+
+.plano-card {
+    z-index: 2;
+    background: linear-gradient(135deg, #1c1f4a, #2a2e6e);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    flex: 0 0 calc(24% - 2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 49rem;
+    padding: 2.5rem;
+    gap: 1.5rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .plano-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    animation: glow 6s linear infinite;
+    z-index: 1;
+  }
+  
+  @keyframes glow {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .plano-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .plano-card h3 {
+    font-size: 2.9rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #00e0ff, #c75fff);
+    -webkit-background-clip: text;
+    color: transparent;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .preco {
+    font-size: 2.7rem;
+    font-weight: bold;
+    margin: 10px 0 20px;
+    color: #ffffff;
+    z-index: 2;
+  }
+  
+  .plano-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+    z-index: 2;
+    width: 100%;
+  }
+  
+  .plano-card ul li {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    color: #ccc;
+    text-align: center;
+  }
+  
+  .plano-card button {
+    background: linear-gradient(to right, #6f00ff, #bb00ff);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(187, 0, 255, 0.4);
+  }
+  
+  .plano-card button:hover {
+    background: linear-gradient(to right, #8a00ff, #ff00d4);
+    box-shadow: 0 6px 20px rgba(255, 0, 212, 0.5);
+    transform: scale(1.05);
+  }
+  

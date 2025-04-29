@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-size: 62.5%;
 }
@@ -9,18 +13,25 @@ body {
     text-decoration: none;
     list-style: none;
     font-family: 'Poppins', sans-serif;
+    behavior: inherit
+    ;
 }
 
 :root {
 
-    --background-first-session: linear-gradient(145deg, #ffffff 90%, #0e0b2b 5%);
-    --background-second-session: linear-gradient(-45deg, #ffffff 90%, #0f1a42 5%);
+    --text-light: #ffffff;                 /* texto principal claro */
+    --text-muted: #cccccc;                 /* texto secundário/descritivo */
+    --text-highlight: #e5d9ff;             /* pequenos detalhes ou elementos suaves */
+    --button-color: #9e4dff;
+    --button-text-color: #ffffff;
 
+    --background-first-session: linear-gradient(145deg, #ffffff 90%, #0e0b2b 5%);
+    --background-second-session: linear-gradient(to bottom, #0e0b2b, #0f1a42);
+    
     --background-header: #0e0b2b;
     --color-letteres: #0f1a42;
-
-    -collor-ffff: #ffffff
     
+    --collor-ffff: #ffffff;
 }
 
 .header {
@@ -203,3 +214,161 @@ body {
         box-shadow: 0px 0px 30px rgba(138, 43, 226, 0.4);
     }
 }
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .header {
+        padding: 0 2rem;
+        height: 6rem;
+    }
+
+    .main-content-in-first-section h2 {
+        font-size: 4rem;
+    }
+
+    .main-content-in-first-section p {
+        font-size: 1.6rem;
+    }
+
+    .organization-of-lis {
+        gap: 2rem;
+    }
+
+    .side-of-video {
+        width: 40%;
+        height: 20rem;
+    }
+
+    .principal-message-and-representative-video {
+        padding: 4rem 5%;
+    }
+
+    .organization-of-logo-and-site-name img {
+        width: 12rem;
+    }
+
+    .main-button {
+        padding: 1.2rem 3rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .header {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+
+    .organization-of-lis {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .organization-of-lis li a {
+        font-size: 1.3rem;
+    }
+
+    .principal-message-and-representative-video {
+        flex-direction: column;
+        padding: 3rem 5%;
+    }
+
+    .side-of-video {
+        width: 100%;
+        height: 20rem;
+        margin-top: 2rem;
+    }
+
+    .main-content-in-first-section h2 {
+        font-size: 3.5rem;
+    }
+
+    .main-content-in-first-section p {
+        font-size: 1.5rem;
+    }
+
+    .organization-of-logo-and-site-name img {
+        width: 10rem;
+    }
+
+    .main-button {
+        padding: 1.2rem 3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        padding: 1rem;
+        height: 5rem;
+    }
+
+    .organization-of-lis {
+        gap: 1rem;
+    }
+
+    .organization-of-lis li a {
+        font-size: 1.2rem;
+    }
+
+    .principal-message-and-representative-video {
+        padding: 2rem 3%;
+    }
+
+    .side-of-video {
+        width: 100%;
+        height: 18rem;
+    }
+
+    .main-content-in-first-section h2 {
+        font-size: 3rem;
+    }
+
+    .main-content-in-first-section p {
+        font-size: 1.4rem;
+    }
+
+    .organization-of-logo-and-site-name img {
+        width: 8rem;
+    }
+
+    .main-button {
+        padding: 1rem 2.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .header {
+        padding: 1rem 0.5rem;
+        height: 5rem;
+    }
+
+    .organization-of-lis li a {
+        font-size: 1.1rem;
+    }
+
+    .principal-message-and-representative-video {
+        padding: 1.5rem 2%;
+    }
+
+    .side-of-video {
+        width: 100%;
+        height: 16rem;
+    }
+
+    .main-content-in-first-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .main-content-in-first-section p {
+        font-size: 1.3rem;
+    }
+
+    .organization-of-logo-and-site-name img {
+        width: 7rem;
+    }
+
+    .main-button {
+        padding: 0.8rem 2rem;
+    }
+}
+
+  
