@@ -11,10 +11,11 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.planos-section {
+.plans-section {
   width: 100%;
-  height: 100dvh;
+  height: auto;
   padding-top: 4rem;
+  padding-bottom: 4rem;
   background: var(--background-second-session);
 }
 
@@ -40,12 +41,12 @@ body {
   text-transform: uppercase;
 }
 
-.planos-titulo {
+.plan-titulo {
   font-size: 2.8rem;
   color: var(--text-light);
 }
 
-.planos-container {
+.plans-container {
   z-index: 2;
   display: flex;
   width: 85%;
@@ -55,103 +56,327 @@ body {
   justify-content: space-around;
 }
 
-.plano-card {
-    z-index: 2;
-    background: linear-gradient(135deg, #1c1f4a, #2a2e6e);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    flex: 0 0 calc(24% - 2rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 49rem;
-    padding: 2.5rem;
-    gap: 1.5rem;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
-    backdrop-filter: blur(8px);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+.plan-card {
+  z-index: 2;
+  background: linear-gradient(135deg, #1c1f4a, #2a2e6e);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  flex: 0 0 calc(24% - 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 49rem;
+  padding: 2.5rem;
+  gap: 1.5rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.plano-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  animation: glow 6s linear infinite;
+  z-index: 1;
+}
+
+@keyframes glow {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .plano-card::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-    animation: glow 6s linear infinite;
-    z-index: 1;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  @keyframes glow {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+}
+
+.plan-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.plan-card h3 {
+  font-size: 2.9rem;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #00e0ff, #c75fff);
+  -webkit-background-clip: text;
+  color: transparent;
+  z-index: 2;
+  text-align: center;
+}
+
+.plan-price {
+  font-size: 2.7rem;
+  font-weight: bold;
+  margin: 10px 0 20px;
+  color: #ffffff;
+  z-index: 2;
+}
+
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+  z-index: 2;
+  width: 100%;
+}
+
+.plan-card ul li {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: #ccc;
+  text-align: center;
+}
+
+.plan-card button {
+  background: linear-gradient(to right, #6f00ff, #bb00ff);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(187, 0, 255, 0.4);
+}
+
+.plan-card button:hover {
+  background: linear-gradient(to right, #8a00ff, #ff00d4);
+  box-shadow: 0 6px 20px rgba(255, 0, 212, 0.5);
+  transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .plans-section {
+    height: auto;
+    padding-top: 0rem;
   }
-  
-  .plano-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+
+  .learn-with-us {
+    padding-top: 3rem;
+    padding-left: 2rem;
   }
-  
-  .plano-card h3 {
-    font-size: 2.9rem;
-    margin-bottom: 10px;
-    background: linear-gradient(to right, #00e0ff, #c75fff);
-    -webkit-background-clip: text;
-    color: transparent;
-    z-index: 2;
-    text-align: center;
+
+  .learn-with-us p {
+    font-size: 2rem;
   }
-  
-  .preco {
-    font-size: 2.7rem;
-    font-weight: bold;
-    margin: 10px 0 20px;
-    color: #ffffff;
-    z-index: 2;
+
+  .plan-card {
+    flex: 1 1 45%;
+    height: 28rem;
+    gap: 1rem;
+    padding: 1.5rem;
   }
-  
-  .plano-card ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 25px;
-    z-index: 2;
+
+  .plan-card h3 {
+    font-size: 1.9rem;
+  }
+
+  .plan-card ul li {
+    font-size: 1.2rem;
+  }
+
+  .plan-price {
+    font-size: 1.3rem;
+  }
+}
+
+/* De 481px a 540px – smartphones médios (1 card por linha, mais respiro) */
+@media (min-width: 481px) and (max-width: 540px) {
+  .plan-card {
+    flex: 0 1 100%;
+    padding: 1.2rem;
+    gap: 0rem;
+    height: auto; /* Altura fixa para garantir que todos os itens tenham a mesma altura */
+    min-height: auto; /* Evita que os itens tenham altura menor do que isso */
+  }
+
+  .plans-section {
+    padding-top: 1rem;
+  }
+
+  .learn-with-us p {
+    font-size: 2.3rem;
+    padding-left: 1rem;
+  }
+
+  .learn-with-us {
+    padding-left: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  .info-section {
+    gap: 1.8rem;
+  }
+}
+
+/* De 541px a 599px – smartphones grandes e pequenas tablets (2 cards por linha) */
+@media (min-width: 541px) and (max-width: 599px) {
+  .plan-card {
+    flex: 0 1 calc(50% - 1rem);
+    height: auto;
+    min-height: auto;
+    padding: 1rem;
+    gap: 0rem;
+  }
+
+  .plans-section {
+    padding-top: 1rem;
+  }
+
+  .plans-container {
+    width: 90%;
+    gap: 1rem;
+  }
+
+  .learn-with-us p {
+    font-size: 2.5rem;
+  }
+
+  .learn-with-us {
+    padding-left: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .info-section {
+    gap: 2rem;
+  }
+}
+
+/* De 600px a 768px – tablets e telas pequenas (2 cards por linha com mais espaço) */
+@media (min-width: 600px) and (max-width: 768px) {
+  .plan-card {
+    flex: 0 1 calc(50% - 1rem);
+    height: auto;
+    min-height: auto;
+    padding: 1rem;
+    gap: 0rem;
+  }
+  .marquee p {
+    font-size: 2.6rem;
+    padding-left: 2rem;
+  }
+
+  .img-benefit img {
     width: 100%;
+    height: auto;
   }
-  
-  .plano-card ul li {
-    margin-bottom: 10px;
-    font-size: 1.4rem;
-    color: #ccc;
-    text-align: center;
+
+  .plans-section {
+    padding-top: 0rem;
   }
-  
-  .plano-card button {
-    background: linear-gradient(to right, #6f00ff, #bb00ff);
-    color: white;
-    border: none;
-    border-radius: 30px;
-    padding: 12px 30px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 2;
-    box-shadow: 0 4px 15px rgba(187, 0, 255, 0.4);
+
+  .plans-container {
+    width: 90%;
+    gap: 1.5rem;
   }
-  
-  .plano-card button:hover {
-    background: linear-gradient(to right, #8a00ff, #ff00d4);
-    box-shadow: 0 6px 20px rgba(255, 0, 212, 0.5);
-    transform: scale(1.05);
+
+  .learn-with-us p {
+    font-size: 2.5rem;
   }
-  
+
+  .learn-with-us {
+    padding-left: 2rem;
+    padding-top: 1rem;
+  }
+
+  .info-section {
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .plan-card {
+    flex: 0 1 calc(50% - 1rem);
+    height: auto;
+    min-height: auto;
+    padding: 1rem;
+    gap: 0rem;
+  }
+  .marquee p {
+    font-size: 3rem;
+    padding-left: 2rem;
+  }
+
+  .img-benefit img {
+    width: 100%;
+    height: auto;
+  }
+
+  .plans-section {
+    padding-top: 0rem;
+  }
+
+  .plans-container {
+    width: 90%;
+    gap: 1.5rem;
+  }
+
+  .learn-with-us p {
+    font-size: 3rem;
+  }
+
+  .learn-with-us {
+    padding-left: 2.5rem;
+    padding-top: 4rem;
+  }
+
+  .info-section {
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .plan-card {
+    flex: 0 1 calc(50% - 1rem);
+    height: auto;
+    min-height: auto;
+    padding: 1rem;
+    gap: 0rem;
+  }
+  .marquee p {
+    font-size: 3rem;
+    padding-left: 2rem;
+  }
+
+  .img-benefit img {
+    width: 100%;
+    height: auto;
+  }
+
+  .plans-section {
+    padding-top: 0rem;
+  }
+
+  .plans-container {
+    width: 90%;
+    gap: 1.5rem;
+  }
+
+  .learn-with-us p {
+    font-size: 3.5rem;
+  }
+
+  .learn-with-us {
+    padding-left: 3rem;
+    padding-top: 4rem;
+  }
+
+  .info-section {
+    gap: 2rem;
+  }
+}

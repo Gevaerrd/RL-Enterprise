@@ -74,7 +74,6 @@ a {
   margin: 0 auto;
   flex-wrap: wrap;
   gap: 2rem;
-  justify-content: space-around;
 }
 
 /* Cada bloco de benefício individual */
@@ -83,7 +82,7 @@ a {
   background: linear-gradient(135deg, #1c1f4a, #2a2e6e);
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  flex: 0 0 calc(24% - 2rem);
+  flex: 1 1 calc(25% - 2rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,18 +103,13 @@ a {
   height: 48%;
   width: 80%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no repeat;
 }
 
 .img-benefit img {
   width: 100%;
   height: 100%;
   filter: drop-shadow(0 0 1px #00ffff);
+  object-fit: cover;
 }
 
 /* Conteúdo */
@@ -266,88 +260,144 @@ a {
   }
 }
 
-/* Responsividade para telas pequenas (até 1024px, como tablets grandes e pequenos desktops) */
-@media (max-width: 1024px) {
+/* Até 480px – mobile muito pequeno (1 card por linha, tudo compacto) */
+@media (max-width: 480px) {
   .benefit {
-    flex: 1 1 calc(33.33% - 2rem); /* Três cards por linha */
+    flex: 1 1 calc(50% - 1rem);
+    max-width: calc(50% - 1rem); /* garante no máximo metade da linha */
+    height: 37rem;
+    padding: 1rem;
+    gap: 0rem;
+    min-height: auto; /* Evita alturas fixas */
+    height: auto;
+  }
+
+  .benefit-content {
+    gap: 0.5rem;
+  }
+
+  .why-choose-us {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between; /* ou flex-start */
+    padding-bottom: 0.5rem;
   }
 
   .marquee p {
-    font-size: 2.5rem; /* Ajuste no tamanho da fonte para telas maiores */
-    padding-left: 1.5rem; /* Ajusta o padding para melhor alinhamento */
-  }
-
-  .benefit-content h3 {
-    font-size: 2rem; /* Títulos um pouco menores para se adaptar ao layout */
-  }
-
-  .benefit-content p {
-    font-size: 1.4rem; /* Texto ajustado para um tamanho mais adequado */
-  }
-}
-
-/* Responsividade para telas médias (até 1200px, como desktops grandes) */
-@media (max-width: 1200px) {
-
-  .side-of-video {
-    display: none;
-  }
-
-  .benefit {
-    flex: 1 1 calc(25% - 2rem); /* Três cards por linha */
-  }
-
-  .marquee p {
-    font-size: 3rem; /* Ajuste no tamanho da fonte para telas grandes */
-    padding-left: 2rem; /* Ajusta o padding para telas maiores */
-  }
-
-  .benefit-content h3 {
-    font-size: 2.2rem; /* Ajuste no tamanho do título */
-  }
-
-  .benefit-content p {
-    font-size: 1.5rem; /* Ajuste no texto */
-  }
-}
-
-/* Responsividade para telas pequenas (até 768px, como tablets) */
-@media (max-width: 768px) {
-
-  .side-of-video {
-    display: none;
-  }
-
-  .benefit {
-    flex: 1 1 calc(50% - 2rem); /* Dois cards por linha */
-  }
-
-  .marquee p {
-    font-size: 2rem; /* Texto reduzido para telas menores */
-    padding-left: 1rem;
-  }
-
-  .benefit-content h3 {
     font-size: 1.8rem;
+    padding-left: 0.5rem;
+    text-align: center;
   }
 
-  .benefit-content p {
+  .img-benefit {
+    height: 10rem;
+  }
+
+  .img-benefit img {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 0.5px #00ffff);
+  }
+
+  .benefit-content h3 {
     font-size: 1.3rem;
   }
+
+  .benefit-content p {
+    font-size: 1.15rem;
+  }
+
+  .marquee {
+    padding-left: 1rem;
+    padding-top: 1rem;
+  }
+
+  .info-section {
+    gap: 1.5rem;
+  }
 }
 
-/* Responsividade para telas muito pequenas (até 480px, como smartphones) */
-@media (max-width: 480px) {
-  .side-of-video {
-    display: none;
-  }
+/* De 481px a 540px – smartphones médios (1 card por linha, mais respiro) */
+@media (min-width: 481px) and (max-width: 540px) {
   .benefit {
-    flex: 1 1 100%; /* Um card por linha */
+    flex: 1 1 calc(50% - 1rem);
+    padding: 1.2rem;
+    gap: 0rem;
+    height: auto; /* Altura fixa para garantir que todos os itens tenham a mesma altura */
+    min-height: auto; /* Evita que os itens tenham altura menor do que isso */
+  }
+
+  .why-choose-us {
+    gap: 1rem;
+    justify-content: flex-start; /* ou flex-start */
+    padding-bottom: 0.5rem;
+    width: 85%;
+    margin: 0 auto;
   }
 
   .marquee p {
-    font-size: 1.5rem; /* Texto bem reduzido para dispositivos pequenos */
+    font-size: 2.3rem;
     padding-left: 1rem;
+  }
+
+  .img-benefit {
+    height: 15rem;
+  }
+
+  .img-benefit img {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 0.3px #00ffff);
+  }
+
+  .benefit-content h3 {
+    font-size: 1.4rem;
+  }
+
+  .benefit-content p {
+    font-size: 1.1rem;
+  }
+
+  .marquee {
+    padding-left: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  .info-section {
+    gap: 1.8rem;
+  }
+}
+
+/* De 541px a 599px – smartphones grandes e pequenas tablets (2 cards por linha) */
+@media (min-width: 541px) and (max-width: 599px) {
+  .benefit {
+    flex: 1 1 calc(50% - 1rem);
+    height: auto; /* Altura fixa para garantir que todos os itens tenham a mesma altura */
+    min-height: auto; /* Evita que os itens tenham altura menor do que isso */
+    padding: 1.4rem;
+    gap: 0rem;
+  }
+
+  .why-choose-us {
+    width: 90%;
+    justify-content: flex-start;
+  }
+
+  .marquee p {
+    font-size: 2.4rem;
+    padding-left: 1rem;
+  }
+
+  .img-benefit {
+    width: 100%;
+    height: 15rem;
+  }
+
+  .img-benefit img {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 0.5px #00ffff);
   }
 
   .benefit-content h3 {
@@ -355,6 +405,155 @@ a {
   }
 
   .benefit-content p {
+    font-size: 1.05rem;
+  }
+
+  .marquee {
+    padding-left: 1.5rem;
+    padding-top: 2rem;
+  }
+
+  .info-section {
+    gap: 2rem;
+  }
+}
+
+/* De 600px a 768px – tablets e telas pequenas (2 cards por linha com mais espaço) */
+@media (min-width: 600px) and (max-width: 768px) {
+  .benefit {
+    flex: 0 1 calc(50% - 1rem);
+    height: auto;
+    min-height: auto;
+    padding: 1rem;
+    gap: 0rem;
+  }
+
+  .why-choose-us {
+    width: 90%;
+  }
+
+  .marquee p {
+    font-size: 2.6rem;
+    padding-left: 2rem;
+  }
+
+  .img-benefit {
+    height: 12.5rem;
+    width: 100%;
+  }
+
+  .img-benefit img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 0.6px #00ffff);
+  }
+
+  .benefit-content h3 {
+    font-size: 1.8rem;
+  }
+
+  .benefit-content p {
+    font-size: 1.1rem;
+  }
+
+  .marquee {
+    padding-left: 0rem;
+    padding-top: 1rem;
+  }
+
+  .info-section {
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .benefit {
+    flex: 0 1 calc(50% - 1rem);
+    height: auto;
+    min-height: auto;
+    padding: 1rem;
+    gap: 0rem;
+  }
+
+  .why-choose-us {
+    width: 90%;
+  }
+
+  .marquee p {
+    font-size: 3rem;
+  }
+
+  .img-benefit {
+    height: 17rem;
+    width: 80%;
+  }
+
+  .img-benefit img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 0.6px #00ffff);
+  }
+
+  .benefit-content h3 {
+    font-size: 1.8rem;
+  }
+
+  .benefit-content p {
+    font-size: 1.1rem;
+  }
+
+  .marquee {
+    padding-left: 2rem;
+    padding-top: 4rem;
+  }
+
+  .info-section {
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .benefit {
+    flex: 0 1 calc(50% - 1rem);
+    height: auto;
+    min-height: auto;
+    padding: 1rem;
+    gap: 0rem;
+  }
+
+  .why-choose-us {
+    width: 90%;
+  }
+
+  .marquee p {
+    font-size: 3.5rem;
+  }
+
+  .img-benefit {
+    height: 17rem;
+    width: 80%;
+  }
+
+  .img-benefit img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 0.6px #00ffff);
+  }
+
+  .benefit-content h3 {
+    font-size: 2.2rem;
+  }
+
+  .benefit-content p {
     font-size: 1.2rem;
+  }
+
+  .marquee {
+    padding-left: 2rem;
+    padding-top: 4rem;
+  }
+
+  .info-section {
+    gap: 2rem;
   }
 }

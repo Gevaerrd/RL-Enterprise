@@ -1,20 +1,20 @@
 body {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
 }
 
-.sessao-oque-fazemos {
+.what-we-do {
   background: linear-gradient(-45deg, #ffffff 90%, #0f1a42 5%);
   color: white;
-  padding: 100px 20px;
+  padding: 10rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,12 +22,12 @@ body {
   text-align: left;
 }
 
-.sessao-oque-fazemos .conteudo {
+.what-we-do .content {
   max-width: 1200px;
   width: 100%;
 }
 
-.titulo {
+.content-title {
   font-size: 6rem;
   font-weight: 800;
   line-height: 1.2;
@@ -35,13 +35,13 @@ body {
   color: #212121;
 }
 
-.titulo .destaque {
+.content-title .focus {
   background: linear-gradient(to right, #00e0ff, #a855f7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.titulo .palavra-destacada {
+.content-title .word-highlighted {
   display: inline-block;
   border: 3px solid #a855f7;
   border-radius: 25px;
@@ -53,9 +53,77 @@ body {
   background-color: #4b0082;
 }
 
-.descricao {
+.description {
   font-size: 1.5rem;
   max-width: 700px;
   line-height: 1.7;
   color: #212121;
+}
+
+@media (max-width: 480px) {
+  .what-we-do {
+    background: linear-gradient(45deg, #ffffff 90%, #0f1a42 5%);
+    padding: 2rem 1.5rem;
+  }
+
+  .content h2 {
+    font-size: 3.7rem;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 599px) {
+  .what-we-do {
+    background: linear-gradient(45deg, #ffffff 90%, #0f1a42 5%);
+    padding: 2rem 1.5rem;
+  }
+
+  .content-title {
+    font-size: 3.7rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+  .what-we-do {
+    background: linear-gradient(45deg, #ffffff 90%, #0f1a42 5%);
+    padding: 2rem 1.5rem;
+  }
+
+  .content-title {
+    font-size: 3.7rem;
+  }
+
+  .content {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .what-we-do {
+    background: linear-gradient(45deg, #ffffff 90%, #0f1a42 5%);
+    padding: 2rem 4rem;
+  }
+
+  .content-title {
+    font-size: 4.5rem;
+  }
+
+  .content {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .what-we-do {
+    background: linear-gradient(45deg, #ffffff 90%, #0f1a42 5%);
+    padding: 2rem 4rem;
+  }
+
+  .content-title {
+    font-size: 5rem;
+  }
+
+  .content {
+    margin-top: 1.5rem;
+  }
 }
