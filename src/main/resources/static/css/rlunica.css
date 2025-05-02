@@ -127,3 +127,20 @@ body {
     margin-top: 1.5rem;
   }
 }
+
+@media (min-width: 1201px) and (max-width: 1440px) {
+  .what-we-do {
+    background: linear-gradient(45deg, #ffffff 90%, #0f1a42 5%);
+    padding: 2rem 4rem;
+  }
+
+  .content-title {
+    font-size: 5rem;
+  }
+
+  .content {
+    margin-top: 1.5rem;
+    padding-left: 3rem;
+    padding-top: 3rem;
+  }
+}
