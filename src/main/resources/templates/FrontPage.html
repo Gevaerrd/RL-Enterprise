@@ -1,172 +1,256 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RL Enterprise</title>
-  <link rel="stylesheet" href="/css/headerandfirstcontent.css">
-  <link rel="stylesheet" href="/css/whychoseusandavaliations.css">
-  <link rel="stylesheet" href="/css/rlunica.css">
-  <link rel="stylesheet" href="/css/plans.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RL Enterprise</title>
+    <link rel="stylesheet" href="/css/headerandfirstcontent.css" />
+    <link rel="stylesheet" href="/css/whychoseusandavaliations.css" />
+    <link rel="stylesheet" href="/css/rlunica.css" />
+    <link rel="stylesheet" href="/css/plans.css" />
+    <link rel="stylesheet" href="/css/loginForm.css" />
+  </head>
+  <section class="loginForm">
+    <div class="space-of-login-form">
+      <h2>Login</h2>
+      <form class="organization-off-login-form">
+        <label for="email">E-Mail</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Digite seu e-mail"
+          required
+        />
 
-  <header id="header" class="header">
-    <div class="side-of-logo-and-site-name">
-      <a href="" class="organization-of-logo-and-site-name">
-        <img src="/images/logonobg.png" alt="Logo da empresa">
-      </a>
+        <label for="senha">Senha</label>
+        <input
+          type="password"
+          id="senha"
+          placeholder="Digite sua senha"
+          required
+        />
+      </form>
+      <a href="">Esqueceu sua senha?</a>
+      <p>Não tem uma conta? <a class="a-for-registercall">Registre-se</a></p>
     </div>
-    <nav class="getting-space-for-ul">
-      <ul class="organization-of-lis">
-        <li><a href="#get-home">Home</a></li>
-        <li><a href="#what-we-do">Sobre</a></li>
-        <li><a href="#planss">Planos</a></li>
-        <li><a href="">Depoimentos</a></li>
-        <li><a href="">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
-  <div id="get-home" class="first-content-and-header">
-    <section class="principal-message-and-representative-video">
-      <main class="main-content-in-first-section">
-        <h2 class="h2-desktop" >APRENDA A<br>CRIAR VIDEOS<br>COM INTELIGÊNCIA<br>ARTIFICIAL</h2>
-        <h2 class="h2-mobile">APRENDA A CRIAR VIDEOS COM<br>INTELIGÊNCIA ARTIFICIAL</h2>
-        <p>Domine a arte de gerar videos engajadores<br>usando inteligencia artificial<br>e receba dinheiro por isso</e></p>
-        <a href="" class="main-button">Aprender agora</a>
-      </main>
-      <div class="side-of-video">
-        <figure class="box-of-video">
-          <video></video>
-        </figure>
+  </section>
+  <body>
+    <header id="header" class="header">
+      <div class="side-of-logo-and-site-name">
+        <a href="" class="organization-of-logo-and-site-name">
+          <img src="/images/logonobg.png" alt="Logo da empresa" />
+        </a>
       </div>
-    </section>
-  </div>
-  <section class="why-chose-us-and-plans">
-    <div class="container">
-      <section class="info-section">
-        <div class="marquee">/
-            <p>O que torna a<br><span class="highlight">RL Enterprise</span> única?</p>
-
-        </div>
-        
-        <!-- Seção de Benefícios -->
-        <div class="why-choose-us">
-          <article class="benefit">
-            <div class="img-benefit">
-              <img src="images/crienobg.png" alt="Tecnologia Inovadora">
-            </div>
-            <div class="benefit-content">
-              <h3>Crie Vídeos Profissionais com <span class="highlight">IA de Última Geração</span></h3>
-              <p>Descubra como utilizar as ferramentas mais avançadas de Inteligência Artificial para criar vídeos profissionais com agilidade e eficiência.</p>
-            </div>
-          </article>
-          
-          <article class="benefit">
-            <div class="img-benefit">
-              <img src="images/dominenobg.png" alt="Tutoriais Completos">
-            </div>
-            <div class="benefit-content">
-              <h3><span class="highlight">Domine a Criação de Vídeos com IA</span> em Poucos Dias</h3>
-              <p>Aprenda, passo a passo,<br>a dominar as principais técnicas de criação de<br>vídeos com IA e acelerar seu crescimento nas redes sociais.</p>
-            </div>
-          </article>
-          
-          <article class="benefit">
-            <div class="img-benefit">
-              <img src="images/multipliquenobg.png" alt="Estratégias de Marketing">
-            </div>
-            <div class="benefit-content">
-              <h3><span class="highlight">Multiplique Suas Visualizações</span> com Estratégias Inteligentes</h3>
-              <p>Implemente estratégias comprovadas para aumentar seu alcance, engajar audiências e transformar visualizações em resultados concretos.</p>
-            </div>
-          </article>
-          
-          <article class="benefit">
-            <div class="img-benefit">
-              <img src="images/transformenobg.png" alt="Ganhe com isso">
-            </div>
-            <div class="benefit-content">
-              <h3><span class="highlight">Transforme seu Conhecimento</span> em Renda com Nosso <span class="highlight">Programa de Afiliados</span></h3>
-              <p>Participe do nosso programa de afiliados e tenha a oportunidade de gerar renda recorrente, promovendo soluções inovadoras que realmente entregam valor.</p>
-            </div>
-          </article>
-          
+      <nav class="getting-space-for-ul">
+        <ul class="organization-of-lis">
+          <li><a href="#get-home">Home</a></li>
+          <li><a href="#what-we-do">Sobre</a></li>
+          <li><a href="#planss">Planos</a></li>
+          <li><a href="">Contato</a></li>
+          <li>
+            <a href="" id="accountHover"
+              >Conta
+              <div class="loginOrRegister hidden">
+                <div class="configurationOfLoginOrRegister">
+                  <a href="">Entrar</a>
+                </div>
+                <div class="configurationOfLoginOrRegister">
+                  <a href="">Registrar</a>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div id="get-home" class="first-content-and-header">
+      <section class="principal-message-and-representative-video">
+        <main class="main-content-in-first-section">
+          <h2 class="h2-desktop">
+            APRENDA A<br />CRIAR VIDEOS<br />COM INTELIGÊNCIA<br />ARTIFICIAL
+          </h2>
+          <h2 class="h2-mobile">
+            APRENDA A CRIAR VIDEOS COM<br />INTELIGÊNCIA ARTIFICIAL
+          </h2>
+          <p>
+            Domine a arte de gerar videos engajadores<br />usando inteligencia
+            artificial<br />e receba dinheiro por isso
+          </p>
+          <a href="" class="main-button">Aprender agora</a>
+        </main>
+        <div class="side-of-video">
+          <figure class="box-of-video">
+            <video></video>
+          </figure>
         </div>
       </section>
     </div>
-  </section>
-  <section id="what-we-do" class="what-we-do">
-  <div class="content">
-    <h2 class="content-title">
-      Afinal, <br>
-      o que fazemos na<span class="content-focus"> RL ENTERPRISE</span>
-      <span class="word-highlighted">?</span>
-    </h2>
-    <p class="description">
-      Na RL Enterprise, capacitamos pessoas a criarem vídeos impactantes com Inteligência Artificial, dominando as ferramentas mais avançadas para se destacarem nas redes sociais. <br><br>
-      Além disso, oferecemos a oportunidade de rentabilizar esse conhecimento revendendo o curso diretamente pela nossa plataforma.
-    </p>
-  </div>
-</section>
-<section id="planss" class="plans-section">
-  <div class="container">
-    <section class="info-section">
-      <div class="learn-with-us">/
-        <p>Junte-se a nós<br><span class="highlight">veja nossos planos</span></p>
-    </div>
-    <div class="plans-container">
-      <div class="plan-card">
-        <h3>Pacote Inicial</h3>
-        <p class="plan-price">R$29</p>
-        <ul>
-          <li>10 vídeos prontos</li>
-          <li>Escolha de estilo e tema</li>
-          <li>Entrega personalizada</li>
-        </ul>
-        <button>Começar</button>
+
+    <section class="why-chose-us-and-plans">
+      <div class="container">
+        <section class="info-section">
+          <div class="marquee">
+            /
+            <p>
+              O que torna a<br /><span class="highlight">RL Enterprise</span>
+              única?
+            </p>
+          </div>
+
+          <!-- Seção de Benefícios -->
+          <div class="why-choose-us">
+            <article class="benefit">
+              <div class="img-benefit">
+                <img src="images/crienobg.png" alt="Tecnologia Inovadora" />
+              </div>
+              <div class="benefit-content">
+                <h3>
+                  Crie Vídeos Profissionais com
+                  <span class="highlight">IA de Última Geração</span>
+                </h3>
+                <p>
+                  Descubra como utilizar as ferramentas mais avançadas de
+                  Inteligência Artificial para criar vídeos profissionais com
+                  agilidade e eficiência.
+                </p>
+              </div>
+            </article>
+
+            <article class="benefit">
+              <div class="img-benefit">
+                <img src="images/dominenobg.png" alt="Tutoriais Completos" />
+              </div>
+              <div class="benefit-content">
+                <h3>
+                  <span class="highlight"
+                    >Domine a Criação de Vídeos com IA</span
+                  >
+                  em Poucos Dias
+                </h3>
+                <p>
+                  Aprenda, passo a passo,<br />a dominar as principais técnicas
+                  de criação de<br />vídeos com IA e acelerar seu crescimento
+                  nas redes sociais.
+                </p>
+              </div>
+            </article>
+
+            <article class="benefit">
+              <div class="img-benefit">
+                <img
+                  src="images/multipliquenobg.png"
+                  alt="Estratégias de Marketing"
+                />
+              </div>
+              <div class="benefit-content">
+                <h3>
+                  <span class="highlight">Multiplique Suas Visualizações</span>
+                  com Estratégias Inteligentes
+                </h3>
+                <p>
+                  Implemente estratégias comprovadas para aumentar seu alcance,
+                  engajar audiências e transformar visualizações em resultados
+                  concretos.
+                </p>
+              </div>
+            </article>
+
+            <article class="benefit">
+              <div class="img-benefit">
+                <img src="images/transformenobg.png" alt="Ganhe com isso" />
+              </div>
+              <div class="benefit-content">
+                <h3>
+                  <span class="highlight">Transforme seu Conhecimento</span> em
+                  Renda com Nosso
+                  <span class="highlight">Programa de Afiliados</span>
+                </h3>
+                <p>
+                  Participe do nosso programa de afiliados e tenha a
+                  oportunidade de gerar renda recorrente, promovendo soluções
+                  inovadoras que realmente entregam valor.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
       </div>
-      <div class="plan-card">
-        <h3>Plano Básico</h3>
-        <p class="plan-price">R$47/mês</p>
-        <ul>
-          <li>Curso completo</li>
-          <li>Curso de vendas</li>
-          <li>70% de comissão</li>
-        </ul>
-        <button>Assinar</button>
-      </div>
-      <div class="plan-card">
-        <h3>Plano Pro</h3>
-        <p class="plan-price">R$97/mês</p>
-        <ul>
-          <li>Inclui Básico</li>
-          <li>Curso de estratégia</li>
-          <li>80% de comissão</li>
-        </ul>
-        <button>Assinar</button>
-      </div>
-      <div class="plan-card">
-        <h3>Plano Master</h3>
-        <p class="plan-price">R$197/mês</p>
-        <ul>
-          <li>Consultoria mensal</li>
-          <li>Comissão de 100%</li>
-          <li>Acesso antecipado</li>
-        </ul>
-        <button>Assinar</button>
-      </div>
-    </div>
     </section>
-  </div>
-</section>
 
+    <section id="what-we-do" class="what-we-do">
+      <div class="content">
+        <h2 class="content-title">
+          Afinal, <br />
+          o que fazemos na<span class="content-focus"> RL ENTERPRISE</span>
+          <span class="word-highlighted">?</span>
+        </h2>
+        <p class="description">
+          Na RL Enterprise, capacitamos pessoas a criarem vídeos impactantes com
+          Inteligência Artificial, dominando as ferramentas mais avançadas para
+          se destacarem nas redes sociais. <br /><br />
+          Além disso, oferecemos a oportunidade de rentabilizar esse
+          conhecimento revendendo o curso diretamente pela nossa plataforma.
+        </p>
+      </div>
+    </section>
 
-  
-  
-</body>
+    <section id="planss" class="plans-section">
+      <div class="container">
+        <section class="info-section">
+          <div class="learn-with-us">
+            /
+            <p>
+              Junte-se a nós<br /><span class="highlight"
+                >veja nossos planos</span
+              >
+            </p>
+          </div>
+          <div class="plans-container">
+            <div class="plan-card">
+              <h3>Pacote Inicial</h3>
+              <p class="plan-price">R$29</p>
+              <ul>
+                <li>10 vídeos prontos</li>
+                <li>Escolha de estilo e tema</li>
+                <li>Entrega personalizada</li>
+              </ul>
+              <button>Começar</button>
+            </div>
+            <div class="plan-card">
+              <h3>Plano Básico</h3>
+              <p class="plan-price">R$47/mês</p>
+              <ul>
+                <li>Curso completo</li>
+                <li>Curso de vendas</li>
+                <li>70% de comissão</li>
+              </ul>
+              <button>Assinar</button>
+            </div>
+            <div class="plan-card">
+              <h3>Plano Pro</h3>
+              <p class="plan-price">R$97/mês</p>
+              <ul>
+                <li>Inclui Básico</li>
+                <li>Curso de estratégia</li>
+                <li>80% de comissão</li>
+              </ul>
+              <button>Assinar</button>
+            </div>
+            <div class="plan-card">
+              <h3>Plano Master</h3>
+              <p class="plan-price">R$197/mês</p>
+              <ul>
+                <li>Consultoria mensal</li>
+                <li>Comissão de 100%</li>
+                <li>Acesso antecipado</li>
+              </ul>
+              <button>Assinar</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <script src="/js/showoptions.js"></script>
+  </body>
 </html>
-
-
-
-

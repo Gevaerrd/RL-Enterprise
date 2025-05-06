@@ -95,7 +95,7 @@ body {
 }
 
 .organization-of-lis li a {
-  font-size: 1.45rem;
+  font-size: 1.3rem;
   color: #ffffff;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
@@ -118,7 +118,7 @@ body {
 }
 
 .organization-of-lis li a:hover {
-  letter-spacing: 0.08rem;
+  letter-spacing: 0.06rem;
 }
 
 .organization-of-lis li a:hover::after {
@@ -184,8 +184,9 @@ body {
 
 .main-button {
   background: linear-gradient(to bottom, #0e0b2b, #0f1a42);
-  padding: 1.5rem 4rem;
+  padding: 2rem 4rem;
   border-radius: 12px;
+  width: 21rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -195,6 +196,7 @@ body {
   text-decoration: none;
   transition: background 1s ease-in-out;
   display: inline-block;
+  text-align: center;
 }
 
 .main-button:hover {
@@ -214,6 +216,34 @@ body {
   animation: shadowPulse 5s infinite;
 }
 
+.loginOrRegister {
+  position: absolute;
+  background: var(--background-header);
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  right: 5.5rem;
+  padding: 0.5rem;
+}
+
+.configurationOfLoginOrRegister {
+  padding: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.loginOrRegister a {
+  font-size: 1.45rem;
+}
+
+.hidden {
+  display: none;
+}
+
+
 @keyframes shadowPulse {
   0% {
     box-shadow: 0px 0px 25px rgba(138, 43, 226, 0.4);
@@ -228,6 +258,8 @@ body {
     box-shadow: 0px 0px 30px rgba(138, 43, 226, 0.4);
   }
 }
+
+
 
 @media (max-width: 480px) {
   .header {
@@ -300,6 +332,9 @@ body {
   .main-button {
     padding: 1rem 2rem;
     font-size: 1rem;
+    width: 12rem;
+    height: 3rem;
+    margin-top: 2rem;
   }
 
 }
@@ -379,6 +414,7 @@ body {
   .main-button {
     padding: 1rem 2rem;
     font-size: 1rem;
+    width: 12rem;
   }
 
 }
@@ -455,6 +491,7 @@ body {
   .main-button {
     padding: 1rem 2rem;
     font-size: 1rem;
+    width: 12rem;
   }
 
 }
@@ -534,7 +571,8 @@ body {
 
   .main-button {
     padding: 1rem 2rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+    width: 14rem;
   }
 
 }
@@ -614,7 +652,8 @@ body {
 
   .main-button {
     padding: 1rem 2rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    width: 16rem;
   }
 
 }
@@ -694,7 +733,8 @@ body {
 
   .main-button {
     padding: 1rem 2rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    width: 18rem;
   }
 
 }
@@ -783,6 +823,7 @@ body {
 
   .main-button {
     padding: 1rem 2rem;
+    width: 18rem;
   }
 
 }
@@ -873,6 +914,8 @@ body {
 
   .main-button {
     padding: 1rem 2rem;
+    width: 18rem;
+    font-size: 1.3rem;
   }
 
 

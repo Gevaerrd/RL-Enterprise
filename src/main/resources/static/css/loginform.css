@@ -1,0 +1,69 @@
+html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-size: 62.5%;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Poppins", sans-serif;
+    behavior: inherit;
+  }
+  
+  :root {
+    --text-light: #ffffff; /* texto principal claro */
+    --text-muted: #cccccc; /* texto secundário/descritivo */
+    --text-highlight: #e5d9ff; /* pequenos detalhes ou elementos suaves */
+    --button-color: #9e4dff;
+    --button-text-color: #ffffff;
+  
+    --background-first-session: linear-gradient(145deg, #ffffff 90%, #0e0b2b 5%);
+    --background-second-session: linear-gradient(to bottom, #0e0b2b, #0f1a42);
+  
+    --background-header: #0e0b2b;
+    --color-letteres: #0f1a42;
+  
+    --collor-ffff: #ffffff;
+  }
+
+.loginForm {
+    position: fixed;
+    backdrop-filter: blur(8px);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+  }
+
+  .space-of-login-form {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 3rem;
+    border-radius: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .space-of-login-form h2 {
+    font-size: 3rem;
+    color: #111;
+  }
+
+  .space-of-login-form label {
+    display: block;
+  }
+
+  .organization-off-login-form {
+
+  }
