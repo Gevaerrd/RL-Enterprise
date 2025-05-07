@@ -8,6 +8,7 @@ package RLEnterprise.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import RLEnterprise.dto.UserDTO;
 import RLEnterprise.entities.User;
 import RLEnterprise.repositories.UserRepository;
 
@@ -25,19 +26,30 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
+    public boolean emailExists(String email) {
+        if (userRepository.existsByEmail(email)) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
     public boolean userExists(Long id) {
         return userRepository.existsById(id);
     }
 
-    public boolean deleteById(Long id) {
+    public void deleteById(Long id) {
         if (userExists(id)) {
             userRepository.deleteById(id);
-            return true;
         }
-        return false;
     }
 
-    public User saveUser(User user) {
-        return userRepository.save(user);
+    public void saveUser(UserDTO dto) {
+        User user = new User();
+        user.setEmail(dto.getEmail());
+        user.setPassword(dto.getPassword());
+        userRepository.save(user);
     }
 }

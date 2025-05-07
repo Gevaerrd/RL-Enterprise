@@ -63,16 +63,16 @@
       <div class="name-of-enterprise">
         <h1>RL</h1>
         <h2>Enterprise</h2>
-        <div id="form-message" class="form-message hidden"></div> <!-- Container para a mensagem -->
+        <div id="formMessage" class="form-message hidden"></div> <!-- Corrigido o ID -->
       </div>
-      <form class="organization-off-register-form" method="POST" action="/register"> <!-- Definindo o método e a URL de envio -->
+      <form class="organization-off-register-form"> <!-- Definindo o método e a URL de envio -->
         <div class="input-group">
           <div class="input-icon">
             <i class="fa-regular fa-envelope"></i>
             <input
               type="email"
               id="email-register"
-              name="emailRegister"
+              name="email"
               placeholder="Digite seu e-mail"
               required
             />
@@ -85,7 +85,7 @@
             <input
               type="password"
               id="password-register"
-              name="passwordRegister"
+              name="password"
               placeholder="Digite sua senha"
               required
             />
@@ -321,5 +321,6 @@
     <script src="/js/showloginform.js"></script>
     <script src="/js/showregisterform.js"></script>
     <script src="/js/switch.js"></script>
+    <script src="/js/register/jsforregister.js" defer></script>
   </body>
 </html>

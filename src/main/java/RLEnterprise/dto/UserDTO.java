@@ -1,32 +1,32 @@
-package RLEnterprise.entities;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+package RLEnterprise.dto;
 
-@Entity
-@Table(name = "tb_user")
-public class User {
+/**
+ *
+ * @author Pichau
+ */
+public class UserDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
     private String password;
 
-    public User() {
-
-    }
-
-    public User(String email, String password) {
+    public UserDTO(Long id, String email, String password) {
+        this.id = id;
         this.email = email;
         this.password = password;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -61,7 +61,7 @@ public class User {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        User other = (User) obj;
+        UserDTO other = (UserDTO) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

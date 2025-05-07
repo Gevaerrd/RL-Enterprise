@@ -161,5 +161,30 @@ a {
 #id-for-registerForm {
   transition: opacity 0.5s ease;
 }
+/* Estilo base para a mensagem */
+#formMessage {
+  margin-top: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+/* Estilo para a mensagem de sucesso */
+#formMessage.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Estilo para a mensagem de erro */
+#formMessage.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
 
