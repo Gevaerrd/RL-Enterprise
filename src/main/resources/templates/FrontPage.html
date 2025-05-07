@@ -9,29 +9,95 @@
     <link rel="stylesheet" href="/css/rlunica.css" />
     <link rel="stylesheet" href="/css/plans.css" />
     <link rel="stylesheet" href="/css/loginForm.css" />
+    <link rel="stylesheet" href="/css/registerForm.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <section class="loginForm">
+  <section id="id-for-loginForm" class="loginForm hidden">
     <div class="space-of-login-form">
-      <h2>Login</h2>
+      <div class="name-of-enterprise">
+        <h1>RL</h1>
+        <h2>Enterprise</h2>
+      </div>
       <form class="organization-off-login-form">
-        <label for="email">E-Mail</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="Digite seu e-mail"
-          required
-        />
+        <div class="input-group">
+          <div class="input-icon">
+            <i class="fa-regular fa-envelope"></i>
+            <input
+              type="email"
+              id="email-login"
+              placeholder="Digite seu e-mail"
+              required
+            />
+          </div>
+        </div>
 
-        <label for="senha">Senha</label>
-        <input
-          type="password"
-          id="senha"
-          placeholder="Digite sua senha"
-          required
-        />
+        <div class="input-group">
+          <div class="input-icon">
+            <i class="fa-solid fa-lock"></i>
+            <input
+              type="password"
+              id="password-login"
+              placeholder="Digite sua senha"
+              required
+            />
+          </div>
+        </div>
+        <button type="submit">Entrar</button>
       </form>
-      <a href="">Esqueceu sua senha?</a>
-      <p>Não tem uma conta? <a class="a-for-registercall">Registre-se</a></p>
+      <a href="" class="a-forgot-password">Esqueceu sua senha?</a>
+      <p>
+        Não tem uma conta?
+        <a id="link-to-register" class="a-for-logincall">Registre-se</a>
+      </p>
+    </div>
+  </section>
+  <section id="id-for-registerForm" class="registerForm hidden">
+    <div class="space-of-register-form">
+      <div class="name-of-enterprise">
+        <h1>RL</h1>
+        <h2>Enterprise</h2>
+        <div id="form-message" class="form-message hidden"></div> <!-- Container para a mensagem -->
+      </div>
+      <form class="organization-off-register-form" method="POST" action="/register"> <!-- Definindo o método e a URL de envio -->
+        <div class="input-group">
+          <div class="input-icon">
+            <i class="fa-regular fa-envelope"></i>
+            <input
+              type="email"
+              id="email-register"
+              name="emailRegister"
+              placeholder="Digite seu e-mail"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-icon">
+            <i class="fa-solid fa-lock"></i>
+            <input
+              type="password"
+              id="password-register"
+              name="passwordRegister"
+              placeholder="Digite sua senha"
+              required
+            />
+          </div>
+        </div>
+        <button type="submit">Registrar</button>
+      </form>
+      <a href="" class="a-forgot-password">Esqueceu sua senha?</a>
+      <p>
+        Já tem uma conta?
+        <a id="link-to-login" class="a-for-registercall">Entrar</a>
+      </p>
     </div>
   </section>
   <body>
@@ -52,10 +118,10 @@
               >Conta
               <div class="loginOrRegister hidden">
                 <div class="configurationOfLoginOrRegister">
-                  <a href="">Entrar</a>
+                  <a id="getLoginForm">Entrar</a>
                 </div>
                 <div class="configurationOfLoginOrRegister">
-                  <a href="">Registrar</a>
+                  <a id="getRegisterForm">Registrar</a>
                 </div>
               </div>
             </a>
@@ -252,5 +318,8 @@
     </section>
 
     <script src="/js/showoptions.js"></script>
+    <script src="/js/showloginform.js"></script>
+    <script src="/js/showregisterform.js"></script>
+    <script src="/js/switch.js"></script>
   </body>
 </html>

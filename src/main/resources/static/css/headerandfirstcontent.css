@@ -237,6 +237,7 @@ body {
 
 .loginOrRegister a {
   font-size: 1.45rem;
+  cursor: pointer;
 }
 
 .hidden {

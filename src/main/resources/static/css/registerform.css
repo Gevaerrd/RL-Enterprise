@@ -32,7 +32,7 @@ body {
   --collor-ffff: #ffffff;
 }
 
-.loginForm {
+.registerForm {
   display: flex;
   position: fixed;
   backdrop-filter: blur(25px);
@@ -46,28 +46,11 @@ body {
   transition: backdrop-filter 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-/* Classes para fade-in e fade-out */
-.fade-out {
-  opacity: 0;
-}
-
-.fade-in {
-  opacity: 1;
-  transform: scale(1);
-  pointer-events: auto;
-}
-
-/* Garantir que a transição seja aplicada apenas no formulário, não no fundo */
-.form-transition {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .hidden {
   display: none;
 }
 
-.space-of-login-form {
+.space-of-register-form {
   background: white;
   display: flex;
   flex-direction: column;
@@ -85,16 +68,16 @@ body {
   flex-direction: column;
 }
 
-.space-of-login-form .name-of-enterprise h1 {
+.space-of-register-form .name-of-enterprise h1 {
   font-family: "Inter", sans-serif;
   font-size: 4rem;
 }
 
-.space-of-login-form .name-of-enterprise h2 {
+.space-of-register-form .name-of-enterprise h2 {
   font-size: 1.7rem;
 }
 
-.space-of-login-form h2 {
+.space-of-register-form h2 {
   font-size: 3rem;
   color: #111;
   text-transform: uppercase;
@@ -102,10 +85,10 @@ body {
 }
 
 .space-of-login-form label {
-  display: block;
+  display: register;
 }
 
-.organization-off-login-form {
+.organization-off-register-form {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
@@ -115,14 +98,14 @@ body {
   position: relative;
 }
 
-.organization-off-login-form .input-group i {
+.organization-off-register-form .input-group i {
   position: absolute;
   top: 27%;
   left: 1rem;
   font-size: 1.5rem;
 }
 
-.organization-off-login-form .input-group input {
+.organization-off-register-form .input-group input {
   width: 20rem;
   padding: 1.3rem 3rem;
   border-radius: 0.5rem;
@@ -133,11 +116,11 @@ body {
   transition: 0.5s all ease-in-out;
 }
 
-.organization-off-login-form .input-group input:hover {
+.organization-off-register-form .input-group input:hover {
   border: 1px solid #111;
 }
 
-.organization-off-login-form button {
+.organization-off-register-form button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,11 +134,11 @@ body {
   transition: 0.5s all ease-in-out;
 }
 
-.organization-off-login-form button:hover {
+.organization-off-register-form button:hover {
   background: #423b81;
 }
 
-.space-of-login-form p,
+.space-of-register-form p,
 a {
   transition: 0.5s all ease-in-out;
   font-size: 0.9rem;
@@ -165,11 +148,18 @@ a {
   color: #423b81;
 }
 
-.a-for-logincall {
+.a-for-registercall {
   color: #423b81;
   cursor: pointer;
 }
 
-.a-for-logincall:hover {
+.a-for-registercall:hover {
   color: var(--background-header);
 }
+
+/* Garantir que o efeito de fade-out não afete o fundo */
+#id-for-registerForm {
+  transition: opacity 0.5s ease;
+}
+
+
