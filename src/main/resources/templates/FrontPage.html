@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/plans.css" />
     <link rel="stylesheet" href="/css/loginForm.css" />
     <link rel="stylesheet" href="/css/registerForm.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -25,6 +26,7 @@
         <h1>RL</h1>
         <h2>Enterprise</h2>
       </div>
+      <div id="formMessageLogin" class="form-message hidden"></div>
       <form class="organization-off-login-form">
         <div class="input-group">
           <div class="input-icon">
@@ -32,6 +34,7 @@
             <input
               type="email"
               id="email-login"
+              name="email"
               placeholder="Digite seu e-mail"
               required
             />
@@ -44,12 +47,14 @@
             <input
               type="password"
               id="password-login"
+              name="password"
               placeholder="Digite sua senha"
+              minlength="1"
               required
             />
           </div>
         </div>
-        <button type="submit">Entrar</button>
+        <button type="submit" id="button-for-get-login">Entrar</button>
       </form>
       <a href="" class="a-forgot-password">Esqueceu sua senha?</a>
       <p>
@@ -58,14 +63,15 @@
       </p>
     </div>
   </section>
+  
   <section id="id-for-registerForm" class="registerForm hidden">
     <div class="space-of-register-form">
       <div class="name-of-enterprise">
         <h1>RL</h1>
         <h2>Enterprise</h2>
-        <div id="formMessage" class="form-message hidden"></div> <!-- Corrigido o ID -->
+        <div id="formMessage" class="form-message hidden"></div>
       </div>
-      <form class="organization-off-register-form"> <!-- Definindo o método e a URL de envio -->
+      <form class="organization-off-register-form">
         <div class="input-group">
           <div class="input-icon">
             <i class="fa-regular fa-envelope"></i>
@@ -316,11 +322,40 @@
         </section>
       </div>
     </section>
+    <footer class="footer">
+      <div class="container-for-informations">
+        <section class="job-with-us">
+          <div class="logo-representative-in-footer">
+
+          </div>
+          <div class="organization-in-footer">
+            <h3>Quer trabalhar com nós?</h3>
+            <p>Somos uma equipe pequena, autofinanciada, distribuida e você pode fazer parte disso!</p>
+            <p>Se você tem certeza que pode nos ajudar a espalhar conhecimento e fazer com que outras pessoas<br>
+            se beneficiem dele, você esta no lugar certo. Mande um email falando sobre você</p>
+            <p>Aguardamos seu contato. RL Enterprise</p>
+          </div>
+        </section>
+        <section class="need-support">
+          <div class="logo-representative-in-footer">
+
+          </div>
+          <div class="organization-in-footer">
+            <h3>Contato</h3>
+            <p>Para suporte ao produto ou dúvidas, junte-se ao nosso Discord e tire suas dúvidas em nossas salas de bate-papo<br>com a hashtag #support.</p>
+            <p>Nosso e-mail</p>
+            <a>rlenterprise@hotmail.com</a>
+          </div>
+                          <!-- REFERENCIAR DA MID JOURNEY -->
+        </section>
+      </div>
+    </footer>
 
     <script src="/js/showoptions.js"></script>
     <script src="/js/showloginform.js"></script>
     <script src="/js/showregisterform.js"></script>
     <script src="/js/switch.js"></script>
-    <script src="/js/register/jsforregister.js" defer></script>
+    <script src="/js/registerandlogin/jsforregister.js" defer></script>
+    <script src="/js/registerandlogin/jsforlogin.js" defer></script>
   </body>
 </html>

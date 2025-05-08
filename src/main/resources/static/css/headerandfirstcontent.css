@@ -49,8 +49,9 @@ body {
 .first-content-and-header {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(145deg, #ffffff 90%, #0e0b2b 5%);
+  background: linear-gradient(145deg, #ffffff 97%, #0e0b2b 5%);
   height: auto;
+  padding-bottom: 4rem;
 }
 
 .side-of-logo-and-site-name {

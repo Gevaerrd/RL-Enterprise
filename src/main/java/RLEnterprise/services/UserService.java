@@ -46,6 +46,29 @@ public class UserService {
         }
     }
 
+    public boolean validLogin(UserDTO userDTO) {
+
+        String email = userDTO.getEmail();
+        String password = userDTO.getPassword();
+
+        if (emailExists(email)) {
+            User userForCheck = userRepository.findByEmail(email);
+            if (userForCheck.getPassword().equals(password)) {
+                return true;
+            }
+
+            return false;
+        }
+
+        return false;
+
+    }
+
+    public User findByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        return user;
+    }
+
     public void saveUser(UserDTO dto) {
         User user = new User();
         user.setEmail(dto.getEmail());
