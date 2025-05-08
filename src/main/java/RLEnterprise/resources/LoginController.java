@@ -24,18 +24,24 @@ public class LoginController {
 
     @PostMapping("")
     public ResponseEntity<?> loginUser(@RequestBody UserDTO userDTO, HttpServletRequest request) {
-        // Valida o login (exemplo simples de validação)
-        if (us.validLogin(userDTO)) {
-            // Cria a sessão e armazena os dados do usuário
-            HttpSession session = request.getSession();
-            session.setAttribute("user", userDTO); // Salva o objeto UserDTO na sessão
 
-            // Retorna o redirecionamento com a URL do dashboard do usuário
-            String redirectUrl = "/user-dashboard"; // Página do usuário
-            return ResponseEntity.ok().body(Collections.singletonMap("redirect", redirectUrl));
+        HttpSession existingSession = request.getSession(false);
+        if (existingSession != null && existingSession.getAttribute("user") != null) {
+            // Usuário já está logado
+            return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/user-dashboard"));
+            // Retorna pra pagina de usuario
         }
 
-        // Caso o login falhe
+        // Valida o login
+        if (us.validLogin(userDTO)) {
+            HttpSession session = request.getSession(); // Cria nova sessão
+            session.setAttribute("user", userDTO); // Seta o userDTO pra sessão
+
+            // Retorna pra pagina de usuário
+            return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/user-dashboard"));
+        }
+
+        // Login inválido
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(Collections.singletonMap("Error", "Email ou senha incorretos"));
     }

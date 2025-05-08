@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="dashboard-container">
-        <p>Bem-vindo, <span th:text="${userEmail}">email@email.com</span>!</p>
+        <p>Bem-vindo, <span th:text="${user.email}">email@email.com</span>!</p>
+        <p>Essa é sua senha, <span th:text="${user.password}"></span></p>
         <p>Esta é a sua página de perfil.</p>
         <button onclick="window.location.href='/logout'">Sair</button>
     </div>

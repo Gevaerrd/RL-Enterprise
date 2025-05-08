@@ -27,9 +27,11 @@ formToSendUser.addEventListener('submit', async function (e) {
 
             // Redireciona após pequeno delay (pode remover o setTimeout se quiser redirecionar instantaneamente)
             setTimeout(() => {
-                window.location.href = result.redirect;
+                window.location.href = result.redirect; // Se não tiver nada do backend ele mantem a mesma página
             }, 1000); // Espera 1s para mostrar a mensagem antes de redirecionar
-        } else {
+        } 
+        
+        else {
             msg.innerText = result.Error || "Erro ao registrar.";
             msg.classList.add("error");
         }

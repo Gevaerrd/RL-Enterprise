@@ -24,8 +24,8 @@ public class PerfilController {
         }
 
         UserDTO userDTO = (UserDTO) session.getAttribute("user");
-        model.addAttribute("userEmail", userDTO.getEmail());
-        return "user-dashboard"; // nome correto da view do dashboard
+        model.addAttribute("user", userDTO);
+        return "user-dashboard";
     }
 
     @RequestMapping("/logout")

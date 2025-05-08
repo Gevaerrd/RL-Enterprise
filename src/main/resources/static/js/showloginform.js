@@ -1,9 +1,11 @@
 const loginForm = document.querySelector("#id-for-loginForm");
 const spaceOfLoginForm = document.querySelector(".space-of-login-form");
-const buttonToShowLF = document.querySelector("#getLoginForm");
+const buttonToShowLF = document.querySelector("#accountHover");
+const buttonToShowRF = document.querySelector("#getRegisterForm");
 
 // Quando clicar no botão para mostrar o formulário
 buttonToShowLF.addEventListener('click', (e) => {
+    e.preventDefault();
     e.stopPropagation(); // Impede a propagação do clique para o document
 
     // Verifica se o formulário está oculto antes de exibir com fade-in

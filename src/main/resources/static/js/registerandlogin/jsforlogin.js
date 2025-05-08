@@ -31,12 +31,16 @@ formForLogin.addEventListener("submit", async function (e) {
 
             // Redireciona para a página de dashboard do usuário
             window.location.href = result.redirect;  // Usando a URL de redirecionamento retornada pelo backend
-        } else {  // Caso contrário, exibe mensagem de erro
+        } 
+        
+        else {  // Caso contrário, exibe mensagem de erro
             msgForResult.classList.remove('hidden');
             msgForResult.innerText = result.Error;
             msgForResult.classList.add("error");
         }
-    } catch (error) {
+    } 
+    
+    catch (error) {
         const msgForResult = document.querySelector("#formMessageLogin");
         msgForResult.classList.remove('hidden');
         msgForResult.innerText = "Erro ao conectar ao servidor!";  // Exibe erro genérico

@@ -1,1 +1,240 @@
 
+body {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer {
+    width: 100%;
+    background: linear-gradient(to top, #0e0b2b, #0f1a42);
+    height: auto;
+    padding-top: 17rem;
+    padding-bottom: 17rem;
+}
+
+.container-for-informations {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: flex-start;
+}
+
+.job-with-us, .need-support {
+    display: flex;
+}
+
+.organization-in-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem ;
+    color: #fff;
+    padding-top: 0.5rem;
+}
+
+.organization-in-footer h3 {
+    letter-spacing: 0.2rem;
+    font-size: 2.7rem;
+}
+
+.organization-in-footer p {
+    font-size: 1.3rem;
+    letter-spacing: 0.15rem;
+}
+
+.logo-representative-in-footer svg{
+  margin-right: 1rem;
+  width: 3rem;
+  height: 4rem;
+}
+
+@media (max-width: 480px) {
+
+    .footer {
+    padding-top: 5rem;
+    padding-bottom: 8rem;
+}
+    .container-for-informations {
+    width: 90%;
+    gap: 2rem;
+}
+    .organization-in-footer h3 {
+    letter-spacing: 0.2rem;
+    font-size: 1.8rem;
+}
+
+    .organization-in-footer p {
+        font-size: 1rem;
+        letter-spacing: 0.15rem;
+}
+
+
+}
+
+@media (min-width: 481px) and (max-width: 599px) {
+
+    .footer {
+    padding-top: 5rem;
+    padding-bottom: 8rem;
+}
+    .container-for-informations {
+    width: 80%;
+    gap: 2rem;
+}
+    .organization-in-footer h3 {
+    letter-spacing: 0.2rem;
+    font-size: 1.8rem;
+}
+
+    .organization-in-footer p {
+        font-size: 1rem;
+        letter-spacing: 0.15rem;
+}
+
+
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+
+    .footer {
+    padding-top: 5rem;
+    padding-bottom: 8rem;
+}
+    .container-for-informations {
+    width: 85%;
+    gap: 2rem;
+}
+    .organization-in-footer h3 {
+    letter-spacing: 0.2rem;
+    font-size: 2.3rem;
+}
+
+    .organization-in-footer p {
+        font-size: 1.1rem;
+        letter-spacing: 0.15rem;
+}
+
+
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .footer {
+    padding-top: 5rem;
+    padding-bottom: 8rem;
+}
+    .container-for-informations {
+    width: 85%;
+    gap: 2rem;
+}
+    .organization-in-footer h3 {
+    letter-spacing: 0.2rem;
+    font-size: 2.5rem;
+}
+
+    .organization-in-footer p {
+        font-size: 1.1rem;
+        letter-spacing: 0.15rem;
+}
+
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+
+    .footer {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+    .container-for-informations {
+    width: 85%;
+    gap: 3rem;
+}
+    .organization-in-footer h3 {
+    letter-spacing: 0.2rem;
+    font-size: 2.5rem;
+}
+
+    .organization-in-footer p {
+        font-size: 1.1rem;
+        letter-spacing: 0.15rem;
+}
+
+}
+
+@media (min-width: 1201px) and (max-width: 1440px) {
+
+    .footer {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
+    .container-for-informations {
+    width: 70%;
+    gap: 5rem;
+}
+    .organization-in-footer h3 {
+    letter-spacing: 0.2rem;
+    font-size: 2.5rem;
+}
+
+    .organization-in-footer p {
+        font-size: 1.1rem;
+        letter-spacing: 0.15rem;
+}
+    
+
+}
+
+@media (min-width: 1441px) and (max-width: 1600px) {
+
+    .footer {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
+    .container-for-informations {
+    width: 60%;
+    gap: 5rem;
+}
+    .organization-in-footer h3 {
+    letter-spacing: 0.2rem;
+    font-size: 2.5rem;
+}
+
+    .organization-in-footer p {
+        font-size: 1.1rem;
+        letter-spacing: 0.15rem;
+}
+
+}
+
+@media(min-width: 1600px) and (max-width:1750px) {
+
+    .footer {
+    padding-top: 9rem;
+    padding-bottom: 10rem;
+}
+    .container-for-informations {
+    width: 60%;
+    gap: 5rem;
+}
+    .organization-in-footer h3 {
+    letter-spacing: 0.2rem;
+    font-size: 2.5rem;
+}
+
+    .organization-in-footer p {
+        font-size: 1.1rem;
+        letter-spacing: 0.15rem;
+}
+
+
+}

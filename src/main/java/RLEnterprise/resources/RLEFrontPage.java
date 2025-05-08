@@ -7,7 +7,11 @@ package RLEnterprise.resources;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -18,7 +22,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RLEFrontPage {
 
     @GetMapping()
-    public String home() {
-        return "FrontPage";
+    public String home(HttpServletRequest request) {
+
+        // Redirecionar pra outra página igual porém sem chance de entrar dnv
+
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("user") != null) {
+            return "FrontPageWithLogin";
+        }
+
+        return "FrontPageWithoutLogin";
     }
 }
