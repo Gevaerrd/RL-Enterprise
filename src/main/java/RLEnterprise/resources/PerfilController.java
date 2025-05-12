@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class PerfilController {
 
-    @RequestMapping("/user-dashboard")
+    @RequestMapping("/profile")
     public String userDashboard(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("user") == null) {
@@ -25,7 +25,7 @@ public class PerfilController {
 
         UserDTO userDTO = (UserDTO) session.getAttribute("user");
         model.addAttribute("user", userDTO);
-        return "user-dashboard";
+        return "profile";
     }
 
     @RequestMapping("/logout")

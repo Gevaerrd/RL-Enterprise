@@ -6,10 +6,11 @@
 package RLEnterprise.resources;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import RLEnterprise.dto.UserDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -22,12 +23,16 @@ import jakarta.servlet.http.HttpSession;
 public class RLEFrontPage {
 
     @GetMapping()
-    public String home(HttpServletRequest request) {
+    public String home(HttpServletRequest request, Model model) {
 
         // Redirecionar pra outra página igual porém sem chance de entrar dnv
 
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("user") != null) {
+
+            UserDTO user = (UserDTO) session.getAttribute("user"); // Pegando o DTO que esta logado
+
+            model.addAttribute("user", user); // Passa para a view
             return "FrontPageWithLogin";
         }
 

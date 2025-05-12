@@ -28,7 +28,7 @@ public class LoginController {
         HttpSession existingSession = request.getSession(false);
         if (existingSession != null && existingSession.getAttribute("user") != null) {
             // Usuário já está logado
-            return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/user-dashboard"));
+            return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/user-profile"));
             // Retorna pra pagina de usuario
         }
 
@@ -38,7 +38,7 @@ public class LoginController {
             session.setAttribute("user", userDTO); // Seta o userDTO pra sessão
 
             // Retorna pra pagina de usuário
-            return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/user-dashboard"));
+            return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/profile"));
         }
 
         // Login inválido

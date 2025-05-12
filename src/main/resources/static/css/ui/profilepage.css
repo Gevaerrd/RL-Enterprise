@@ -1,0 +1,317 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 62.5%;
+  background: linear-gradient(to top, #0a081e 100%, #2a2d3a 0%); /* Gradiente suave */
+  max-height: 100vh;
+  animation: fadeIn 0.8s ease-out;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+  behavior: inherit;
+  color: var(--text-light);
+}
+
+:root {
+  --text-light: #ffffff; /* texto principal claro */
+  --text-muted: #cccccc; /* texto secundário/descritivo */
+  --text-highlight: #e5d9ff; /* pequenos detalhes ou elementos suaves */
+  --button-color: #9e4dff;
+  --button-text-color: #ffffff;
+
+  --background-first-session: linear-gradient(145deg, #ffffff 90%, #0e0b2b 5%);
+  --background-second-session: linear-gradient(to bottom, #0e0b2b, #0f1a42);
+
+  --background-header: #0e0b2b;
+  --color-letteres: #0f1a42;
+
+  --collor-ffff: #ffffff;
+
+  /* Cores principais */
+  --color-bg-dark: #0f111a;
+  --color-bg-sidebar: #0b0d15;
+  --color-bg-card: #10121c;
+
+  /* Bordas */
+  --color-border: #2a2d3a;
+  --color-border-light: #1c1e26;
+
+  /* Texto */
+  --color-text: #f0f0f0;
+  --color-text-muted: #999999;
+
+  /* Destaques */
+  --color-primary: #f1b433;
+  --color-primary-hover: #e5a623;
+
+  /* Botão */
+  --color-button-bg: var(--color-primary);
+  --color-button-text: #000000;
+}
+
+.profile-header {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.space-for-enterprise-name-in-profile {
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 2rem 5rem;
+  width: 25rem;
+}
+
+.space-for-enterprise-name-in-profile h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.2rem;
+}
+
+.container-for-module-and-profile-settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.container-for-module-and-profile-settings h3 {
+  font-size: 1.5rem;
+}
+
+.highlight-rl {
+  font-size: 4rem;
+}
+
+.highlight-enterprise {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+}
+
+.profile-settings {
+  display: flex;
+  gap: 2rem ;
+  padding: 1.3rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: #04030e;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-settings a {
+  font-size: 1.3rem;
+}
+
+.name-and-random-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.name-and-random-picture img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.profile-settings .name-and-random-picture span {
+  font-size: 1.3rem;
+}
+
+.modals-and-noplan-message {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+}
+
+.modals-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  padding: 4rem 5rem;
+  width: 23.35rem;
+  height: 100%;
+  border-right: 1px solid var(--color-border);
+}
+
+.modal-or-plan-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+  transition: 0.6s all ease;
+  gap: 0.3rem ;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-or-plan-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.4s ease, left 0.4s ease;
+}
+
+.modal-or-plan-container:hover {
+  transform: translateY(-5px); /* Levanta o item um pouco */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
+}
+
+.modal-or-plan-container:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.modal-or-plan-container h4 {
+  font-size: 1.6rem;
+  color: var(--color-text);
+  transition: 0.4s all ease;
+}
+
+.modal-or-plan-container:hover h4 {
+  color: var(--color-primary);
+}
+
+.modal-or-plan-container p {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+}
+
+.modal-or-plan-container:hover p {
+  color: var(--color-text); /* Altera a cor do texto secundário no hover */
+}
+
+.noplan-message {
+  display: flex;
+  padding: 2rem 5rem;
+  flex: 1;
+}
+
+.container-for-noplan-message {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #151729, #1e2038);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInUp 0.8s ease-out;
+  padding: 4rem;
+}
+
+.noplan-content {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  animation: fadeIn 1s ease-out;
+}
+
+.noplan-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+.cadeado {
+  width: 120px;
+  height: 120px;
+  fill: var(--color-primary);
+  transition: transform 0.3s, fill 0.3s;
+}
+
+.cadeado:hover {
+  transform: scale(1.1) rotate(5deg);
+  fill: var(--color-primary-hover);
+}
+
+.noplan-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 500px;
+  text-align: left;
+}
+
+.noplan-text p:first-of-type {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: var(--text-light);
+}
+
+.noplan-text p:last-of-type {
+  font-size: 2rem;
+  color: var(--text-highlight);
+}
+
+.noplan-text a {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+  font-size: 1.6rem;
+  border-radius: 8px;
+  text-align: center;
+  width: fit-content;
+  transition: background 0.3s ease, transform 0.3s;
+}
+
+.noplan-text a:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+}
+
+#footer {
+  background: #0a081e;
+}
+
+/* Animações */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+

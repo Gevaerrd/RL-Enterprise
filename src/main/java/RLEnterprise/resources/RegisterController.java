@@ -49,7 +49,7 @@ public class RegisterController {
 
         // Retorna a URL de redirecionamento e mensagem de sucesso
         Map<String, String> response = new HashMap<>();
-        response.put("redirect", "/user-dashboard");
+        response.put("redirect", "/profile");
         response.put("message", "Cadastro realizado com sucesso!");
 
         return ResponseEntity.ok(response);
