@@ -36,6 +36,7 @@ public class LoginController {
         if (us.validLogin(userDTO)) {
             HttpSession session = request.getSession(); // Cria nova sessão
             session.setAttribute("user", userDTO); // Seta o userDTO pra sessão
+            session.setMaxInactiveInterval(1800); // 30 minutos de inatividade
 
             // Retorna pra pagina de usuário
             return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/profile"));
