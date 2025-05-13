@@ -25,7 +25,7 @@ public class PerfilController {
 
         UserDTO userDTO = (UserDTO) session.getAttribute("user");
         model.addAttribute("user", userDTO);
-        return "profile";
+        return "UserUIWP";
     }
 
     @RequestMapping("/logout")

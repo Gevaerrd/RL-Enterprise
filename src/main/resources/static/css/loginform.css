@@ -4,6 +4,7 @@ html {
 
 body {
   font-size: 62.5%;
+  animation: fadeInUp 0.8s ease-out;
 }
 
 * {
@@ -200,4 +201,6 @@ a {
   color: #721c24;
   border: 1px solid #f5c6cb;
 }
+
+
 

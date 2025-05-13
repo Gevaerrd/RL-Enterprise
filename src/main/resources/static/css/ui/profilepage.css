@@ -187,6 +187,14 @@ body {
   transition: 0.4s all ease;
 }
 
+.modal-or-plan-container:first-of-type h4 {
+  color: var(--color-primary);
+}
+
+.modal-or-plan-container:first-of-type::after {
+  display: none;
+}
+
 .modal-or-plan-container:hover h4 {
   color: var(--color-primary);
 }
@@ -198,6 +206,24 @@ body {
 
 .modal-or-plan-container:hover p {
   color: var(--color-text); /* Altera a cor do texto secundário no hover */
+}
+
+.modal-or-plan-container.locked {
+  pointer-events: none; /* Impede clique */
+  filter: grayscale(100%) brightness(0.6); /* Visual de bloqueado */
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.modal-or-plan-container.locked::after {
+  display: none; /* Remove a linha animada */
+}
+
+.modal-or-plan-container.locked h4,
+.modal-or-plan-container.locked p {
+  color: var(--text-muted); /* Ou um tom mais apagado */
+  opacity: 0.6;
 }
 
 .noplan-message {
@@ -225,6 +251,19 @@ body {
   align-items: center;
   gap: 5rem;
   animation: fadeIn 1s ease-out;
+}
+
+.videoFadeIn {
+  animation: fadeIn 1s ease-out; /* Aplique a animação ao vídeo */
+}
+
+.videoElement {
+  width: 100%;
+  height: auto;           /* mantém proporção original */
+  display: block;         /* evita espaços embaixo */
+  margin: 0 auto;         /* centraliza horizontalmente */
+  border-radius: 12px;    /* cantos arredondados */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15); /* sombra leve */
 }
 
 .noplan-icon {
@@ -360,26 +399,21 @@ body {
 
 /* 1280px - Notebooks comuns */
 @media (min-width: 1024px) and (max-width: 1280px) {
-  .profile-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
 
   .container-for-module-and-profile-settings h3 {
     display: none;
   }
 
-  .modal-or-plan-container:hover::after {
-  width: 0%;
-  left: 0;
-  }
 
-  .space-for-enterprise-name-in-profile,
   .container-for-module-and-profile-settings {
     width: 100%;
     padding: 2rem;
     border-right: none;
+  }
+
+  .space-for-enterprise-name-in-profile {
+    width: 70%;
+    padding: 1rem 1rem;
   }
 
   .container-for-module-and-profile-settings {
@@ -388,27 +422,20 @@ body {
   }
 
   .profile-settings {
-    justify-content: center;
-    width: 100%;
+    width: 80%;
   }
 
   .modals-and-noplan-message {
-    flex-direction: column;
     align-items: center;
     padding: 2rem;
+    gap: 2rem;
   }
 
   .modals-aside {
-    width: 100%;
+    width: 15rem;
     padding: 2rem 0;
-    border-right: none;
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    flex-direction: column;
   }
 
   .modal-or-plan-container {
@@ -419,12 +446,10 @@ body {
 
   .noplan-message {
     padding: 0;
-    width: 100%;
   }
 
   .container-for-noplan-message {
     flex-direction: column;
-    padding: 2rem;
     text-align: center;
   }
 
@@ -432,11 +457,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-  }
-
-  .noplan-message {
-    margin-top: 3rem;
-    width: 80%;
   }
 
   .noplan-text {
