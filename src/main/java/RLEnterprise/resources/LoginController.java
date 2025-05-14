@@ -35,12 +35,13 @@ public class LoginController {
 
         // Valida o login
         if (us.validLogin(userDTO)) {
-            HttpSession session = request.getSession(); // Cria nova sessão
-            session.setAttribute("user", userDTO); // Seta o userDTO pra sessão
-            model.addAttribute("user", userDTO);
-            session.setMaxInactiveInterval(1800); // 30 minutos de inatividade
+            HttpSession session = request.getSession(); // Cria uma sessão
+            UserDTO userFromDb = us.findUserDTOByEmail(userDTO.getEmail()); // Pega um DTO do Service
+            session.setAttribute("user", userFromDb); // Coloca a sessão pro usuario
+            model.addAttribute("user", userFromDb); // Passa o usuario pro front end
+            session.setMaxInactiveInterval(1800); // Tempo máximo de inatividade
 
-            // Retorna pra pagina de usuário
+            // Retorna pro JS o redirect com o usuario já setado pra sessão
             return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/profile"));
         }
 

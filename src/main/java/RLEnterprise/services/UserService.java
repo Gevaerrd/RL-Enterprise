@@ -30,6 +30,14 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
+    public UserDTO findUserDTOByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null)
+            return null;
+        // Não inclua a senha no DTO por segurança
+        return new UserDTO(user.getName(), user.getEmail());
+    }
+
     public boolean emailExists(String email) {
         if (userRepository.existsByEmail(email)) {
             return true;

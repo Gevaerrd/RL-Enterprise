@@ -16,11 +16,20 @@ public class UserDTO {
     private String email;
     private String password;
 
-    public UserDTO(Long id, String name, String email, String password) {
+    public UserDTO() {
+
+    }
+
+    public UserDTO(String name, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
+    }
+
+    public UserDTO(String name, String email) {
+        this.name = name;
+        this.email = email;
     }
 
     public Long getId() {
