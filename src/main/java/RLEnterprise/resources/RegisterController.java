@@ -47,6 +47,7 @@ public class RegisterController {
 
         // Cria a sessão e armazena os dados do usuário
         HttpSession session = request.getSession();
+        userDTO.updateFirstName();
         session.setAttribute("user", userDTO);
 
         // Retorna a URL de redirecionamento e mensagem de sucesso

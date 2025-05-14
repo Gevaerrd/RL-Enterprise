@@ -37,6 +37,7 @@ public class LoginController {
         if (us.validLogin(userDTO)) {
             HttpSession session = request.getSession(); // Cria uma sessão
             UserDTO userFromDb = us.findUserDTOByEmail(userDTO.getEmail()); // Pega um DTO do Service
+            userFromDb.updateFirstName();
             session.setAttribute("user", userFromDb); // Coloca a sessão pro usuario
             model.addAttribute("user", userFromDb); // Passa o usuario pro front end
             session.setMaxInactiveInterval(1800); // Tempo máximo de inatividade

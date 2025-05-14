@@ -64,6 +64,21 @@ public class UserDTO {
         this.password = password;
     }
 
+    public void updateFirstName() {
+        if (name != null && !name.isBlank()) {
+            this.name = name.trim().split(" ")[0];
+        } else {
+            this.name = "";
+        }
+    }
+
+    public String getFirstName() {
+        if (name == null || name.isBlank()) {
+            updateFirstName();
+        }
+        return name;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
