@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import RLEnterprise.dto.UserDTO;
+import RLEnterprise.dto.UserLoginDTO;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -24,7 +24,7 @@ public class LoginController {
     private UserService us;
 
     @PostMapping("")
-    public ResponseEntity<?> loginUser(@RequestBody UserDTO userDTO, HttpServletRequest request, Model model) {
+    public ResponseEntity<?> loginUser(@RequestBody UserLoginDTO userDTO, HttpServletRequest request, Model model) {
 
         HttpSession existingSession = request.getSession(false);
         if (existingSession != null && existingSession.getAttribute("user") != null) {
@@ -36,7 +36,7 @@ public class LoginController {
         // Valida o login
         if (us.validLogin(userDTO)) {
             HttpSession session = request.getSession(); // Cria uma sessão
-            UserDTO userFromDb = us.findUserDTOByEmail(userDTO.getEmail()); // Pega um DTO do Service
+            UserLoginDTO userFromDb = us.findUserDTOByEmail(userDTO.getEmail()); // Pega um DTO do Service
             userFromDb.updateFirstName();
             session.setAttribute("user", userFromDb); // Coloca a sessão pro usuario
             model.addAttribute("user", userFromDb); // Passa o usuario pro front end

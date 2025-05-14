@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import RLEnterprise.dto.UserDTO;
+import RLEnterprise.dto.UserLoginDTO;
+import RLEnterprise.dto.UserRegisterDTO;
 import RLEnterprise.entities.User;
 import RLEnterprise.repositories.UserRepository;
 
@@ -30,12 +31,12 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public UserDTO findUserDTOByEmail(String email) {
+    public UserLoginDTO findUserDTOByEmail(String email) {
         User user = userRepository.findByEmail(email);
         if (user == null)
             return null;
         // Não inclua a senha no DTO por segurança
-        return new UserDTO(user.getName(), user.getEmail());
+        return new UserLoginDTO(user.getName(), user.getEmail());
     }
 
     public boolean emailExists(String email) {
@@ -58,7 +59,7 @@ public class UserService {
         }
     }
 
-    public boolean validLogin(UserDTO userDTO) {
+    public boolean validLogin(UserLoginDTO userDTO) {
         String email = userDTO.getEmail();
         String password = userDTO.getPassword();
 
@@ -77,7 +78,7 @@ public class UserService {
         return user;
     }
 
-    public void saveUser(UserDTO dto) {
+    public void saveUser(UserRegisterDTO dto) {
         User user = new User();
         user.setEmail(dto.getEmail());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));

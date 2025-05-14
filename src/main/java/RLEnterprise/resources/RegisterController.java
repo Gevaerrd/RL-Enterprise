@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import RLEnterprise.dto.UserDTO;
+import RLEnterprise.dto.UserLoginDTO;
+import RLEnterprise.dto.UserRegisterDTO;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -34,9 +35,7 @@ public class RegisterController {
     private UserService us;
 
     @PostMapping("")
-    public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO, HttpServletRequest request) {
-
-        System.out.println(userDTO.toString());
+    public ResponseEntity<?> registerUser(@RequestBody UserRegisterDTO userDTO, HttpServletRequest request) {
 
         if (us.emailExists(userDTO.getEmail())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -44,11 +43,13 @@ public class RegisterController {
         }
 
         us.saveUser(userDTO);
+        UserLoginDTO userSessionDTO = (UserLoginDTO) us.findUserDTOByEmail(userDTO.getEmail());
+        userSessionDTO.updateFirstName();
 
         // Cria a sessão e armazena os dados do usuário
         HttpSession session = request.getSession();
         userDTO.updateFirstName();
-        session.setAttribute("user", userDTO);
+        session.setAttribute("user", userSessionDTO);
 
         // Retorna a URL de redirecionamento e mensagem de sucesso
         Map<String, String> response = new HashMap<>();

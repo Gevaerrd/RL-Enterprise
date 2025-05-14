@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import RLEnterprise.dto.UserDTO;
+import RLEnterprise.dto.UserLoginDTO;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpSession;
 
@@ -42,7 +42,7 @@ public class APIVideo {
         // USUARIO, COMEÇAR A TRABALHAR OS PLANOS!!
 
         int planoSimulado = 3; // Aqui é pra pegar o plano do usuario, tem que fazer ainda
-        UserDTO user = (UserDTO) session.getAttribute("user"); // Faz um USERDTO com o usuario da sessao
+        UserLoginDTO user = (UserLoginDTO) session.getAttribute("user"); // Faz um USERDTO com o usuario da sessao
 
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // Usuário não logado
@@ -55,7 +55,7 @@ public class APIVideo {
     public ResponseEntity<?> getVideo(@PathVariable int id, HttpSession session) {
 
         int planoSimulado = 3; // Plano pra ser pego do usuario
-        UserDTO user = (UserDTO) session.getAttribute("user"); // DTO transformado
+        UserLoginDTO user = (UserLoginDTO) session.getAttribute("user"); // DTO transformado
 
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // Retorna 401
