@@ -28,7 +28,7 @@ public class PerfilController {
         return "UserUIWP";
     }
 
-    @RequestMapping("/logout")
+    @RequestMapping("/userlogout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {

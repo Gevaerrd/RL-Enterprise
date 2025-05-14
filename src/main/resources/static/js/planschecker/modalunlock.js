@@ -1,7 +1,7 @@
 async function iniciar() {
     try {
         const res = await fetch("/api/plano"); // Conecta ao rest api plano
-        const data = await res.json(); // Espera a resposta
+        const data = await res.json(); // Pega a resposta que vem um objeto: {"plano": 3};
         const plano = data.plano // Pega o plano do usuario
         console.log(plano);
 
@@ -49,8 +49,8 @@ async function carregarVideo(id) {
       throw new Error('Erro ao carregar o vídeo');
     }
 
-    const videoBlob = await response.blob();
-    const videoUrl = URL.createObjectURL(videoBlob);
+    const videoBlob = await response.blob(); // .blob sinaliza que espera um dado bruto (imagem, audio, etc..)
+    const videoUrl = URL.createObjectURL(videoBlob); // Cria uma url temporario para o arquivo
 
     const containerForVideo = document.querySelector(".noplan-message");
     containerForVideo.innerHTML = "";

@@ -37,6 +37,10 @@ public class APIVideo {
 
     @GetMapping("/plano") // Entra no plano api
     public ResponseEntity<Map<String, Integer>> getPlano(HttpSession session) {
+
+        // FAZER OS PLANOS DO USUARIO E TRANSFORMAR O PLANO SIMULADO EM PLANO REAL DO
+        // USUARIO, COMEÇAR A TRABALHAR OS PLANOS!!
+
         int planoSimulado = 3; // Aqui é pra pegar o plano do usuario, tem que fazer ainda
         UserDTO user = (UserDTO) session.getAttribute("user"); // Faz um USERDTO com o usuario da sessao
 

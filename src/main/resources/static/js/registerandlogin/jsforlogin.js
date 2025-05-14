@@ -41,6 +41,7 @@ formForLogin.addEventListener("submit", async function (e) {
     } 
     
     catch (error) {
+        console.log(error);
         const msgForResult = document.querySelector("#formMessageLogin");
         msgForResult.classList.remove('hidden');
         msgForResult.innerText = "Erro ao conectar ao servidor!";  // Exibe erro genérico

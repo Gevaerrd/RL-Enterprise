@@ -6,6 +6,7 @@
 package RLEnterprise.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import RLEnterprise.dto.UserDTO;
@@ -21,6 +22,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public User findById(Long id) {
         return userRepository.findById(id).orElse(null);
@@ -47,21 +51,17 @@ public class UserService {
     }
 
     public boolean validLogin(UserDTO userDTO) {
-
         String email = userDTO.getEmail();
         String password = userDTO.getPassword();
 
         if (emailExists(email)) {
             User userForCheck = userRepository.findByEmail(email);
-            if (userForCheck.getPassword().equals(password)) {
+            if (passwordEncoder.matches(password, userForCheck.getPassword())) {
                 return true;
             }
-
             return false;
         }
-
         return false;
-
     }
 
     public User findByEmail(String email) {
@@ -72,7 +72,8 @@ public class UserService {
     public void saveUser(UserDTO dto) {
         User user = new User();
         user.setEmail(dto.getEmail());
-        user.setPassword(dto.getPassword());
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        user.setName((dto.getName()));
         userRepository.save(user);
     }
 }

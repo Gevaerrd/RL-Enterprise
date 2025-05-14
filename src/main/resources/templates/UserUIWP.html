@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,9 +20,9 @@
       <div class="profile-settings">
         <div class="name-and-random-picture">
           <img src="images/nopicture.png" alt="Profile image" />
-          <span>Username</span>
+          <span th:text="${user.name}"></span>
         </div>
-        <a href="/logout">Sair</a>
+        <a href="/userlogout">Sair</a>
       </div>
     </div>
   </header>

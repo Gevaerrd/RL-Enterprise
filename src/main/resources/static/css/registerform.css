@@ -50,6 +50,14 @@ body {
   display: none;
 }
 
+/* Estilo para a mensagem de erro */
+.form-message {
+    color: #721c24;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
 .space-of-register-form {
   background: white;
   display: flex;
@@ -176,15 +184,10 @@ a {
 
 /* Estilo para a mensagem de sucesso */
 #formMessage.success {
-  background-color: #d4edda;
   color: #155724;
-  border: 1px solid #c3e6cb;
 }
 
 /* Estilo para a mensagem de erro */
 #formMessage.error {
-  background-color: #f8d7da;
   color: #721c24;
-  border: 1px solid #f5c6cb;
 }
-

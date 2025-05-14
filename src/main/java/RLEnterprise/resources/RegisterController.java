@@ -36,6 +36,8 @@ public class RegisterController {
     @PostMapping("")
     public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO, HttpServletRequest request) {
 
+        System.out.println(userDTO.toString());
+
         if (us.emailExists(userDTO.getEmail())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Collections.singletonMap("Error", "Email já cadastrado"));

@@ -5,6 +5,7 @@ import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +24,12 @@ public class LoginController {
     private UserService us;
 
     @PostMapping("")
-    public ResponseEntity<?> loginUser(@RequestBody UserDTO userDTO, HttpServletRequest request) {
+    public ResponseEntity<?> loginUser(@RequestBody UserDTO userDTO, HttpServletRequest request, Model model) {
 
         HttpSession existingSession = request.getSession(false);
         if (existingSession != null && existingSession.getAttribute("user") != null) {
             // Usuário já está logado
-            return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/user-profile"));
+            return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/profile"));
             // Retorna pra pagina de usuario
         }
 
@@ -36,6 +37,7 @@ public class LoginController {
         if (us.validLogin(userDTO)) {
             HttpSession session = request.getSession(); // Cria nova sessão
             session.setAttribute("user", userDTO); // Seta o userDTO pra sessão
+            model.addAttribute("user", userDTO);
             session.setMaxInactiveInterval(1800); // 30 minutos de inatividade
 
             // Retorna pra pagina de usuário

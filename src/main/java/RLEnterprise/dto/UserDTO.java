@@ -12,17 +12,27 @@ package RLEnterprise.dto;
 public class UserDTO {
 
     private Long id;
+    private String name;
     private String email;
     private String password;
 
-    public UserDTO(Long id, String email, String password) {
+    public UserDTO(Long id, String name, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
+        this.name = name;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setId(Long id) {
@@ -68,6 +78,11 @@ public class UserDTO {
         } else if (!id.equals(other.id))
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
     }
 
 }
