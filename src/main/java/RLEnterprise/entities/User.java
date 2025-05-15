@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +18,10 @@ public class User {
     private String name;
     private String email;
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "plan_id")
+    private Plan plan;
 
     public User() {
 
@@ -52,6 +58,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Plan getPlan() {
+        return plan;
+    }
+
+    public void setPlan(Plan plan) {
+        this.plan = plan;
     }
 
     @Override

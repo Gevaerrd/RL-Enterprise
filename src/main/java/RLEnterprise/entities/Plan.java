@@ -5,10 +5,13 @@
 
 package RLEnterprise.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -25,6 +28,9 @@ public class Plan {
     private String name;
     private int modulesToFree;
     private double price;
+
+    @OneToMany(mappedBy = "plan")
+    private List<User> user;
 
     public Plan() {
 
@@ -62,6 +68,14 @@ public class Plan {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public List<User> getUser() {
+        return user;
+    }
+
+    public void setUser(List<User> user) {
+        this.user = user;
     }
 
     @Override

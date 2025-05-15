@@ -38,30 +38,27 @@ public class APIVideo {
     @GetMapping("/plano") // Entra no plano api
     public ResponseEntity<Map<String, Integer>> getPlano(HttpSession session) {
 
-        // FAZER OS PLANOS DO USUARIO E TRANSFORMAR O PLANO SIMULADO EM PLANO REAL DO
-        // USUARIO, COMEÇAR A TRABALHAR OS PLANOS!!
-
-        int planoSimulado = 3; // Aqui é pra pegar o plano do usuario, tem que fazer ainda
         UserProfileDTO user = (UserProfileDTO) session.getAttribute("user"); // Faz um USERDTO com o usuario da sessao
+        int plano = us.findByEmail(user.getEmail()).getPlan().getModulesToFree();
 
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // Usuário não logado
         }
 
-        return ResponseEntity.ok(Map.of("plano", planoSimulado)); // Retorna o plano que vai ser pego do usuario
+        return ResponseEntity.ok(Map.of("plano", plano)); // Retorna o plano que vai ser pego do usuario
     }
 
     @GetMapping("/video/{id}")
     public ResponseEntity<?> getVideo(@PathVariable int id, HttpSession session) {
 
-        int planoSimulado = 3; // Plano pra ser pego do usuario
         UserProfileDTO user = (UserProfileDTO) session.getAttribute("user"); // DTO transformado
+        int plano = us.findByEmail(user.getEmail()).getPlan().getModulesToFree();
 
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // Retorna 401
         }
 
-        if (id > planoSimulado) {
+        if (id > plano) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); // Retorna 403
         }
 

@@ -1,9 +1,26 @@
 const buttons = document.querySelectorAll(".plans-container button");
 buttons.forEach(button => {
-  button.addEventListener("click", () => {
-    console.log(`Botão clicado: ${button.id}`);
+  button.addEventListener("click", async function (e)  {
+    try {
+
+      e.preventDefault()
+
+      console.log(button.id);
+      const responseSignPlan = await fetch(`/api/signplan/${button.id}`, {
+        method: "POST",
+        headers: {
+                "Content-Type": "application/json",  // Define o tipo de conteúdo como JSON
+            },
+      });
+      
+      const data = await responseSignPlan.json();
+      console.log(data);
+
+    } 
+    
+    catch (error) {
+
+    }
   });
 });
 
-// FAZER O REST CONTROLLER DO PLANCONTROLLER PARA QAUNDO CLICAR EM ASSINAR IR PRA LÁ E ADAPTAR UM PLANO AO USUARIO
-// TEMPORARIAMENTE ATÉ INSERIR O MERCADO PAGO, SÓ PARA TESTAR

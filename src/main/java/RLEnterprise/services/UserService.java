@@ -79,6 +79,10 @@ public class UserService {
         return user;
     }
 
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
     public void saveUser(UserRegisterDTO dto) {
         User user = new User();
         user.setEmail(dto.getEmail());

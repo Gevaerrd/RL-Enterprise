@@ -3,7 +3,6 @@ async function iniciar() {
         const res = await fetch("/api/plano"); // Conecta ao rest api plano
         const data = await res.json(); // Pega a resposta que vem um objeto: {"plano": 3};
         const plano = data.plano // Pega o plano do usuario
-        console.log(plano);
 
         const modulos = document.querySelectorAll(".modal-or-plan-container"); // Pega os modulos
         modulos.forEach(modulo => { // Para cada modulo

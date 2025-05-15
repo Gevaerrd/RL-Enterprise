@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import RLEnterprise.dto.UserLoginDTO;
+import RLEnterprise.dto.UserProfileDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -30,7 +30,7 @@ public class RLEFrontPage {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("user") != null) {
 
-            UserLoginDTO user = (UserLoginDTO) session.getAttribute("user"); // Pegando o DTO que esta logado
+            UserProfileDTO user = (UserProfileDTO) session.getAttribute("user"); // Pegando o DTO que esta logado
 
             model.addAttribute("user", user); // Passa para a view
             return "FrontPageWithLogin";

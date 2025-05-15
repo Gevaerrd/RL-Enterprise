@@ -19,38 +19,38 @@
       <div class="profile-settings">
         <div class="name-and-random-picture">
           <img src="images/nopicture.png" alt="Profile image" />
-          <span>Username</span>
+          <span>Olá, <span th:text="${user.name}"></span></span>
         </div>
-        <a href="/logout">Sair</a>
+        <a href="/userlogout">Sair</a>
       </div>
     </div>
   </header>
   <section class="modals-and-noplan-message">
     <aside class="modals-aside">
       <a href="" class="modal-or-plan-container sem-plano">
-        <h4>Sem plano</h4>
+        <h4>Sem plano</h4> <!-- Trocar o container pra não ser afetado -->
       </a>
-      <a href="" class="modal-or-plan-container locked">
+      <a href="" class="modal-or-plan-container locked" data-id="1">
         <h4>Módulo 1</h4>
         <p>Fundamentos IA</p>
       </a>
-      <a href="" class="modal-or-plan-container locked">
+      <a href="" class="modal-or-plan-container locked" data-id="2">
         <h4>Módulo 2</h4>
         <p>Vídeos Virais</p>
       </a>
-      <a href="" class="modal-or-plan-container locked">
+      <a href="" class="modal-or-plan-container locked" data-id="3">
         <h4>Módulo 3</h4>
         <p>Engajamento Social</p>
       </a>
-      <a href="" class="modal-or-plan-container locked">
+      <a href="" class="modal-or-plan-container locked" data-id="4">
         <h4>Módulo 4</h4>
         <p>Marketing & Monetização</p>
       </a>
-      <a href="" class="modal-or-plan-container locked">
+      <a href="" class="modal-or-plan-container locked" data-id="5">
         <h4>Módulo 5</h4>
         <p>Ganhos Afiliados</p>
       </a>
-      <a href="" class="modal-or-plan-container locked">
+      <a href="" class="modal-or-plan-container locked" data-id="6">
         <h4>Módulo 6</h4>
         <p>Conteúdo Cross-Platform</p>
       </a>
