@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import RLEnterprise.dto.UserLoginDTO;
+import RLEnterprise.dto.UserProfileDTO;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -36,7 +37,7 @@ public class LoginController {
         // Valida o login
         if (us.validLogin(userDTO)) {
             HttpSession session = request.getSession(); // Cria uma sessão
-            UserLoginDTO userFromDb = us.findUserDTOByEmail(userDTO.getEmail()); // Pega um DTO do Service
+            UserProfileDTO userFromDb = us.findUserDTOByEmail(userDTO.getEmail()); // Pega um DTO do Service
             userFromDb.updateFirstName();
             session.setAttribute("user", userFromDb); // Coloca a sessão pro usuario
             model.addAttribute("user", userFromDb); // Passa o usuario pro front end

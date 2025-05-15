@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import RLEnterprise.dto.UserLoginDTO;
+import RLEnterprise.dto.UserProfileDTO;
 import RLEnterprise.dto.UserRegisterDTO;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,7 +43,8 @@ public class RegisterController {
         }
 
         us.saveUser(userDTO);
-        UserLoginDTO userSessionDTO = (UserLoginDTO) us.findUserDTOByEmail(userDTO.getEmail());
+        // Substituindo o register porque ele tem senha, o Profile oculta ela...
+        UserProfileDTO userSessionDTO = (UserProfileDTO) us.findUserDTOByEmail(userDTO.getEmail());
         userSessionDTO.updateFirstName();
 
         // Cria a sessão e armazena os dados do usuário

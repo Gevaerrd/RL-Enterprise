@@ -10,8 +10,6 @@ document.addEventListener('click', (e) => {
         e.target.id !== "link-to-login" && // Impede conflito na troca
         e.target.id !== "link-to-register"
     ) {
-        console.log("Ta aqui")
-            console.log("Cheogu");
             registerForm.classList.remove('fade-in'); // Remove a animação fade-in
             registerForm.classList.add('fade-out'); // Inicia a animação fade-out
 

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import RLEnterprise.dto.UserLoginDTO;
+import RLEnterprise.dto.UserProfileDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -23,7 +23,7 @@ public class PerfilController {
             return "redirect:/";
         }
 
-        UserLoginDTO userDTO = (UserLoginDTO) session.getAttribute("user");
+        UserProfileDTO userDTO = (UserProfileDTO) session.getAttribute("user");
         model.addAttribute("user", userDTO);
         return "UserUIWP";
     }

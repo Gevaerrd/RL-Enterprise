@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import RLEnterprise.dto.UserLoginDTO;
+import RLEnterprise.dto.UserProfileDTO;
 import RLEnterprise.dto.UserRegisterDTO;
 import RLEnterprise.entities.User;
 import RLEnterprise.repositories.UserRepository;
@@ -31,12 +32,12 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public UserLoginDTO findUserDTOByEmail(String email) {
+    public UserProfileDTO findUserDTOByEmail(String email) {
         User user = userRepository.findByEmail(email);
         if (user == null)
             return null;
         // Não inclua a senha no DTO por segurança
-        return new UserLoginDTO(user.getName(), user.getEmail());
+        return new UserProfileDTO(user.getName(), user.getEmail());
     }
 
     public boolean emailExists(String email) {
