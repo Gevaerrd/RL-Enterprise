@@ -7,9 +7,6 @@ package RLEnterprise.dto;
 
 import java.util.Objects;
 
-// CRIAR UM DTO QUE SÓ VAI TER EMAIL E NOME PARA PASSAR PARA O FRONT END
-// AMANHÃ
-
 public class UserRegisterDTO {
 
     private Long id;
