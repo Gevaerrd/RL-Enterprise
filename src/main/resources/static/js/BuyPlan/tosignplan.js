@@ -14,6 +14,10 @@ buttons.forEach(button => {
       
       const data = await responseSignPlan.json();
       
+      console.log(data);
+      console.log(data.message);      // "Plano assinado com sucesso."
+      console.log(data.paymentLink);  // link do pagamento
+      
 
     } 
     

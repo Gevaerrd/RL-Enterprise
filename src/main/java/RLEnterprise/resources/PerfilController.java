@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import RLEnterprise.dto.UserProfileDTO;
+import RLEnterprise.entities.User;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -30,9 +31,11 @@ public class PerfilController {
         }
 
         UserProfileDTO userDTO = (UserProfileDTO) session.getAttribute("user");
+        User user = us.findByEmail(userDTO.getEmail());
         model.addAttribute("user", userDTO);
 
-        if (us.findByEmail(userDTO.getEmail()).getPlan() != null) { // Se o usuario tiver um plano
+        if (user.getPlan() != null) { // Se o usuario tiver um plano
+            userDTO.setPlan(user.getPlan());
             return "UserUIWP"; // Retorna esse HTML
         }
 

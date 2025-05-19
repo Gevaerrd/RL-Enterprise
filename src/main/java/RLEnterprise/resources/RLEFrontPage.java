@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import RLEnterprise.dto.UserProfileDTO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,17 +41,23 @@ public class RLEFrontPage {
     }
 
     @GetMapping("/sucesso")
-    public String home() {
+    public String redirectController(
+            @RequestParam(value = "payment_id", required = false) String paymentId,
+            @RequestParam(value = "status", required = false) String status,
+            @RequestParam(value = "preference_id", required = false) String preferenceId,
+            Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
 
-        // Redirecionar qualquer um que entre nessa URL sem ser pela compra..
+        if (session == null || session.getAttribute("user") == null) {
+            return "redirect:/";
+        }
 
-        // Usuario clica em assinar
-        // Vai para o mercado pago
-        // Se pagar ele vai pra um controller de sucesso, onde atribuimos o plano e
-        // retorna para o perfil
-        // Se negar ele vai pra pagina principal com o erro do mercado pago
+        if (paymentId == null || status == null || preferenceId == null) {
+            return "redirect:/";
+        }
 
         return "sucess";
+
     }
 
 }

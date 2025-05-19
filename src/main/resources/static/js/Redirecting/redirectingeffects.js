@@ -37,6 +37,6 @@ for (let i = 0; i < messages.length; i++) {
 
 
 
-// setTimeout(() => {
-//   window.location.href = "https://seusite.com/confirmacao"; // Troque aqui para o destino real
-// }, 5000);
+setTimeout(() => {
+  window.location.href = "/profile"; // Troque aqui para o destino real
+}, 10000);

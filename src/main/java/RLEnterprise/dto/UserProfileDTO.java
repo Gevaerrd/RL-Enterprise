@@ -5,6 +5,8 @@
 
 package RLEnterprise.dto;
 
+import RLEnterprise.entities.Plan;
+
 /**
  *
  * @author Pichau
@@ -13,6 +15,7 @@ public class UserProfileDTO {
 
     public String name;
     public String email;
+    public Plan plan;
 
     public UserProfileDTO() {
 
@@ -52,6 +55,14 @@ public class UserProfileDTO {
             updateFirstName();
         }
         return name;
+    }
+
+    public Plan getPlan() {
+        return plan;
+    }
+
+    public void setPlan(Plan plan) {
+        this.plan = plan;
     }
 
 }

@@ -129,6 +129,13 @@ body {
   height: 2.5rem;
 }
 
+.plan-decoration {
+  background: linear-gradient(90deg, #5ddada, #9f00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
 .profile-settings .name-and-random-picture span {
   font-size: 1.3rem;
 }
@@ -185,6 +192,7 @@ body {
   font-size: 1.6rem;
   color: var(--color-text);
   transition: 0.4s all ease;
+  transition: color 0.4s ease, background 0.4s ease, -webkit-text-fill-color 0.4s ease;
 }
 
 .modal-or-plan-container:first-of-type h4 {
@@ -196,7 +204,7 @@ body {
 }
 
 .modal-or-plan-container:hover h4 {
-  color: var(--button-color);
+  color: var(--button-color);              /* Cor sólida no hover */
 }
 
 .modal-or-plan-container p {

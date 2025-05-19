@@ -19,9 +19,9 @@ public class PlanInitializer {
     public CommandLineRunner initPlans(PlanService pr) {
         return args -> {
             if (pr.count() == 0) {
-                pr.savePlan(new Plan("Básico", 3, 47.0));
-                pr.savePlan(new Plan("Pro", 4, 97.0));
-                pr.savePlan(new Plan("Master", 6, 197.0));
+                pr.savePlan(new Plan("Plano Básico", 3, 47.0));
+                pr.savePlan(new Plan("Plano Pro", 4, 97.0));
+                pr.savePlan(new Plan("Plano Master", 6, 197.0));
             }
         };
 

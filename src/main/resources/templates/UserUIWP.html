@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sem Plano</title>
+  <title th:text="${user.name} + ' - Perfil'">Título Padrão</title>
   <link rel="stylesheet" href="css/ui/profilepage.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <script src="/js/planschecker/modalunlock.js" defer></script>
@@ -29,7 +29,7 @@
   <section class="modals-and-noplan-message">
     <aside class="modals-aside">
       <a href="" class="modal-or-plan-container sem-plano">
-        <h4>Sem plano</h4> <!-- Trocar o container pra não ser afetado -->
+        <h4 th:if="${user.plan != null}" th:text="${user.plan.name}"></h4>
       </a>
       <a href="" class="modal-or-plan-container locked" data-id="1">
         <h4>Módulo 1</h4>
@@ -61,13 +61,12 @@
         <div class="noplan-content">
           <div class="noplan-icon">
             <svg class="cadeado" viewBox="0 0 24 24">
-              <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zM9 6a3 3 0 0 1 6 0v2H9V6zm8 14H7V10h10v10zm-5-3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+              <path d="M17 8h-1V6a4 4 0 1 0-8 0h0a1 1 0 0 0-2 0 6 6 0 0 1 12 0v2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2zM12 17a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
             </svg>
           </div>
           <div class="noplan-text">
-            <p>Você ainda não tem nenhum plano...</p>
-            <p>Para acessar nosso conteúdo e ser um afiliado, adquira um plano.</p>
-            <a href="/#planss">Ver planos</a>
+            <p>Acesso liberado!<br><span class="plan-decoration"th:text="${user.plan.name}"></span></p>
+            <p>Já está tudo certo com seu plano. Bora aproveitar os conteúdos e faturar como afiliado!</p>
           </div>
           <video id="videoElement" controls style="width:100%;max-width:640px;display:none;"></video>
         </div>
