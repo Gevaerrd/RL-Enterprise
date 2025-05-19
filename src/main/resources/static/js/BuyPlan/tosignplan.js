@@ -10,6 +10,7 @@ buttons.forEach(button => {
         headers: {
                 "Content-Type": "application/json",  // Define o tipo de conteúdo como JSON
             },
+        credentials: "include",
       });
       
       const data = await responseSignPlan.json();

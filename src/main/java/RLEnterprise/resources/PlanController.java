@@ -77,24 +77,22 @@ public class PlanController {
 
             // URLs de redirecionamento após o pagamento
             PreferenceBackUrlsRequest backUrls = PreferenceBackUrlsRequest.builder()
-                    .success("localhost:8080/sucesso")
-                    .failure("localhost:8080/erro")
-                    .pending("localhost:8080/pendente")
+                    .success("https://0564-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/sucesso")
+                    .failure("https://0564-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/erro")
+                    .pending("https://0564-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/erro")
                     .build();
 
             PreferenceRequest preferenceRequest = PreferenceRequest.builder()
                     .items(List.of(item))
                     .backUrls(backUrls)
                     .autoReturn("approved")
-                    .externalReference(String.valueOf(plan.getId()))
+                    .externalReference(plan.getId() + ":" + originalUser.getEmail())
                     .build();
 
             PreferenceClient client = new PreferenceClient();
             Preference preference = client.create(preferenceRequest);
+            System.out.println(preference.getInitPoint());
 
-            // Salva o plano no usuário
-            originalUser.setPlan(plan); // Aqui tem que ser substituido, é pra ser feito no sucess
-            us.save(originalUser);
             // Retorna o link de pagamento
             return ResponseEntity.ok()
                     .body(Map.of(
