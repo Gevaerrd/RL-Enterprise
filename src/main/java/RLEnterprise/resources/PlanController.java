@@ -86,6 +86,7 @@ public class PlanController {
                     .items(List.of(item))
                     .backUrls(backUrls)
                     .autoReturn("approved")
+                    .externalReference(String.valueOf(plan.getId()))
                     .build();
 
             PreferenceClient client = new PreferenceClient();
