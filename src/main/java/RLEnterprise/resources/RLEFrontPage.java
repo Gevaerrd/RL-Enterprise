@@ -42,6 +42,8 @@ public class RLEFrontPage {
     @GetMapping("/sucesso")
     public String home() {
 
+        // Redirecionar qualquer um que entre nessa URL sem ser pela compra..
+
         // Usuario clica em assinar
         // Vai para o mercado pago
         // Se pagar ele vai pra um controller de sucesso, onde atribuimos o plano e
