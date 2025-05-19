@@ -7,6 +7,7 @@ package RLEnterprise.resources;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -76,9 +77,9 @@ public class PlanController {
 
             // URLs de redirecionamento após o pagamento
             PreferenceBackUrlsRequest backUrls = PreferenceBackUrlsRequest.builder()
-                    .success("https://localhost:8080/sucesso")
-                    .failure("https://localhost:8080/erro")
-                    .pending("https://localhost:8080/pendente")
+                    .success("localhost:8080/sucesso")
+                    .failure("localhost:8080/erro")
+                    .pending("localhost:8080/pendente")
                     .build();
 
             PreferenceRequest preferenceRequest = PreferenceRequest.builder()
@@ -89,14 +90,15 @@ public class PlanController {
 
             PreferenceClient client = new PreferenceClient();
             Preference preference = client.create(preferenceRequest);
-            System.out.println(preference.getInitPoint());
 
             // Salva o plano no usuário
-            originalUser.setPlan(plan);
+            originalUser.setPlan(plan); // Aqui tem que ser substituido, é pra ser feito no sucess
             us.save(originalUser);
             // Retorna o link de pagamento
             return ResponseEntity.ok()
-                    .body("Plano assinado com sucesso. Link para pagamento: " + preference.getInitPoint());
+                    .body(Map.of(
+                            "message", "Plano assinado com sucesso.",
+                            "paymentLink", preference.getInitPoint()));
         }
 
         catch (MPException e) {

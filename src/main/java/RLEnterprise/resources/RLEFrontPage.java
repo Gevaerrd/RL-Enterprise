@@ -38,4 +38,17 @@ public class RLEFrontPage {
 
         return "FrontPageWithoutLogin";
     }
+
+    @GetMapping("/sucesso")
+    public String home() {
+
+        // Usuario clica em assinar
+        // Vai para o mercado pago
+        // Se pagar ele vai pra um controller de sucesso, onde atribuimos o plano e
+        // retorna para o perfil
+        // Se negar ele vai pra pagina principal com o erro do mercado pago
+
+        return "sucess";
+    }
+
 }
