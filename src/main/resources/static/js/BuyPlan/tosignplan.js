@@ -5,7 +5,6 @@ buttons.forEach(button => {
 
       e.preventDefault()
 
-      console.log(button.id);
       const responseSignPlan = await fetch(`/api/signplan/${button.id}`, {
         method: "POST",
         headers: {
@@ -14,7 +13,6 @@ buttons.forEach(button => {
       });
       
       const data = await responseSignPlan.json();
-      console.log(data);
 
     } 
     
