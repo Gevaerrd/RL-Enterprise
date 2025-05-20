@@ -16,7 +16,7 @@
       </h1>
     </a>
     <div class="container-for-module-and-profile-settings">
-      <h3>Sessão do módulo</h3>
+      <h3 th:if="${user.afilliateCode.code}"></h3>
       <div class="profile-settings">
         <div class="name-and-random-picture">
           <img src="images/nopicture.png" alt="Profile image" />

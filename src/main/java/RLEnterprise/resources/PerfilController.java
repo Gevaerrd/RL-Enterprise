@@ -35,7 +35,6 @@ public class PerfilController {
         model.addAttribute("user", userDTO);
 
         if (user.getPlan() != null) { // Se o usuario tiver um plano
-            userDTO.setPlan(user.getPlan());
             return "UserUIWP"; // Retorna esse HTML
         }
 

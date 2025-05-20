@@ -73,6 +73,14 @@ public class User {
         this.plan = plan;
     }
 
+    public AfilliateCode getAfilliateCode() {
+        return afilliateCode;
+    }
+
+    public void setAfilliateCode(AfilliateCode afilliateCode) {
+        this.afilliateCode = afilliateCode;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

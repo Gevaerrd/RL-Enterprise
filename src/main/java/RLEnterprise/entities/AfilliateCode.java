@@ -43,4 +43,12 @@ public class AfilliateCode {
         this.code = code;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

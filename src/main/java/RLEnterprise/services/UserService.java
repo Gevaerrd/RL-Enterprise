@@ -37,7 +37,7 @@ public class UserService {
         if (user == null)
             return null;
         // Não inclua a senha no DTO por segurança
-        return new UserProfileDTO(user.getName(), user.getEmail());
+        return new UserProfileDTO(user);
     }
 
     public boolean emailExists(String email) {

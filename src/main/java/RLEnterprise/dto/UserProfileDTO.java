@@ -5,7 +5,9 @@
 
 package RLEnterprise.dto;
 
+import RLEnterprise.entities.AfilliateCode;
 import RLEnterprise.entities.Plan;
+import RLEnterprise.entities.User;
 
 /**
  *
@@ -16,6 +18,7 @@ public class UserProfileDTO {
     public String name;
     public String email;
     public Plan plan;
+    public AfilliateCode afilliateCode;
 
     public UserProfileDTO() {
 
@@ -24,6 +27,19 @@ public class UserProfileDTO {
     public UserProfileDTO(String name, String email) {
         this.name = name;
         this.email = email;
+    }
+
+    public UserProfileDTO(User user) {
+        this.name = user.getName();
+        this.email = user.getEmail();
+        if (user.getPlan() != null) {
+            this.plan = user.getPlan();
+        }
+
+        if (user.getAfilliateCode() != null) {
+            this.afilliateCode = user.getAfilliateCode();
+        }
+
     }
 
     public String getName() {
@@ -63,6 +79,14 @@ public class UserProfileDTO {
 
     public void setPlan(Plan plan) {
         this.plan = plan;
+    }
+
+    public AfilliateCode getAfilliateCode() {
+        return afilliateCode;
+    }
+
+    public void setAfilliateCode(AfilliateCode afilliateCode) {
+        this.afilliateCode = afilliateCode;
     }
 
 }

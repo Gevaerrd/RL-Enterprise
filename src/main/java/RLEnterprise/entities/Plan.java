@@ -5,6 +5,7 @@
 
 package RLEnterprise.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -30,7 +31,7 @@ public class Plan {
     private double price;
 
     @OneToMany(mappedBy = "plan")
-    private List<User> user;
+    private List<User> users = new ArrayList<>();
 
     public Plan() {
 
@@ -71,11 +72,18 @@ public class Plan {
     }
 
     public List<User> getUser() {
-        return user;
+        return users;
     }
 
     public void setUser(List<User> user) {
-        this.user = user;
+        this.users = user;
+    }
+
+    public void addUser(User user) {
+        if (user != null && !this.users.contains(user)) {
+            this.users.add(user);
+            user.setPlan(this);
+        }
     }
 
     @Override

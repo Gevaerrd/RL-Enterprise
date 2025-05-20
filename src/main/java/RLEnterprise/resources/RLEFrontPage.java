@@ -17,8 +17,10 @@ import com.mercadopago.client.payment.PaymentClient;
 import com.mercadopago.resources.payment.Payment;
 
 import RLEnterprise.dto.UserProfileDTO;
+import RLEnterprise.entities.AfilliateCode;
 import RLEnterprise.entities.Plan;
 import RLEnterprise.entities.User;
+import RLEnterprise.services.AfilliateCodeService;
 import RLEnterprise.services.PlanService;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,6 +39,9 @@ public class RLEFrontPage {
 
     @Autowired
     PlanService ps;
+
+    @Autowired
+    AfilliateCodeService acs;
 
     @GetMapping()
     public String home(HttpServletRequest request, Model model) {
@@ -129,6 +134,8 @@ public class RLEFrontPage {
             Payment payment = paymentClient.get(Long.parseLong(paymentId));
             String externalReference = payment.getExternalReference();
 
+            // Pegando a referencia do plan controller e trabalhando aqui, setando o id do
+            // plano e o email do DTO
             if (externalReference != null && externalReference.contains(":")) {
                 String[] parts = externalReference.split(":");
                 planoId = parts[0];
@@ -142,6 +149,7 @@ public class RLEFrontPage {
 
         HttpSession session = request.getSession(false);
 
+        // Caso tenha dado bug na sessão eu recupero pela externalReference
         if (session == null || session.getAttribute("user") == null) {
             // Cria nova sessão se não existir
             session = request.getSession(true);
@@ -149,14 +157,21 @@ public class RLEFrontPage {
             // Recupera o usuário pelo e-mail e seta na sessão
             User originalUser = us.findByEmail(email);
             if (originalUser != null) {
-                UserProfileDTO userDTO = new UserProfileDTO(originalUser.getName(),
-                        originalUser.getEmail());
+                UserProfileDTO userDTO = new UserProfileDTO(originalUser);
                 session.setAttribute("user", userDTO);
 
-                // Associa o plano ao usuário
+                // Associa o plano ao usuário e cód afiliado
                 if (planoId != null) {
+
                     Plan plano = ps.findById(Long.parseLong(planoId));
-                    originalUser.setPlan(plano);
+                    plano.addUser(originalUser);
+
+                    AfilliateCode afCode = new AfilliateCode();
+                    afCode.setCode(acs.generateCode());
+                    afCode.setUser(originalUser);
+                    acs.save(afCode);
+
+                    originalUser.setAfilliateCode(afCode);
                     us.save(originalUser);
                 }
                 return "sucess";
@@ -170,16 +185,26 @@ public class RLEFrontPage {
         // Se o usuário já está logado, associa o plano normalmente
         try {
             if (email != null && planoId != null) {
+
                 User originalUser = us.findByEmail(email);
                 Plan plano = ps.findById(Long.parseLong(planoId));
+
+                AfilliateCode afCode = new AfilliateCode();
+                afCode.setCode(acs.generateCode());
+                afCode.setUser(originalUser);
+                acs.save(afCode);
+
+                originalUser.setAfilliateCode(afCode);
+
                 originalUser.setPlan(plano);
                 us.save(originalUser);
                 return "sucess";
-            } else {
+            }
+
+            else {
                 return "redirect:/";
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return "redirect:/";
         }
     }
