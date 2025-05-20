@@ -309,16 +309,16 @@ body {
     max-width: 75%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    padding: 1rem 1rem;
   }
 
   .getting-space-for-ul li a {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .organization-of-lis {
     flex-direction: row;
-    gap: 0.9rem;
+    gap: 1.3rem;
   }
 
   .first-content-and-header {
@@ -342,7 +342,7 @@ body {
 
   .h2-mobile {
     display: block;
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     margin-bottom: 1rem;
     max-width: 100%;
   }

@@ -19,6 +19,7 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private double balance;
 
     @ManyToOne
     @JoinColumn(name = "plan_id")
@@ -79,6 +80,14 @@ public class User {
 
     public void setAfilliateCode(AfilliateCode afilliateCode) {
         this.afilliateCode = afilliateCode;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void addBalance(double balance) {
+        this.balance += balance;
     }
 
     @Override

@@ -44,11 +44,15 @@ public class RLEFrontPage {
     AfilliateCodeService acs;
 
     @GetMapping()
-    public String home(HttpServletRequest request, Model model) {
+    public String home(@RequestParam(value = "afCode", required = false) String afCode,
+            HttpServletRequest request, Model model) {
 
-        // Redirecionar pra outra página igual porém sem chance de entrar dnv
+        HttpSession session = request.getSession(true);
 
-        HttpSession session = request.getSession(false);
+        if (afCode != null && !afCode.isEmpty()) {
+            session.setAttribute("afCode", afCode);
+        }
+
         if (session != null && session.getAttribute("user") != null) {
 
             UserProfileDTO user = (UserProfileDTO) session.getAttribute("user"); // Pegando o DTO que esta logado
@@ -127,6 +131,7 @@ public class RLEFrontPage {
 
         String planoId = null;
         String email = null;
+        String referenceCode = null;
 
         try {
             MercadoPagoConfig.setAccessToken("TEST-4636741219981499-051910-ac3b75d31d236ac8dfa10b1d52903529-544953103");
@@ -140,6 +145,9 @@ public class RLEFrontPage {
                 String[] parts = externalReference.split(":");
                 planoId = parts[0];
                 email = parts[1];
+                if (parts.length > 2) {
+                    referenceCode = parts[2];
+                }
             }
         }
 

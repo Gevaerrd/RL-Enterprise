@@ -49,6 +49,7 @@ public class PlanController {
     public ResponseEntity<?> planControl(@PathVariable Long id, Model model, HttpServletRequest request)
             throws MPApiException {
         try {
+
             HttpSession session = request.getSession(false); // Checando se tem usuario logado
             if (session == null || session.getAttribute("user") == null) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não autenticado.");
@@ -60,8 +61,14 @@ public class PlanController {
             }
 
             UserProfileDTO userProfile = (UserProfileDTO) session.getAttribute("user"); // Pegando o usuarioDTO através
-                                                                                        // de quem tá logado
+            // de quem tá logado
             User originalUser = us.findByEmail(userProfile.getEmail()); // Pegando o original pelo email
+
+            String externalReference = plan.getId() + ":" + originalUser.getEmail();
+            String referenceCode = (String) session.getAttribute("afCode");
+            if (referenceCode != null) {
+                externalReference += ":" + referenceCode;
+            }
 
             // Configura Mercado Pago
             MercadoPagoConfig.setAccessToken("TEST-4636741219981499-051910-ac3b75d31d236ac8dfa10b1d52903529-544953103");
@@ -86,7 +93,7 @@ public class PlanController {
                     .items(List.of(item))
                     .backUrls(backUrls)
                     .autoReturn("approved")
-                    .externalReference(plan.getId() + ":" + originalUser.getEmail())
+                    .externalReference(externalReference)
                     .build();
 
             PreferenceClient client = new PreferenceClient();
