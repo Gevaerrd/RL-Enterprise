@@ -31,6 +31,7 @@ public class UserProfileDTO {
 
     public UserProfileDTO(User user) {
         this.name = user.getName();
+        updateFirstName();
         this.email = user.getEmail();
         if (user.getPlan() != null) {
             this.plan = user.getPlan();

@@ -173,6 +173,8 @@ public class RLEFrontPage {
 
                     originalUser.setAfilliateCode(afCode);
                     us.save(originalUser);
+                    UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
+                    session.setAttribute("user", updatedDTO);
                 }
                 return "sucess";
             }
@@ -198,6 +200,8 @@ public class RLEFrontPage {
 
                 originalUser.setPlan(plano);
                 us.save(originalUser);
+                UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
+                session.setAttribute("user", updatedDTO);
                 return "sucess";
             }
 
