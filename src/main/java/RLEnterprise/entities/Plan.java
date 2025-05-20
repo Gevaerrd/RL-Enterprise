@@ -29,6 +29,7 @@ public class Plan {
     private String name;
     private int modulesToFree;
     private double price;
+    private double comissionPercentage;
 
     @OneToMany(mappedBy = "plan")
     private List<User> users = new ArrayList<>();
@@ -41,6 +42,13 @@ public class Plan {
         this.name = name;
         this.modulesToFree = modulesToFree;
         this.price = price;
+    }
+
+    public Plan(String name, int modulesToFree, double price, double comissionPercentage) {
+        this.name = name;
+        this.modulesToFree = modulesToFree;
+        this.price = price;
+        this.comissionPercentage = comissionPercentage;
     }
 
     public long getId() {
@@ -84,6 +92,14 @@ public class Plan {
             this.users.add(user);
             user.setPlan(this);
         }
+    }
+
+    public double getComissionPercentage() {
+        return comissionPercentage;
+    }
+
+    public double comissionCalculate(double valorVenda) {
+        return valorVenda * (this.comissionPercentage / 100);
     }
 
     @Override

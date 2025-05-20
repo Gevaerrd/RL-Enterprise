@@ -19,6 +19,7 @@ public class UserProfileDTO {
     public String email;
     public Plan plan;
     public AfilliateCode afilliateCode;
+    private double balance;
 
     public UserProfileDTO() {
 
@@ -33,6 +34,7 @@ public class UserProfileDTO {
         this.name = user.getName();
         updateFirstName();
         this.email = user.getEmail();
+        this.balance = user.getBalance();
         if (user.getPlan() != null) {
             this.plan = user.getPlan();
         }
@@ -88,6 +90,10 @@ public class UserProfileDTO {
 
     public void setAfilliateCode(AfilliateCode afilliateCode) {
         this.afilliateCode = afilliateCode;
+    }
+
+    public double getBalance() {
+        return balance;
     }
 
 }
