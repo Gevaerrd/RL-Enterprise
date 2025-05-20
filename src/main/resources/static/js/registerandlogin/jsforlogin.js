@@ -36,7 +36,6 @@ formForLogin.addEventListener("submit", async function (e) {
         else {  // Caso contrário, exibe mensagem de erro
             msgForResult.classList.remove('hidden');
             msgForResult.innerText = result.Error;
-            msgForResult.classList.add("error");
         }
     } 
     
