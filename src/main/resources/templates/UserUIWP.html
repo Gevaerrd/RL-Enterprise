@@ -16,6 +16,10 @@
       </h1>
     </a>
     <div class="container-for-module-and-profile-settings">
+      <div class="profile-settings nogap-forbalance">
+        <span id="balance-span" class="balance-label">Saldo: <span class="currency">R$</span></span>
+        <span id="real-balance" class="balance-value" th:text="${user.balance}"></span>
+      </div>
       <h3 th:if="${user.afilliateCode != null}" th:text="${user.afilliateCode.code}"></h3>
       <div class="profile-settings">
         <div class="name-and-random-picture">

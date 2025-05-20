@@ -49,21 +49,24 @@ public class PlanController {
     public ResponseEntity<?> planControl(@PathVariable Long id, Model model, HttpServletRequest request)
             throws MPApiException {
         try {
-
-            HttpSession session = request.getSession(false); // Checando se tem usuario logado
+            // Checando se tem usuario logado
+            HttpSession session = request.getSession(false);
             if (session == null || session.getAttribute("user") == null) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não autenticado.");
             }
 
+            // Pegando o plano e vendo se não foi alterado no front end
             Plan plan = ps.findById(id);
-            if (plan == null) { // Pegando o plano e vendo se não foi alterado no front end
+            if (plan == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plano não encontrado.");
             }
 
-            UserProfileDTO userProfile = (UserProfileDTO) session.getAttribute("user"); // Pegando o usuarioDTO através
-            // de quem tá logado
-            User originalUser = us.findByEmail(userProfile.getEmail()); // Pegando o original pelo email
+            // Pegando o usuarioDTO através de quem tá logado
+            UserProfileDTO userProfile = (UserProfileDTO) session.getAttribute("user");
+            // Pegando o original pelo email
+            User originalUser = us.findByEmail(userProfile.getEmail());
 
+            // Montando a externalReference com id do plano, email e afCode (se houver)
             String externalReference = plan.getId() + ":" + originalUser.getEmail();
             String referenceCode = (String) session.getAttribute("afCode");
             if (referenceCode != null) {
@@ -84,11 +87,12 @@ public class PlanController {
 
             // URLs de redirecionamento após o pagamento
             PreferenceBackUrlsRequest backUrls = PreferenceBackUrlsRequest.builder()
-                    .success("https://0ebd-2804-1530-64e-ee00-98f0-d59-66d4-7b6e.ngrok-free.app/sucesso")
-                    .failure("https://0ebd-2804-1530-64e-ee00-98f0-d59-66d4-7b6e.ngrok-free.app/")
-                    .pending("https://0ebd-2804-1530-64e-ee00-98f0-d59-66d4-7b6e.ngrok-free.app/")
+                    .success("https://be57-2804-1530-64e-ee00-98f0-d59-66d4-7b6e.ngrok-free.app/sucesso")
+                    .failure("https://be57-2804-1530-64e-ee00-98f0-d59-66d4-7b6e.ngrok-free.app/")
+                    .pending("https://be57-2804-1530-64e-ee00-98f0-d59-66d4-7b6e.ngrok-free.app/")
                     .build();
 
+            // Monta a preferência de pagamento
             PreferenceRequest preferenceRequest = PreferenceRequest.builder()
                     .items(List.of(item))
                     .backUrls(backUrls)
@@ -96,6 +100,7 @@ public class PlanController {
                     .externalReference(externalReference)
                     .build();
 
+            // Cria a preferência no Mercado Pago
             PreferenceClient client = new PreferenceClient();
             Preference preference = client.create(preferenceRequest);
             System.out.println(preference.getInitPoint());
@@ -107,11 +112,13 @@ public class PlanController {
                             "paymentLink", preference.getInitPoint()));
         }
 
+        // Tratamento de erro do Mercado Pago
         catch (MPException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Erro ao criar pagamento: " + e.getMessage());
         }
 
+        // Tratamento de erro para plano não encontrado
         catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plano não encontrado.");
         }
