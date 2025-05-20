@@ -37,13 +37,15 @@ public class RegisterController {
     @PostMapping("")
     public ResponseEntity<?> registerUser(@RequestBody UserRegisterDTO userDTO, HttpServletRequest request) {
 
-        String senha = userDTO.getPassword();
-        String regex = "^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-={}:;\"',.<>/?]).{8,}$";
-        if (senha == null || !senha.matches(regex)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(Collections.singletonMap("Error",
-                            "A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula e 1 caractere especial."));
-        }
+        // Filtro de senha
+        // String senha = userDTO.getPassword();
+        // String regex = "^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-={}:;\"',.<>/?]).{8,}$";
+        // if (senha == null || !senha.matches(regex)) {
+        // return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        // .body(Collections.singletonMap("Error",
+        // "A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula e 1 caractere
+        // especial."));
+        // }
 
         if (us.emailExists(userDTO.getEmail())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
