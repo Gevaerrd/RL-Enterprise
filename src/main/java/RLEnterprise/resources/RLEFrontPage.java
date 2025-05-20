@@ -134,6 +134,7 @@ public class RLEFrontPage {
         String referenceCode = null;
 
         try {
+            // Inicializa o SDK do Mercado Pago
             MercadoPagoConfig.setAccessToken("TEST-4636741219981499-051910-ac3b75d31d236ac8dfa10b1d52903529-544953103");
             PaymentClient paymentClient = new PaymentClient();
             Payment payment = paymentClient.get(Long.parseLong(paymentId));
@@ -146,79 +147,94 @@ public class RLEFrontPage {
                 planoId = parts[0];
                 email = parts[1];
                 if (parts.length > 2) {
-                    referenceCode = parts[2];
+                    referenceCode = parts[2]; // afCode do afiliado, se existir
                 }
             }
-        }
 
-        catch (Exception e) {
-            return "redirect:/";
-        }
+            HttpSession session = request.getSession(false);
 
-        HttpSession session = request.getSession(false);
+            // Caso tenha dado bug na sessão eu recupero pela externalReference
+            if (session == null || session.getAttribute("user") == null) {
+                // Cria nova sessão se não existir
+                session = request.getSession(true);
 
-        // Caso tenha dado bug na sessão eu recupero pela externalReference
-        if (session == null || session.getAttribute("user") == null) {
-            // Cria nova sessão se não existir
-            session = request.getSession(true);
+                // Recupera o usuário pelo e-mail e seta na sessão
+                User originalUser = us.findByEmail(email);
+                if (originalUser != null) {
+                    UserProfileDTO userDTO = new UserProfileDTO(originalUser);
+                    session.setAttribute("user", userDTO);
 
-            // Recupera o usuário pelo e-mail e seta na sessão
-            User originalUser = us.findByEmail(email);
-            if (originalUser != null) {
-                UserProfileDTO userDTO = new UserProfileDTO(originalUser);
-                session.setAttribute("user", userDTO);
+                    // Associa o plano ao usuário e cód afiliado
+                    if (planoId != null) {
+                        Plan plano = ps.findById(Long.parseLong(planoId));
+                        plano.addUser(originalUser);
 
-                // Associa o plano ao usuário e cód afiliado
-                if (planoId != null) {
+                        // Cria o código de afiliado para o novo usuário
+                        AfilliateCode afCode = new AfilliateCode();
+                        afCode.setCode(acs.generateCode());
+                        afCode.setUser(originalUser);
+                        acs.save(afCode);
 
-                    Plan plano = ps.findById(Long.parseLong(planoId));
-                    plano.addUser(originalUser);
+                        originalUser.setAfilliateCode(afCode);
+                        us.save(originalUser);
 
-                    AfilliateCode afCode = new AfilliateCode();
-                    afCode.setCode(acs.generateCode());
-                    afCode.setUser(originalUser);
-                    acs.save(afCode);
+                        // Bonifica o afiliador, se houver referenceCode
+                        if (referenceCode != null) {
+                            AfilliateCode code = acs.findByCode(referenceCode);
+                            if (code != null && code.getUser() != null) {
+                                User afiliador = code.getUser();
+                                double valorVenda = plano.getPrice();
+                                double comissao = plano.comissionCalculate(valorVenda);
+                                afiliador.addBalance(comissao);
+                                us.save(afiliador);
+                            }
+                        }
 
-                    originalUser.setAfilliateCode(afCode);
-                    us.save(originalUser);
-                    UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
-                    session.setAttribute("user", updatedDTO);
+                        UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
+                        session.setAttribute("user", updatedDTO);
+                    }
+                    return "sucess";
+                } else {
+                    return "redirect:/";
                 }
-                return "sucess";
             }
 
-            else {
-                return "redirect:/";
-            }
-        }
-
-        // Se o usuário já está logado, associa o plano normalmente
-        try {
+            // Se o usuário já está logado, associa o plano normalmente
             if (email != null && planoId != null) {
-
                 User originalUser = us.findByEmail(email);
                 Plan plano = ps.findById(Long.parseLong(planoId));
 
+                // Cria o código de afiliado para o novo usuário
                 AfilliateCode afCode = new AfilliateCode();
                 afCode.setCode(acs.generateCode());
                 afCode.setUser(originalUser);
                 acs.save(afCode);
 
                 originalUser.setAfilliateCode(afCode);
-
                 originalUser.setPlan(plano);
                 us.save(originalUser);
+
+                // Bonifica o afiliador, se houver referenceCode
+                if (referenceCode != null) {
+                    AfilliateCode code = acs.findByCode(referenceCode);
+                    if (code != null && code.getUser() != null) {
+                        User afiliador = code.getUser();
+                        double valorVenda = plano.getPrice();
+                        double comissao = plano.comissionCalculate(valorVenda);
+                        afiliador.addBalance(comissao);
+                        us.save(afiliador);
+                    }
+                }
+
                 UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
                 session.setAttribute("user", updatedDTO);
                 return "sucess";
-            }
-
-            else {
+            } else {
                 return "redirect:/";
             }
         } catch (Exception e) {
+            // Se der qualquer erro, redireciona para a home
             return "redirect:/";
         }
     }
-
 }
