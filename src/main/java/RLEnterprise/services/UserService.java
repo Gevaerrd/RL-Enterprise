@@ -90,4 +90,17 @@ public class UserService {
         user.setName((dto.getName()));
         userRepository.save(user);
     }
+
+    public void setPassword(String password, User user) {
+        user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
+    }
+
+    public User findBytwoFactorCode(String code) {
+        User user = userRepository.findBytwoFactorCode(code);
+        if (user != null) {
+            return user;
+        }
+        return null;
+    }
 }

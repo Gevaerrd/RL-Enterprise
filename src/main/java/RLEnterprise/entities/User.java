@@ -20,6 +20,8 @@ public class User {
     private String email;
     private String password;
     private double balance;
+    private String twoFactorCode;
+    private Long twoFactorCodeGeneratedAt;
 
     @ManyToOne
     @JoinColumn(name = "plan_id")
@@ -90,6 +92,22 @@ public class User {
         this.balance += balance;
     }
 
+    public String getTwoFactorCode() {
+        return twoFactorCode;
+    }
+
+    public void setTwoFactorCode(String twoFactorCode) {
+        this.twoFactorCode = twoFactorCode;
+    }
+
+    public Long getTwoFactorCodeGeneratedAt() {
+        return twoFactorCodeGeneratedAt;
+    }
+
+    public void setTwoFactorCodeGeneratedAt(Long twoFactorCodeGeneratedAt) {
+        this.twoFactorCodeGeneratedAt = twoFactorCodeGeneratedAt;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -113,6 +131,23 @@ public class User {
         } else if (!id.equals(other.id))
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("User{");
+        sb.append("id=").append(id);
+        sb.append(", name=").append(name);
+        sb.append(", email=").append(email);
+        sb.append(", password=").append(password);
+        sb.append(", balance=").append(balance);
+        sb.append(", twoFactorCode=").append(twoFactorCode);
+        sb.append(", twoFactorCodeGeneratedAt=").append(twoFactorCodeGeneratedAt);
+        sb.append(", plan=").append(plan);
+        sb.append(", afilliateCode=").append(afilliateCode);
+        sb.append('}');
+        return sb.toString();
     }
 
 }

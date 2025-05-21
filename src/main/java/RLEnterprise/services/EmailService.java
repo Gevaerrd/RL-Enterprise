@@ -12,11 +12,16 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import RLEnterprise.entities.User;
+
 @Service
 public class EmailService {
 
     @Autowired
     private JavaMailSender mailSender;
+
+    @Autowired
+    private UserService us;
 
     public String coderGenerater() {
         int codeLength = 5;
@@ -36,9 +41,15 @@ public class EmailService {
     public String send2FACode(String to) {
         SimpleMailMessage message = new SimpleMailMessage();
         String generatedCode = coderGenerater();
+        User user = us.findByEmail(to);
+        if (user != null) {
+            user.setTwoFactorCode(generatedCode);
+            user.setTwoFactorCodeGeneratedAt(System.currentTimeMillis());
+            us.save(user); // Salva o código e o timestamp no banco!
+        }
         message.setTo(to);
         message.setSubject("Código de verificação. RL Enterprise");
-        message.setText("EAI PORRAAAAAAA");
+        message.setText(generatedCode);
         mailSender.send(message);
         return generatedCode;
 
@@ -46,6 +57,12 @@ public class EmailService {
 
     public void sendPasswordReset(String to, String resetLink) {
         SimpleMailMessage message = new SimpleMailMessage();
+        User user = us.findByEmail(to);
+        if (user != null) {
+            user.setTwoFactorCode(to);
+            user.setTwoFactorCodeGeneratedAt(System.currentTimeMillis());
+            us.save(user);
+        }
         message.setTo(to);
         message.setSubject("Recuperação de senha. RL Enterprise");
         message.setText("Clique no link para redefinir sua senha: " + resetLink);

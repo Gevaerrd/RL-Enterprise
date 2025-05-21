@@ -48,13 +48,14 @@ if (linkToLogin) {
 forgotPasswordButtonsAll.forEach(btn => {
     btn.addEventListener('click', function(event) {
         event.preventDefault();
+        event.stopPropagation();
         loginSection.classList.add('hidden');
         registerSection.classList.add('hidden');
         forgotPasswordSection.classList.remove('hidden');
     });
 });
 
-// Voltar ao login a partir do forgot password
+// Voltar ao login a partir do forgot password (primeira etapa)
 if (backToLoginLink) {
     backToLoginLink.addEventListener('click', function(e) {
         e.preventDefault();
@@ -79,6 +80,20 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Fechar o formulário de forgot password ao clicar fora
+document.addEventListener('click', (e) => {
+    if (
+        forgotPasswordSection && !forgotPasswordSection.classList.contains('hidden') &&
+        forgotPasswordSection.querySelector('.space-of-forgot-password-form') &&
+        !forgotPasswordSection.querySelector('.space-of-forgot-password-form').contains(e.target) &&
+        e.target !== backToLoginLink &&
+        e.target.id !== "link-to-login" &&
+        e.target.id !== "link-to-register"
+    ) {
+        forgotPasswordSection.classList.add('hidden');
+    }
+});
+
 // Fechar o formulário de login ao clicar fora
 document.addEventListener('click', (e) => {
     if (
@@ -92,30 +107,6 @@ document.addEventListener('click', (e) => {
         loginSection.classList.add('hidden');
     }
 });
-
-// Envio do formulário de recuperação de senha
-if (forgotPasswordFormElement) {
-    forgotPasswordFormElement.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const email = forgotPasswordEmailInput.value;
-        if (!email) return;
-        forgotPasswordMessage.textContent = '';
-        forgotPasswordMessage.classList.remove('success', 'error');
-        try {
-            const response = await fetch('/api/send-email', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ to: email })
-            });
-            const data = await response.json();
-            forgotPasswordMessage.textContent = data.message || 'Se o e-mail existir, um código foi enviado!';
-            forgotPasswordMessage.classList.add('success');
-        } catch (error) {
-            forgotPasswordMessage.textContent = 'Erro ao enviar e-mail. Tente novamente.';
-            forgotPasswordMessage.classList.add('error');
-        }
-    });
-}
 
 // Abrir login form pelo botão
 if (buttonToShowLF) {
@@ -136,5 +127,156 @@ if (buttonToRF) {
         registerSection.classList.remove('hidden');
         loginSection.classList.add('hidden');
         forgotPasswordSection.classList.add('hidden');
+    });
+}
+
+// Recuperação de senha - fluxo completo
+if (forgotPasswordFormElement) {
+    forgotPasswordFormElement.addEventListener('submit', async function handleEmailSubmit(e) {
+        e.preventDefault();
+        const email = forgotPasswordEmailInput.value;
+        if (!email) return;
+        forgotPasswordMessage.textContent = '';
+        forgotPasswordMessage.classList.remove('success', 'error');
+        try {
+            const response = await fetch('/api2fa/request', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ to: email })
+            });
+            const data = await response.json();
+
+            // Troca o conteúdo mantendo a estrutura e o CSS
+            forgotPasswordSection.querySelector('.space-of-forgot-password-form').innerHTML = `
+                <div class="name-of-enterprise">
+                    <h1>RL</h1>
+                    <h2>Enterprise</h2>
+                    </div>
+                <div id="forgot-message" class="forgot-message"></div>
+                <form id="forgot-password-form">
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="text" id="input-2fa-code" name="2facode" required placeholder="Digite o código recebido" maxlength="10" />
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="input-new-password" name="newPassword" required placeholder="Digite a nova senha" minlength="8" />
+                        </div>
+                    </div>
+                    <button type="submit" id="reset-password-btn">Redefinir senha</button>
+                    <button type="button" id="resend-code-btn" disabled style="margin-left:10px;">Reenviar código</button>
+                </form>
+                <a href="#" class="back-to-login">Voltar ao login</a>
+            `;
+
+            // Selecione o novo form e elementos
+            const resetForm = document.getElementById('forgot-password-form');
+            const input2fa = document.getElementById('input-2fa-code');
+            const inputNewPassword = document.getElementById('input-new-password');
+            const resendBtn = document.getElementById('resend-code-btn');
+            const forgotMessage = document.getElementById('forgot-message');
+            const backToLogin = forgotPasswordSection.querySelector('.space-of-forgot-password-form .back-to-login');
+
+            // Mensagem de sucesso após envio do código
+            forgotMessage.textContent = 'Se o e-mail existir, um código foi enviado!';
+
+            // Timer para reenviar código
+            let timer = 60;
+            resendBtn.textContent = `Reenviar código (${timer}s)`;
+            let interval = setInterval(() => {
+                timer--;
+                resendBtn.textContent = `Reenviar código (${timer}s)`;
+                if (timer <= 0) {
+                    clearInterval(interval);
+                    resendBtn.disabled = false;
+                    resendBtn.textContent = "Reenviar código";
+                }
+            }, 1000);
+
+            // Evento para reenviar código
+            resendBtn.addEventListener('click', async function() {
+                resendBtn.disabled = true;
+                timer = 60;
+                resendBtn.textContent = `Reenviar código (${timer}s)`;
+                forgotMessage.textContent = '';
+                try {
+                    await fetch('/api2fa/request', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ to: email })
+                    });
+                    forgotMessage.textContent = "Novo código enviado!";
+                    forgotMessage.classList.add('success');
+                } catch {
+                    forgotMessage.textContent = "Erro ao reenviar código.";
+                    forgotMessage.classList.add('error');
+                }
+                let interval2 = setInterval(() => {
+                    timer--;
+                    resendBtn.textContent = `Reenviar código (${timer}s)`;
+                    if (timer <= 0) {
+                        clearInterval(interval2);
+                        resendBtn.disabled = false;
+                        resendBtn.textContent = "Reenviar código";
+                    }
+                }, 1000);
+            });
+
+            // Novo listener para o submit do código e senha (segunda etapa)
+            resetForm.addEventListener('submit', async function(ev) {
+                ev.preventDefault();
+                const code = input2fa.value;
+                const newPassword = inputNewPassword.value;
+                forgotMessage.textContent = '';
+                forgotMessage.classList.remove('success', 'error');
+                try {
+                    const resp = await fetch('/api2fa/reset-password', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ "2facode": code, "newPassword": newPassword })
+                    });
+                    const result = await resp.json();
+                    if (result.success) {
+                        forgotMessage.textContent = "Senha redefinida com sucesso! Redirecionando...";
+                        forgotMessage.classList.add('success');
+                        setTimeout(() => { // FAZER UM FETCH PARA LOGAR DIRETO COM EMAIL E SENHA
+                            forgotPasswordSection.classList.add('hidden');
+                            registerSection.classList.add('hidden');
+                            loginSection.classList.remove('hidden');
+                        }, 2000);
+                    } else {
+                        // Mostra mensagem formatada se senha ruim
+                        if (result["Error"]) {
+                            forgotMessage.innerHTML = "A senha deve ter no mínimo 8 caracteres<br>1 letra maiúscula<br>1 caractere especial.";
+                        } else {
+                            forgotMessage.textContent = result["not-verified"] || "Código ou senha inválidos.";
+                        }
+                        forgotMessage.classList.add('error');
+                    }
+                } catch {
+                    forgotMessage.textContent = "Erro ao redefinir senha.";
+                    forgotMessage.classList.add('error');
+                }
+            });
+
+            // Evento para voltar ao login (segunda etapa)
+            if (backToLogin) {
+            backToLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                forgotPasswordSection.classList.add('hidden');
+                registerSection.classList.add('hidden');
+                loginSection.classList.remove('hidden');
+            });
+        }
+
+        } catch (error) {
+            // Antes de trocar o innerHTML, use o seletor antigo
+            forgotPasswordMessage.textContent = 'Erro ao enviar e-mail. Tente novamente.';
+            forgotPasswordMessage.classList.add('error');
+        }
     });
 }
