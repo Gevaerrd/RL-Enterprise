@@ -38,7 +38,7 @@ public class EmailService {
         String generatedCode = coderGenerater();
         message.setTo(to);
         message.setSubject("Código de verificação. RL Enterprise");
-        message.setText("Seu código de verificação é: " + generatedCode);
+        message.setText("EAI PORRAAAAAAA");
         mailSender.send(message);
         return generatedCode;
 

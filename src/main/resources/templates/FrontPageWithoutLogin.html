@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/plans.css" />
     <link rel="stylesheet" href="/css/loginForm.css" />
     <link rel="stylesheet" href="/css/registerForm.css" />
+    <link rel="stylesheet" href="/css/forgotpassword.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link
       rel="stylesheet"
@@ -134,6 +135,28 @@
       </p>
     </div>
   </section>
+
+  <section id="id-for-forgotPasswordForm" class="forgotPasswordForm hidden">
+    <div class="space-of-forgot-password-form">
+      <div class="name-of-enterprise">
+        <h1>RL</h1>
+        <h2>Enterprise</h2>
+      </div>
+      <form id="forgot-password-form">
+        <div class="input-group">
+          <div class="input-icon">
+            <i class="fa-regular fa-user"></i>
+            <input type="email" id="forgot-email" name="email" required placeholder="E-mail para recuperação" />
+          </div>
+        </div>
+        <button type="submit" class="send-reset-btn">Enviar código</button>
+      </form>
+      <a href="#" class="back-to-login">Voltar ao login</a>
+      <div id="forgot-message" class="forgot-message"></div>
+    </div>
+  </section>
+
+  
   <body>
     
     <header id="header" class="header">
@@ -386,11 +409,9 @@
       </div>
     </footer>
 
-    <script src="/js/showloginform.js"></script>
-    <script src="/js/showregisterform.js"></script>
-    <script src="/js/switch.js"></script>
     <script src="/js/registerandlogin/jsforregister.js" defer></script>
     <script src="/js/registerandlogin/jsforlogin.js" defer></script>
     <script src="/js/BuyPlan/tosignplan.js" defer></script>
+    <script src="/js/AuthForm/auth-form.js" defer></script>
   </body>
 </html>

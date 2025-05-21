@@ -193,7 +193,7 @@ public class RLEFrontPage {
                         UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
                         session.setAttribute("user", updatedDTO);
                     }
-                    return "sucess";
+                    return "PurchaseCompleted";
                 } else {
                     return "redirect:/";
                 }
@@ -228,7 +228,7 @@ public class RLEFrontPage {
 
                 UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
                 session.setAttribute("user", updatedDTO);
-                return "sucess";
+                return "PurchaseCompleted";
             } else {
                 return "redirect:/";
             }
