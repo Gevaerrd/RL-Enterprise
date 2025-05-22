@@ -71,6 +71,9 @@ formToSendUser.addEventListener('submit', async function (e) {
         else {
             msg.innerText = result.Error || "Erro ao registrar.";
             msg.classList.add("error");
+            if (window.grecaptcha) {
+                grecaptcha.reset();
+            }
         }
 
     } catch (error) {
@@ -78,5 +81,8 @@ formToSendUser.addEventListener('submit', async function (e) {
         msg.classList.remove("success", "hidden");
         msg.innerText = "Erro ao conectar ao servidor!";
         msg.classList.add("error");
+        if (window.grecaptcha) {
+            grecaptcha.reset();
+        }
     }
 });

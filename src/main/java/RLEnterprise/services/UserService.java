@@ -96,6 +96,10 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public PasswordEncoder getPasswordEncoder() {
+        return passwordEncoder;
+    }
+
     public User findBytwoFactorCode(String code) {
         User user = userRepository.findBytwoFactorCode(code);
         if (user != null) {

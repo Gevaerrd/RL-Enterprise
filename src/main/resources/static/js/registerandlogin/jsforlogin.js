@@ -36,6 +36,9 @@ formForLogin.addEventListener("submit", async function (e) {
         else {  // Caso contrário, exibe mensagem de erro
             msgForResult.classList.remove('hidden');
             msgForResult.innerText = result.Error;
+            if (window.grecaptcha) {
+                grecaptcha.reset();
+            }
         }
     } 
     
@@ -45,5 +48,8 @@ formForLogin.addEventListener("submit", async function (e) {
         msgForResult.classList.remove('hidden');
         msgForResult.innerText = "Erro ao conectar ao servidor!";  // Exibe erro genérico
         msgForResult.classList.add("error");
+        if (window.grecaptcha) {
+            grecaptcha.reset();
+        }
     }
 });

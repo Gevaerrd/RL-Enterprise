@@ -16,14 +16,19 @@
       </h1>
     </a>
     <div class="container-for-module-and-profile-settings">
-      <span id="balance-span" class="balance-label">Saldo: <span class="currency">R$0.0</span></span>
+      <div class="profile-settings">
+        <span id="balance-span" class="balance-label">Saldo: <span class="currency">R$0,00</span></span>
+      </div>
+      
       <div class="profile-settings">
         <i class="fa-solid fa-gear" id="gear-for-settings"></i>
-        <div class="name-and-random-picture">
-          <img src="images/nopicture.png" alt="Profile image" />
-          <span>Olá, <span th:text="${user.name}"></span></span>
-        </div>
         <a href="/userlogout">Sair</a>
+        <div id="settings-menu" class="settings-menu hidden">
+          <ul>
+            <li id="change-password-option"><i class="fa-solid fa-key"></i> Trocar senha</li>
+            <li id="support-option"><i class="fa-solid fa-headset"></i> Suporte</li>
+          </ul>
+        </div>
       </div>
     </div>
   </header>
@@ -115,5 +120,33 @@
         </section>
       </div>
     </footer>
+    <div id="change-password-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal" id="close-password-modal">&times;</span>
+        <form id="change-password-form">
+          <label for="current-password">Senha atual</label>
+          <div class="input-icon-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="current-password" required>
+            <i class="fa-regular fa-eye toggle-password" data-target="current-password"></i>
+          </div>
+          <label for="new-password">Nova senha</label>
+          <div class="input-icon-group">
+            <i class="fa-solid fa-key"></i>
+            <input type="password" id="new-password" required>
+            <i class="fa-regular fa-eye toggle-password" data-target="new-password"></i>
+          </div>
+          <label for="repeat-password">Repita a nova senha</label>
+          <div class="input-icon-group">
+            <i class="fa-solid fa-key"></i>
+            <input type="password" id="repeat-password" required>
+            <i class="fa-regular fa-eye toggle-password" data-target="repeat-password"></i>
+          </div>
+          <button type="submit">Salvar</button>
+          <div id="change-password-message"></div>
+        </form>
+      </div>
+  </div>
+    <script src="/js/UIjs/uijs.js" defer></script>
 </body>
 </html>
