@@ -6,6 +6,7 @@
   <title>Sem Plano</title>
   <link rel="stylesheet" href="css/ui/profilepage.css" />
   <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <header class="profile-header">
@@ -15,8 +16,9 @@
       </h1>
     </a>
     <div class="container-for-module-and-profile-settings">
-      <h3>Sessão do módulo</h3>
+      <span id="balance-span" class="balance-label">Saldo: <span class="currency">R$0.0</span></span>
       <div class="profile-settings">
+        <i class="fa-solid fa-gear" id="gear-for-settings"></i>
         <div class="name-and-random-picture">
           <img src="images/nopicture.png" alt="Profile image" />
           <span>Olá, <span th:text="${user.name}"></span></span>

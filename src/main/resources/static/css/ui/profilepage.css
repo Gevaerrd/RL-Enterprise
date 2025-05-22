@@ -92,14 +92,21 @@ body {
   font-size: 1.5rem;
 }
 
+
 .highlight-rl {
   font-size: 4rem;
+  transition: 1s all ease-in-out;
 }
 
 .highlight-enterprise {
   font-size: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
+  transition: 0.5s all ease;
+  background: linear-gradient(90deg, var(--button-color), var(--text-highlight));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
 }
 
 .profile-settings {
@@ -117,6 +124,36 @@ body {
   font-size: 1.3rem;
 }
 
+#gear-for-settings {
+  font-size: 1.3rem;
+  cursor: pointer;
+  animation: gearTransform 3s infinite;
+  transition: 0.4s all ease-in-out;
+
+}
+
+#gear-for-settings:hover {
+  transform: scale(1.3);
+  color: var(--button-color);
+
+}
+
+@keyframes gearTransform {
+
+  0% {
+    transform: scale(1.0);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1.0);
+  }
+  
+}
+
 #balance-span {
   font-size: 1.5rem;
   color: white;
@@ -124,7 +161,7 @@ body {
 
 .currency {
   font-size: 1.5rem;
-  background: linear-gradient(90deg, #48ff00 90%, #00ff11);
+  background: linear-gradient(90deg, var(--button-color), var(--button-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
@@ -132,7 +169,7 @@ body {
 
 #real-balance {
   font-size: 1.5rem;
-  background: linear-gradient(90deg, #48ff00 90%, #00ff11);
+  background: linear-gradient(90deg, var(--button-color), var(--button-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;

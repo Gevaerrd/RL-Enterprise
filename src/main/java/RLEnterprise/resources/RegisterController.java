@@ -52,7 +52,6 @@ public class RegisterController {
         // }
 
         String captchaResponse = userDTO.getRecaptcha();
-        System.out.println(captchaResponse);
 
         if (us.emailExists(userDTO.getEmail())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
