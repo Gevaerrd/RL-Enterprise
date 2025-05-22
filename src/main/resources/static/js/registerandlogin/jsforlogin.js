@@ -8,7 +8,7 @@ formForLogin.addEventListener("submit", async function (e) {
     const jsonDataForLogin = {};
 
     formDataForLogin.forEach((value, key) => (jsonDataForLogin[key] = value));  // Cria o objeto JSON
-
+    
     try {
         // Envia os dados para o backend
         const responseLogin = await fetch("/login", {

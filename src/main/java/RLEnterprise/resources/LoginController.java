@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import RLEnterprise.dto.UserLoginDTO;
 import RLEnterprise.dto.UserProfileDTO;
+import RLEnterprise.services.CaptchaService;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -24,6 +25,9 @@ public class LoginController {
     @Autowired
     private UserService us;
 
+    @Autowired
+    private CaptchaService captchaService;
+
     @PostMapping("")
     public ResponseEntity<?> loginUser(@RequestBody UserLoginDTO userDTO, HttpServletRequest request, Model model) {
 
@@ -32,6 +36,12 @@ public class LoginController {
             // Usuário já está logado
             return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/profile"));
             // Retorna pra pagina de usuario
+        }
+
+        String recaptchaResponse = userDTO.getRecaptcha();
+        if (!captchaService.isCaptchaValid(recaptchaResponse)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Collections.singletonMap("Error", "Captcha inválido"));
         }
 
         // Valida o login

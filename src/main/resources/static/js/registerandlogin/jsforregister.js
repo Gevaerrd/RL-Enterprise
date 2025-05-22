@@ -43,6 +43,7 @@ formToSendUser.addEventListener('submit', async function (e) {
     const jsonData = {};
 
     formData.forEach((value, key) => (jsonData[key] = value));
+    console.log(jsonData);
 
     try {
         const response = await fetch("/register", {

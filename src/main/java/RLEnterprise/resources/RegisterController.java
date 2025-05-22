@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import RLEnterprise.dto.UserProfileDTO;
 import RLEnterprise.dto.UserRegisterDTO;
+import RLEnterprise.services.CaptchaService;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -34,6 +35,9 @@ public class RegisterController {
     @Autowired
     private UserService us;
 
+    @Autowired
+    private CaptchaService captchaService;
+
     @PostMapping("")
     public ResponseEntity<?> registerUser(@RequestBody UserRegisterDTO userDTO, HttpServletRequest request) {
 
@@ -47,9 +51,17 @@ public class RegisterController {
         // especial."));
         // }
 
+        String captchaResponse = userDTO.getRecaptcha();
+        System.out.println(captchaResponse);
+
         if (us.emailExists(userDTO.getEmail())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Collections.singletonMap("Error", "Email já cadastrado"));
+        }
+
+        if (!captchaService.isCaptchaValid(captchaResponse)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Collections.singletonMap("Error", "Captcha inválido!"));
         }
 
         us.saveUser(userDTO);

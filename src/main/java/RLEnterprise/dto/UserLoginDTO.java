@@ -5,6 +5,8 @@
 
 package RLEnterprise.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  *
  * @author Pichau
@@ -14,6 +16,8 @@ public class UserLoginDTO {
     private String name;
     private String email;
     private String password;
+    @JsonProperty("g-recaptcha-response")
+    private String recaptcha;
 
     public UserLoginDTO() {
 
@@ -67,6 +71,14 @@ public class UserLoginDTO {
             updateFirstName();
         }
         return name;
+    }
+
+    public String getRecaptcha() {
+        return recaptcha;
+    }
+
+    public void setRecaptcha(String recaptcha) {
+        this.recaptcha = recaptcha;
     }
 
     @Override

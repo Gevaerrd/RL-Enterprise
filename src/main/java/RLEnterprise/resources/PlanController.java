@@ -87,9 +87,9 @@ public class PlanController {
 
             // URLs de redirecionamento após o pagamento
             PreferenceBackUrlsRequest backUrls = PreferenceBackUrlsRequest.builder()
-                    .success("https://be57-2804-1530-64e-ee00-98f0-d59-66d4-7b6e.ngrok-free.app/sucesso")
-                    .failure("https://be57-2804-1530-64e-ee00-98f0-d59-66d4-7b6e.ngrok-free.app/")
-                    .pending("https://be57-2804-1530-64e-ee00-98f0-d59-66d4-7b6e.ngrok-free.app/")
+                    .success("https://eac4-2804-1530-64e-ee00-d0b9-620d-ffd3-1f63.ngrok-free.app/sucesso")
+                    .failure("https://eac4-2804-1530-64e-ee00-d0b9-620d-ffd3-1f63.ngrok-free.app/")
+                    .pending("https://eac4-2804-1530-64e-ee00-d0b9-620d-ffd3-1f63.ngrok-free.app/")
                     .build();
 
             // Monta a preferência de pagamento

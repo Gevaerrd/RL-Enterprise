@@ -7,12 +7,16 @@ package RLEnterprise.dto;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserRegisterDTO {
 
     private Long id;
     private String name;
     private String email;
     private String password;
+    @JsonProperty("g-recaptcha-response")
+    private String recaptcha;
 
     public UserRegisterDTO() {
 
@@ -104,6 +108,14 @@ public class UserRegisterDTO {
             return false;
         }
         return Objects.equals(this.password, other.password);
+    }
+
+    public String getRecaptcha() {
+        return recaptcha;
+    }
+
+    public void setRecaptcha(String recaptcha) {
+        this.recaptcha = recaptcha;
     }
 
 }

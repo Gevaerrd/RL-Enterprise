@@ -222,7 +222,7 @@ if (forgotPasswordFormElement) {
             function updateResendTimerMessage() {
                 const min = Math.floor(timer / 60);
                 const seg = timer % 60;
-                resendTimerMessage.innerHTML = `Nova solicitação em: ${min}m ${seg < 10 ? '0' : ''}${seg}s<br>Tente novamente mais tarde.`;
+                resendTimerMessage.innerHTML = `Nova solicitação em: ${min}m ${seg < 10 ? '0' : ''}${seg}s`;
             }
 
             // Evento para reenviar código
