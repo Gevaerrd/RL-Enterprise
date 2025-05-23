@@ -101,16 +101,12 @@ body {
 
 .hero-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
   background: linear-gradient(270deg, #6a11cb, #2575fc, #6a11cb);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientShift 15s ease infinite;
-  text-align: left;
   line-height: 1.4;
-  margin-bottom: 15px;
 }
 
 @keyframes gradientShift {
@@ -120,10 +116,8 @@ body {
 }
 .hero-description {
   font-family: 'Rubik', sans-serif;
-  font-size: 1rem;
   color: #555;
   line-height: 1.6;
-  margin-bottom: 30px;
 }
 
 
@@ -331,7 +325,7 @@ body {
   }
 
   .first-content-and-header {
-    background: linear-gradient(50deg, #ffffff 95%, #0e0b2b 5%);
+    background: none;
     height: auto;
     padding-bottom: 3rem;
   }
@@ -421,18 +415,23 @@ body {
   }
 
   .first-content-and-header {
-    background: linear-gradient(50deg, #ffffff 95%, #0e0b2b 5%);
     height: auto;
     padding-bottom: 3rem;
   }
 
   .principal-message-and-representative-video {
-    margin-top: 4rem;
+    margin-top: 2.5rem;
     padding: 1rem;
     box-shadow: 0px 0px 25px rgba(138, 43, 226, 0.4);
     animation: shadowPulse 5s infinite;
     width: 95%;
+    flex-direction: column-reverse;
     align-items: normal;
+  }
+
+  .side-of-video {
+    width: 100%;
+    height: 15rem;
   }
 
   .h2-desktop {
@@ -441,26 +440,29 @@ body {
 
   .h2-mobile {
     display: block;
-    font-size: 300%;
-    width: 100%;
+    font-size: 3rem;
     margin-bottom: 1rem;
+    max-width: 100%;
+    align-self: center;
   }
 
   .main-content-in-first-section {
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
 
   .main-content-in-first-section p {
     margin-bottom: 3rem;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     line-height: 1.7rem;
   }
 
   .main-button {
-    padding: 1rem 2rem;
+    padding: 1.2rem 2rem;
     font-size: 1rem;
     width: 12rem;
+    margin-top: 2rem;
   }
 
 }
@@ -471,12 +473,12 @@ body {
     width: 100%;
     padding: 0rem 2rem;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0rem;
     border-radius: 0;
   }
 
   .side-of-logo-and-site-name {
-    width: 80%;
+    width: auto;
   }
 
   .organization-of-logo-and-site-name img {
@@ -498,7 +500,7 @@ body {
   .organization-of-lis {
     width: 100%;
     height: 100%;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   .first-content-and-header {
@@ -508,12 +510,13 @@ body {
   }
 
   .principal-message-and-representative-video {
-    margin-top: 4rem;
+    margin-top: 2rem;
     padding: 2rem;
     box-shadow: 0px 0px 25px rgba(138, 43, 226, 0.4);
     animation: shadowPulse 5s infinite;
     padding: 1.5rem;
     width: 92.5%;
+    flex-direction: column-reverse;
     align-items: normal;
   }
 
@@ -523,21 +526,34 @@ body {
 
   .h2-mobile {
     display: block;
-    font-size: 350%;
-    width: 100%;
+    font-size: 3.3rem;
     margin-bottom: 1rem;
+    max-width: 100%;
+    align-self: center;
+  }
+
+  .main-content-in-first-section {
+      width: 90%;
+      justify-content: center;
+      align-items: center;
   }
 
   .main-content-in-first-section p {
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+  }
+
+  .side-of-video {
+    width: 100%;
+    height: 15rem;
   }
 
 
   .main-button {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    width: 12rem;
+    padding: 1.4rem 2rem;
+    font-size: 1.1rem;
+    width: auto;
   }
 
 }
@@ -553,93 +569,12 @@ body {
   }
 
   .side-of-logo-and-site-name {
-    width: 80%;
+    width: auto;
   }
 
   .organization-of-logo-and-site-name img {
     width: 100%;
     height: 6rem;
-  }
-
-  .getting-space-for-ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .getting-space-for-ul li a {
-    font-size: 1.1rem;
-  }
-
-  .organization-of-lis {
-    width: 100%;
-    height: 100%;
-    gap: 1.5rem;
-  }
-
-  .first-content-and-header {
-    background: linear-gradient(50deg, #ffffff 97%, #0e0b2b 5%);
-    height: auto;
-    padding-bottom: 2rem;
-  }
-
-  .principal-message-and-representative-video {
-    margin-top: 4rem;
-    box-shadow: 0px 0px 25px rgba(138, 43, 226, 0.4);
-    padding: 1.5rem;
-    gap: 1.5rem;
-    animation: shadowPulse 5s infinite;
-    width: 92.5%;
-    align-items: normal;
-  }
-
-  .h2-desktop {
-    display: none;
-  }
-
-  .h2-mobile {
-    display: block;
-    font-size: 500%;
-    font-weight: bold;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .main-content-in-first-section {
-    gap: 0.5rem;
-  }
-
-  .main-content-in-first-section p {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-  }
-
-  .main-button {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    width: 14rem;
-  }
-
-}
-
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .header {
-    height: auto;
-    width: 100%;
-    padding: 0rem 2rem;
-    justify-content: space-between;
-    gap: 1rem;
-    border-radius: 0;
-  }
-
-  .side-of-logo-and-site-name {
-    width: 80%;
-  }
-
-  .organization-of-logo-and-site-name img {
-    width: 100%;
-    height: 5rem;
   }
 
   .getting-space-for-ul {
@@ -656,7 +591,97 @@ body {
   .organization-of-lis {
     width: 100%;
     height: 100%;
+    gap: 2.5rem;
+  }
+
+  .first-content-and-header {
+    background: linear-gradient(50deg, #ffffff 97%, #0e0b2b 5%);
+    height: auto;
+    padding-bottom: 2rem;
+  }
+
+  .principal-message-and-representative-video {
+    margin-top: 4rem;
+    box-shadow: 0px 0px 25px rgba(138, 43, 226, 0.4);
+    padding: 1.5rem;
     gap: 1.5rem;
+    animation: shadowPulse 5s infinite;
+    width: 92.5%;
+    flex-direction: column-reverse;
+    align-items: normal;
+  }
+
+  .h2-desktop {
+    display: none;
+  }
+
+  .h2-mobile {
+    display: block;
+    font-size: 3.9rem;
+    margin-bottom: 1rem;
+    max-width: 100%;
+    align-self: center;
+  }
+
+  .main-content-in-first-section {
+    gap: 0.5rem;
+    width: 80%;
+    justify-content: center;
+  }
+
+  .main-content-in-first-section p {
+    margin-bottom: 3rem;
+    font-size: 1.7rem;
+    line-height: 1.7rem;
+  }
+
+  .side-of-video {
+    width: 100%;
+    height: 17rem;
+  }
+
+  .main-button {
+    padding: 1.4rem 2rem;
+    font-size: 1.1rem;
+    width: 15rem;
+  }
+
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .header {
+    height: auto;
+    width: 100%;
+    padding: 0rem 2rem;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 0;
+  }
+
+  .side-of-logo-and-site-name {
+    width: auto;
+  }
+
+  .organization-of-logo-and-site-name img {
+    width: 100%;
+    height: 5rem;
+  }
+
+  .getting-space-for-ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .getting-space-for-ul li a {
+    font-size: 1.05rem;
+  }
+
+  .organization-of-lis {
+    width: 100%;
+    height: 100%;
+    gap: 3rem;
   }
 
   .first-content-and-header {
@@ -715,7 +740,7 @@ body {
   }
 
   .side-of-logo-and-site-name {
-    width: 80%;
+    width: auto;
   }
 
   .organization-of-logo-and-site-name img {
@@ -731,13 +756,13 @@ body {
   }
 
   .getting-space-for-ul li a {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 
   .organization-of-lis {
     width: 100%;
     height: 100%;
-    gap: 1.5rem;
+    gap: 3rem;
   }
 
   .first-content-and-header {
@@ -796,7 +821,7 @@ body {
   }
 
   .side-of-logo-and-site-name {
-    width: 90%;
+    width: auto;
   }
 
   .organization-of-logo-and-site-name img {
@@ -812,13 +837,13 @@ body {
   }
 
   .getting-space-for-ul li a {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .organization-of-lis {
     width: 100%;
     height: 100%;
-    gap: 1.5rem;
+    gap: 3rem;
   }
 
   .first-content-and-header {
@@ -879,14 +904,14 @@ body {
   .header {
     height: auto;
     width: 100%;
-    padding: 0rem 2rem;
+    padding: 0rem 4rem 0rem 3rem;
     justify-content: space-between;
     gap: 1rem;
     border-radius: 0;
   }
 
   .side-of-logo-and-site-name {
-    width: 90%;
+    width: auto;
   }
 
   .organization-of-logo-and-site-name img {
@@ -902,13 +927,13 @@ body {
   }
 
   .getting-space-for-ul li a {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .organization-of-lis {
     width: 100%;
     height: 100%;
-    gap: 1.5rem;
+    gap: 3rem;
   }
 
   .first-content-and-header {

@@ -138,14 +138,14 @@ if (forgotPasswordFormElement) {
         if (!email) return;
 
         // Checa se já foi enviado há menos de 1 hora
-        const lastRequest = localStorage.getItem('lastForgotRequest');
-        if (lastRequest && (Date.now() - Number(lastRequest)) < 3600000) {
-            const tempoRestante = 3600 - Math.floor((Date.now() - Number(lastRequest)) / 1000);
-            const min = Math.floor(tempoRestante / 60);
-            forgotPasswordMessage.innerHTML = `Nova solicitação em: ${min}m<br><br>Tente novamente mais tarde.`;
-            forgotPasswordMessage.classList.add('error');
-            return;
-        }
+        // const lastRequest = localStorage.getItem('lastForgotRequest');
+        // if (lastRequest && (Date.now() - Number(lastRequest)) < 3600000) {
+        //     const tempoRestante = 3600 - Math.floor((Date.now() - Number(lastRequest)) / 1000);
+        //     const min = Math.floor(tempoRestante / 60);
+        //     forgotPasswordMessage.innerHTML = `Nova solicitação em: ${min}m<br><br>Tente novamente mais tarde.`;
+        //     forgotPasswordMessage.classList.add('error');
+        //     return;
+        // }
 
         forgotPasswordMessage.textContent = '';
         forgotPasswordMessage.classList.remove('success', 'error');

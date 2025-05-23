@@ -44,7 +44,7 @@ public class EmailService {
     public void sendEmail(String to, String subject, String content) {
         Email fromEmail = new Email("rlenterprise.ia@gmail.com");
         Email toEmail = new Email(to);
-        Content emailContent = new Content("text/plain", content);
+        Content emailContent = new Content("text/html", content);
         Mail mail = new Mail(fromEmail, subject, toEmail, emailContent);
 
         SendGrid sg = new SendGrid(sendGridApiKey);
@@ -63,16 +63,18 @@ public class EmailService {
         String generatedCode = coderGenerater();
         String htmlContent = """
                     <html>
-                    <body style="font-family: Arial, sans-serif; background-color: #f2f2f2; padding: 20px;">
-                        <div style="max-width: 500px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                            <h2 style="color: #333;">Seu código de verificação</h2>
-                            <p style="font-size: 16px; color: #555;">Use o código abaixo para continuar:</p>
-                            <div style="margin: 20px auto; padding: 15px 25px; background-color: #eebb44; color: white; font-size: 24px; font-weight: bold; border-radius: 5px; display: inline-block;">
+                        <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: 'Segoe UI', sans-serif;">
+                            <div style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 10px; padding: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); text-align: center;">
+                            <h1 style="color: #eebb44; margin-bottom: 10px;">RL Enterprise</h1>
+                            <p style="font-size: 18px; color: #333;">Olá!</p>
+                            <p style="font-size: 16px; color: #555;">Aqui está seu código de verificação. Ele é necessário para continuar com segurança no nosso sistema.</p>
+                            <div style="display: inline-block; margin: 20px 0; padding: 15px 30px; font-size: 28px; font-weight: bold; background-color: #eebb44; color: white; border-radius: 8px;">
                                 %s
                             </div>
-                            <p style="font-size: 12px; color: #999;">Esse código expira em alguns minutos.</p>
-                        </div>
-                    </body>
+                            <p style="font-size: 14px; color: #888;">Esse código expira em alguns minutos. Se você não solicitou esse código, pode ignorar este e-mail.</p>
+                            <p style="margin-top: 30px; font-size: 13px; color: #ccc;">© 2025 RL Enterprise - Todos os direitos reservados</p>
+                            </div>
+                        </body>
                     </html>
                 """
                 .formatted(generatedCode);
@@ -84,16 +86,5 @@ public class EmailService {
             sendEmail(to, "Código para redefinir sua senha", htmlContent);
         }
         return generatedCode;
-    }
-
-    public void sendPasswordReset(String to, String resetLink) {
-        User user = us.findByEmail(to);
-        if (user != null) {
-            user.setTwoFactorCode(to);
-            user.setTwoFactorCodeGeneratedAt(System.currentTimeMillis());
-            us.save(user);
-        }
-        String content = "Clique no link para redefinir sua senha: " + resetLink;
-        sendEmail(to, "Recuperação de senha. RL Enterprise", content);
     }
 }
