@@ -38,11 +38,11 @@ public class LoginController {
             // Retorna pra pagina de usuario
         }
 
-        String recaptchaResponse = userDTO.getRecaptcha();
-        if (!captchaService.isCaptchaValid(recaptchaResponse)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(Collections.singletonMap("Error", "Captcha inválido"));
-        }
+        // String recaptchaResponse = userDTO.getRecaptcha();
+        // if (!captchaService.isCaptchaValid(recaptchaResponse)) {
+        // return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        // .body(Collections.singletonMap("Error", "Captcha inválido"));
+        // }
 
         // Valida o login
         if (us.validLogin(userDTO)) {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sem Plano</title>
+  <title th:text="${user.name} + ' - Perfil'">Título Padrão</title>
   <link rel="stylesheet" href="css/ui/profilepage.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -121,32 +121,32 @@
       </div>
     </footer>
     <div id="change-password-modal" class="modal hidden">
-    <div class="modal-content">
-        <span class="close-modal" id="close-password-modal">&times;</span>
-        <form id="change-password-form">
-          <label for="current-password">Senha atual</label>
-          <div class="input-icon-group">
-            <i class="fa-solid fa-lock"></i>
-            <input type="password" id="current-password" required>
-            <i class="fa-regular fa-eye toggle-password" data-target="current-password"></i>
-          </div>
-          <label for="new-password">Nova senha</label>
-          <div class="input-icon-group">
-            <i class="fa-solid fa-key"></i>
-            <input type="password" id="new-password" required>
-            <i class="fa-regular fa-eye toggle-password" data-target="new-password"></i>
-          </div>
-          <label for="repeat-password">Repita a nova senha</label>
-          <div class="input-icon-group">
-            <i class="fa-solid fa-key"></i>
-            <input type="password" id="repeat-password" required>
-            <i class="fa-regular fa-eye toggle-password" data-target="repeat-password"></i>
-          </div>
-          <button type="submit">Salvar</button>
-          <div id="change-password-message"></div>
-        </form>
-      </div>
-  </div>
+      <div class="modal-content">
+          <span class="close-modal" id="close-password-modal">&times;</span>
+          <form id="change-password-form">
+            <label for="current-password">Senha atual</label>
+            <div class="input-icon-group">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="current-password" required>
+              <i class="fa-regular fa-eye toggle-password" data-target="current-password"></i>
+            </div>
+            <label for="new-password">Nova senha</label>
+            <div class="input-icon-group">
+              <i class="fa-solid fa-key"></i>
+              <input type="password" id="new-password" required>
+              <i class="fa-regular fa-eye toggle-password" data-target="new-password"></i>
+            </div>
+            <label for="repeat-password">Repita a nova senha</label>
+            <div class="input-icon-group">
+              <i class="fa-solid fa-key"></i>
+              <input type="password" id="repeat-password" required>
+              <i class="fa-regular fa-eye toggle-password" data-target="repeat-password"></i>
+            </div>
+            <button type="submit">Salvar</button>
+            <div id="change-password-message"></div>
+          </form>
+        </div>
+    </div>
     <script src="/js/UIjs/uijs.js" defer></script>
 </body>
 </html>

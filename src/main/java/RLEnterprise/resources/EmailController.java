@@ -56,7 +56,6 @@ public class EmailController {
         }
 
         else {
-            System.out.println(user);
             return Map.of("not-verified", "Código errado");
         }
     }

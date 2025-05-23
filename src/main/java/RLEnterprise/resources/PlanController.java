@@ -84,12 +84,12 @@ public class PlanController {
                     .unitPrice(new BigDecimal(plan.getPrice()))
                     .currencyId("BRL")
                     .build();
-
+            // /?afCode=ABC123&outroParametro=valor
             // URLs de redirecionamento após o pagamento
             PreferenceBackUrlsRequest backUrls = PreferenceBackUrlsRequest.builder()
-                    .success("https://e44f-2804-1530-64e-ee00-d0b9-620d-ffd3-1f63.ngrok-free.app/sucesso")
-                    .failure("https://e44f-2804-1530-64e-ee00-d0b9-620d-ffd3-1f63.ngrok-free.app/")
-                    .pending("https://e44f-2804-1530-64e-ee00-d0b9-620d-ffd3-1f63.ngrok-free.app/")
+                    .success("https://c497-2804-1530-64e-ee00-d0b9-620d-ffd3-1f63.ngrok-free.app/sucesso")
+                    .failure("https://c497-2804-1530-64e-ee00-d0b9-620d-ffd3-1f63.ngrok-free.app/")
+                    .pending("https://c497-2804-1530-64e-ee00-d0b9-620d-ffd3-1f63.ngrok-free.app/")
                     .build();
 
             // Monta a preferência de pagamento

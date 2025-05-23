@@ -58,10 +58,10 @@ public class RegisterController {
                     .body(Collections.singletonMap("Error", "Email já cadastrado"));
         }
 
-        if (!captchaService.isCaptchaValid(captchaResponse)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(Collections.singletonMap("Error", "Captcha inválido!"));
-        }
+        // if (!captchaService.isCaptchaValid(captchaResponse)) {
+        // return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        // .body(Collections.singletonMap("Error", "Captcha inválido!"));
+        // }
 
         us.saveUser(userDTO);
         // Substituindo o register porque ele tem senha, o Profile oculta ela...
