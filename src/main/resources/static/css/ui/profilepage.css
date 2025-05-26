@@ -183,6 +183,82 @@ body {
   gap: 0.1rem;
 }
 
+#withdraw-btn {
+  background: #eebb44;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 12px;
+  transition: background 0.2s;
+}
+#withdraw-btn:hover {
+  background: #c99a2c;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+  align-items: center;
+  justify-content: center;
+}
+.modal:not(.hidden) {
+  display: flex;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 10px;
+  padding: 32px 24px;
+  min-width: 320px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  position: relative;
+}
+.close-modal {
+  position: absolute;
+  top: 12px; right: 18px;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+}
+#withdraw-form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 500;
+}
+#withdraw-form input {
+  width: 100%;
+  padding: 7px 10px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+#withdraw-form button[type="submit"] {
+  background: #eebb44;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+#withdraw-message {
+  margin-top: 10px;
+  color: #e74c3c;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
 .name-and-random-picture {
   display: flex;
   justify-content: center;
@@ -950,7 +1026,7 @@ body {
   }
 
   .modal-or-plan-container h4 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .modal-or-plan-container p {

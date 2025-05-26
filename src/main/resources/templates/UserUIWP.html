@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="/js/planschecker/modalunlock.js" defer></script>
   <script src="/js/UIjs/uijs.js" defer></script>
+  <script src="/js/UIjs/withdraw.js" defer></script>
 </head>
 <body>
   <header class="profile-header">
@@ -21,6 +22,7 @@
       <div class="profile-settings nogap-forbalance">
         <span id="balance-span" class="balance-label">Saldo: <span class="currency">R$</span></span>
         <span id="real-balance" class="balance-value" th:text="${user.balance}"></span>
+        <button id="withdraw-btn">Saque</button>
       </div>
       <h3 th:if="${user.afilliateCode != null}" th:text="${user.afilliateCode.code}"></h3>
       <div class="profile-settings">
@@ -150,6 +152,19 @@
             <div id="change-password-message"></div>
           </form>
         </div>
+    </div>
+    <div id="withdraw-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-modal" id="close-withdraw-modal">&times;</span>
+        <form id="withdraw-form">
+          <label for="withdraw-amount">Valor do saque</label>
+          <input type="number" id="withdraw-amount" min="1" step="0.01" required>
+          <label for="withdraw-cpf">CPF para PIX</label>
+          <input type="text" id="withdraw-cpf" maxlength="14" required>
+          <button type="submit">Solicitar Saque</button>
+          <div id="withdraw-message"></div>
+        </form>
+      </div>
     </div>
 </body>
 </html>

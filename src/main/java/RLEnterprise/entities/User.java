@@ -1,11 +1,15 @@
 package RLEnterprise.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -20,8 +24,11 @@ public class User {
     private String email;
     private String password;
     private double balance;
+    private String cpf;
     private String twoFactorCode;
     private Long twoFactorCodeGeneratedAt;
+    @OneToMany(mappedBy = "user")
+    private List<WithdrawRequest> withdrawRequests = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "plan_id")
@@ -106,6 +113,24 @@ public class User {
 
     public void setTwoFactorCodeGeneratedAt(Long twoFactorCodeGeneratedAt) {
         this.twoFactorCodeGeneratedAt = twoFactorCodeGeneratedAt;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public List<WithdrawRequest> getWithdrawRequests() {
+        return withdrawRequests;
+    }
+
+    public void addWithdrawRequest(WithdrawRequest withdrawRequest) {
+        if (this.withdrawRequests != null) {
+            this.withdrawRequests.add(withdrawRequest);
+        }
     }
 
     @Override
