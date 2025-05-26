@@ -58,6 +58,9 @@ public class RLEFrontPage {
             UserProfileDTO user = (UserProfileDTO) session.getAttribute("user"); // Pegando o DTO que esta logado
 
             model.addAttribute("user", user); // Passa para a view
+            if (user.getPlan() != null) {
+                model.addAttribute("userPlanId", user.getPlan().getId());
+            }
             return "FrontPageWithLogin";
         }
 

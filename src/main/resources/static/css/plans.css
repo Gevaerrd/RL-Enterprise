@@ -19,6 +19,20 @@ body {
   background: var(--background-second-session);
 }
 
+.plan-card.locked {
+  opacity: 0.85;
+  filter: grayscale(0.2);
+  pointer-events: none;
+  box-shadow: 0 0 0 2px #8884;
+}
+.plan-card.locked button {
+  background: #bdbdbd !important;
+  color: #fff !important;
+  cursor: not-allowed !important;
+  border: none;
+  filter: none;
+}
+
 .learn-with-us {
   z-index: 2;
   display: flex;

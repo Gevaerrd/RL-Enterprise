@@ -22,93 +22,93 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&display=swap" rel="stylesheet">  
   </head>
-  <section id="id-for-loginForm" class="loginForm hidden">
-    <div class="space-of-login-form">
-      <div class="name-of-enterprise">
-        <h1>RL</h1>
-        <h2>Enterprise</h2>
-      </div>
-      <div id="formMessageLogin" class="form-message hidden"></div>
-      <form class="organization-off-login-form">
-        <div class="input-group">
-          <div class="input-icon">
-            <i class="fa-regular fa-envelope"></i>
-            <input
-              type="email"
-              id="email-login"
-              name="email"
-              placeholder="Digite seu e-mail"
-              required
-            />
-          </div>
-        </div>
+  <body th:attr="data-user-plan-id=${userPlanId}">
 
-        <div class="input-group">
-          <div class="input-icon">
-            <i class="fa-solid fa-lock"></i>
-            <input
-              type="password"
-              id="password-login"
-              name="password"
-              placeholder="Digite sua senha"
-              minlength="1"
-              required
-            />
-          </div>
+    <section id="id-for-loginForm" class="loginForm hidden">
+      <div class="space-of-login-form">
+        <div class="name-of-enterprise">
+          <h1>RL</h1>
+          <h2>Enterprise</h2>
         </div>
-        <button type="submit" id="button-for-get-login">Entrar</button>
-      </form>
-      <a href="" class="a-forgot-password">Esqueceu sua senha?</a>
-      <p>
-        Não tem uma conta?
-        <a id="link-to-register" class="a-for-logincall">Registre-se</a>
-      </p>
-    </div>
-  </section>
+        <div id="formMessageLogin" class="form-message hidden"></div>
+        <form class="organization-off-login-form">
+          <div class="input-group">
+            <div class="input-icon">
+              <i class="fa-regular fa-envelope"></i>
+              <input
+                type="email"
+                id="email-login"
+                name="email"
+                placeholder="Digite seu e-mail"
+                required
+              />
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-icon">
+              <i class="fa-solid fa-lock"></i>
+              <input
+                type="password"
+                id="password-login"
+                name="password"
+                placeholder="Digite sua senha"
+                minlength="1"
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" id="button-for-get-login">Entrar</button>
+        </form>
+        <a href="" class="a-forgot-password">Esqueceu sua senha?</a>
+        <p>
+          Não tem uma conta?
+          <a id="link-to-register" class="a-for-logincall">Registre-se</a>
+        </p>
+      </div>
+    </section>
   
-  <section id="id-for-registerForm" class="registerForm hidden">
-    <div class="space-of-register-form">
-      <div class="name-of-enterprise">
-        <h1>RL</h1>
-        <h2>Enterprise</h2>
-        <div id="formMessage" class="form-message hidden"></div>
+    <section id="id-for-registerForm" class="registerForm hidden">
+      <div class="space-of-register-form">
+        <div class="name-of-enterprise">
+          <h1>RL</h1>
+          <h2>Enterprise</h2>
+          <div id="formMessage" class="form-message hidden"></div>
+        </div>
+        <form class="organization-off-register-form">
+          <div class="input-group">
+            <div class="input-icon">
+              <i class="fa-regular fa-envelope"></i>
+              <input
+                type="email"
+                id="email-register"
+                name="email"
+                placeholder="Digite seu e-mail"
+                required
+              />
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-icon">
+              <i class="fa-solid fa-lock"></i>
+              <input
+                type="password"
+                id="password-register"
+                name="password"
+                placeholder="Digite sua senha"
+                required
+              />
+            </div>
+          </div>
+          <button type="submit">Registrar</button>
+        </form>
+        <a href="" class="a-forgot-password">Esqueceu sua senha?</a>
+        <p>
+          Já tem uma conta?
+          <a id="link-to-login" class="a-for-registercall">Entrar</a>
+        </p>
       </div>
-      <form class="organization-off-register-form">
-        <div class="input-group">
-          <div class="input-icon">
-            <i class="fa-regular fa-envelope"></i>
-            <input
-              type="email"
-              id="email-register"
-              name="email"
-              placeholder="Digite seu e-mail"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="input-group">
-          <div class="input-icon">
-            <i class="fa-solid fa-lock"></i>
-            <input
-              type="password"
-              id="password-register"
-              name="password"
-              placeholder="Digite sua senha"
-              required
-            />
-          </div>
-        </div>
-        <button type="submit">Registrar</button>
-      </form>
-      <a href="" class="a-forgot-password">Esqueceu sua senha?</a>
-      <p>
-        Já tem uma conta?
-        <a id="link-to-login" class="a-for-registercall">Entrar</a>
-      </p>
-    </div>
-  </section>
-  <body>
+    </section>
+    
     <header id="header" class="header">
       <div class="side-of-logo-and-site-name">
         <a href="" class="organization-of-logo-and-site-name">
@@ -125,6 +125,7 @@
         </ul>
       </nav>
     </header>
+
     <div id="get-home" class="first-content-and-header">
       <section class="principal-message-and-representative-video">
         <main class="main-content-in-first-section">
@@ -158,7 +159,6 @@
               única?
             </p>
           </div>
-
           <!-- Seção de Benefícios -->
           <div class="why-choose-us">
             <article class="benefit">
@@ -177,7 +177,6 @@
                 </p>
               </div>
             </article>
-
             <article class="benefit">
               <div class="img-benefit">
                 <img src="images/dominenobg.png" alt="Tutoriais Completos" />
@@ -196,7 +195,6 @@
                 </p>
               </div>
             </article>
-
             <article class="benefit">
               <div class="img-benefit">
                 <img
@@ -216,7 +214,6 @@
                 </p>
               </div>
             </article>
-
             <article class="benefit">
               <div class="img-benefit">
                 <img src="images/transformenobg.png" alt="Ganhe com isso" />
@@ -312,6 +309,7 @@
         </section>
       </div>
     </section>
+
     <footer class="footer" id="footer">
       <div class="container-for-informations">
         <section class="job-with-us">
@@ -354,7 +352,7 @@
       </div>
     </footer>
 
-
     <script src="/js/BuyPlan/tosignplan.js" defer></script>
+    <script src="/js/UIjs/lockplans.js" defer></script>
   </body>
 </html>

@@ -184,79 +184,127 @@ body {
 }
 
 #withdraw-btn {
-  background: #eebb44;
-  color: #fff;
+  background: #15181d;
+  color: #f5f5f5;
   border: none;
-  border-radius: 6px;
-  padding: 8px 18px;
-  font-size: 1rem;
-  font-weight: bold;
+  border-radius: 0.7rem;
+  padding: 1rem 2.2rem;
+  font-size: 1.35rem;
+  font-weight: 700;
   cursor: pointer;
-  margin-left: 12px;
-  transition: background 0.2s;
+  margin-left: 1.2rem;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 0.15rem 0.5rem rgba(0,0,0,0.13);
+  letter-spacing: 0.02em;
 }
 #withdraw-btn:hover {
-  background: #c99a2c;
+  background: #181b20;
+  transform: translateY(-0.12rem) scale(1.04);
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.4);
-  align-items: center;
-  justify-content: center;
-}
 .modal:not(.hidden) {
   display: flex;
 }
-.modal-content {
-  background: #fff;
-  border-radius: 10px;
-  padding: 32px 24px;
-  min-width: 320px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+
+#withdraw-modal {
+  background: rgba(18, 20, 28, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+.withdraw-content {
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 3rem;
+  border-radius: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.withdraw-content .close-modal {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  font-size: 2.2rem;
+  color: #888c94;
+  cursor: pointer;
+  transition: color 0.18s;
+  z-index: 2;
+}
+.withdraw-content .close-modal:hover {
+  color: var(--button-color);
+}
+
+.name-of-enterprise {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.name-of-enterprise h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 4rem;
+  color: #000000;
+}
+
+.name-of-enterprise h2 {
+  color: #000000;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+}
+
+#withdraw-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+#withdraw-form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.3rem 3rem;
+  border-radius: 0.5rem;
+  background: var(--background-header);
+  color: var(--text-light);
+  font-size: 1.3rem;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+#withdraw-form button:hover {
+  background: #423b81;
+}
+.input-icon {
   position: relative;
 }
-.close-modal {
+
+.input-group i {
   position: absolute;
-  top: 12px; right: 18px;
+  top: 27%;
+  left: 1rem;
   font-size: 1.5rem;
-  color: #888;
-  cursor: pointer;
+  color: black;
 }
-#withdraw-form label {
-  display: block;
-  margin-top: 12px;
-  font-weight: 500;
+
+.input-group input {
+  width: 20rem;
+  padding: 1.3rem 3rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  border: 1px solid #dddddd;
+  color: #000000;
+  outline: none;
+  transition: 0.5s all ease-in-out;
 }
-#withdraw-form input {
-  width: 100%;
-  padding: 7px 10px;
-  margin-top: 4px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 8px;
-}
-#withdraw-form button[type="submit"] {
-  background: #eebb44;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 18px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-  width: 100%;
-}
-#withdraw-message {
-  margin-top: 10px;
-  color: #e74c3c;
-  font-size: 0.95rem;
-  text-align: center;
+
+.input-group input:hover {
+  border: 1px solid #111;
 }
 
 .name-and-random-picture {
