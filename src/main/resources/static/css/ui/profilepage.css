@@ -558,27 +558,33 @@ body {
   }
 }
 
-/* 1700px - Pequenos ajustes para telas grandes */
-@media (max-width: 1700px) {
-  .container-for-module-and-profile-settings {
-    padding: 2rem 4rem;
-  }
+@media(min-width: 1600px) and (max-width:1750px) {
+}
 
-  .space-for-enterprise-name-in-profile {
-    padding: 2rem 4rem;
-  }
-
+@media (min-width: 1441px) and (max-width: 1600px) {
   .modals-aside {
     padding: 4rem 4rem;
   }
 
-  .noplan-message {
-    padding: 2rem 4rem;
+  .highlight-rl {
+    font-size: 3.5rem;
+  }
+
+  .container-for-noplan-message {
+    padding: 3rem;
+  }
+
+  .modal-or-plan-container h4 {
+    font-size: 1.5rem;
+  }
+
+  .modal-or-plan-container p {
+    font-size: 1.3rem;
   }
 }
 
 /* 1440px - Telas padrão de notebook grande */
-@media (max-width: 1440px) {
+@media (min-width: 1201px) and (max-width: 1440px) {
 
   .modals-aside {
     padding: 4rem 4rem;
@@ -602,293 +608,508 @@ body {
 }
 
 /* 1280px - Notebooks comuns */
-@media (min-width: 1024px) and (max-width: 1280px) {
-
-  .container-for-module-and-profile-settings h3 {
-    display: none;
-  }
-
-
-  .container-for-module-and-profile-settings {
-    width: 100%;
-    padding: 2rem;
-    border-right: none;
-  }
+@media (min-width: 1025px) and (max-width: 1200px) {
 
   .space-for-enterprise-name-in-profile {
-    width: 70%;
-    padding: 1rem 1rem;
-  }
-
-  .container-for-module-and-profile-settings {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .profile-settings {
-    width: 80%;
-  }
-
-  .modals-and-noplan-message {
-    align-items: center;
-    padding: 2rem;
-    gap: 2rem;
-  }
-
-  .modals-aside {
-    width: 15rem;
-    padding: 2rem 0;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal-or-plan-container {
-    align-items: center;
-    text-align: center;
-    width: 45%;
-  }
-
-  .noplan-message {
-    padding: 0;
-  }
-
-  .container-for-noplan-message {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .noplan-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .noplan-text {
-    align-items: center;
-    text-align: center;
-  }
-
-  .noplan-text a {
-    margin: 1rem auto 0 auto;
-  }
-}
-
-/* 1024px - Tablets na horizontal */
-@media (max-width: 1024px) {
-  .profile-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .modal-or-plan-container:hover::after {
-  width: 0%;
-  left: 0;
-  }
-
-  .space-for-enterprise-name-in-profile,
-  .container-for-module-and-profile-settings {
-    width: 100%;
-    padding: 2rem;
-    border-right: none;
-  }
-
-  .container-for-module-and-profile-settings h3 {
-    display: none;
-  }
-
-  .container-for-module-and-profile-settings {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .profile-settings {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .modals-and-noplan-message {
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-  }
-
-  .modals-aside {
-    width: 100%;
-    padding: 2rem 0;
-    border-right: none;
-    margin-top: 2rem;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 2rem;
-    flex-direction: column;
-  }
-
-  .modal-or-plan-container {
-    align-items: center;
-    text-align: center;
-    width: 45%;
-  }
-
-  .noplan-message {
-    padding: 0;
-    width: 100%;
-  }
-
-  .noplan-message {
-    margin-top: 3rem;
-    width: 85%;
-  }
-
-  .container-for-noplan-message {
-    flex-direction: column;
+    justify-content: center;
+    align-items: normal;
     padding: 2rem;
-    text-align: center;
-  }
+    width: 14rem;
 
-  .profile-settings {
-    width: 50%;
-  }
-
-  .noplan-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .noplan-text {
-    align-items: center;
-    text-align: center;
-  }
-
-  .noplan-message {
-    margin-top: 2rem;
-  }
-
-  .noplan-text a {
-    margin: 1rem auto 0 auto;
-  }
-}
-
-/* 768px - Tablets verticais */
-@media (max-width: 768px) {
-  .modal-or-plan-container {
-    width: 80%;
   }
 
   .highlight-rl {
-    font-size: 3rem;
-  }
 
-  .highlight-enterprise {
-    font-size: 1.1rem;
-    letter-spacing: 0.4rem;
-  }
-
-  .profile-settings {
-    width: 50%;
-  }
-
-  .container-for-module-and-profile-settings h3 {
-    font-size: 1.3rem;
-  }
-
-  .profile-settings a,
-  .profile-settings .name-and-random-picture span {
-    font-size: 1.2rem;
-  }
-
-  .noplan-text p:first-of-type {
-    font-size: 2.4rem;
-  }
-
-  .noplan-message {
-    margin-top: 2rem;
-  }
-
-  .noplan-text p:last-of-type {
-    font-size: 1.6rem;
-  }
-
-  .noplan-text a {
-    font-size: 1.4rem;
-    padding: 1rem 2rem;
-  }
-}
-
-/* 600px - Celulares grandes */
-@media (max-width: 600px) {
-  .modal-or-plan-container {
-    width: 100%;
-  }
-
-  .highlight-rl {
-    font-size: 2.5rem;
-  }
-
-  .highlight-enterprise {
-    font-size: 1rem;
-    letter-spacing: 0.3rem;
-  }
-
-  .container-for-module-and-profile-settings h3 {
-    font-size: 1.2rem;
-  }
-
-  .profile-settings a,
-  .profile-settings .name-and-random-picture span {
-    font-size: 1rem;
-  }
-
-
-  .noplan-text p:first-of-type {
-    font-size: 2.2rem;
-  }
-
-  .noplan-text p:last-of-type {
-    font-size: 1.5rem;
-  }
-
-  .noplan-text a {
-    font-size: 1.3rem;
-    padding: 0.8rem 1.5rem;
-  }
-}
-
-/* 468px - Celulares pequenos */
-@media (max-width: 468px) {
-  .highlight-rl {
     font-size: 2rem;
   }
 
   .highlight-enterprise {
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     letter-spacing: 0.2rem;
+
+  }
+
+  .container-for-module-and-profile-settings {
+    padding: 1rem 3rem;
+
+  }
+
+  .profile-settings {
+    padding: 0.5rem;
+  }
+
+  #balance-span, .currency {
+    font-size: 1.2rem;
+  }
+
+  .profile-settings a, #gear-for-settings {
+    font-size: 1.2rem;
+  }
+
+  .modals-aside {
+    width: 14rem;
+    padding: 2rem 1.63rem;
+    gap: 2rem;
   }
 
   .modal-or-plan-container h4 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
   }
 
   .modal-or-plan-container p {
     font-size: 1.1rem;
   }
 
+  .noplan-message {
+    padding: 1.5rem 3rem;
+  }
+
+  .container-for-noplan-message {
+    padding: 2rem;
+    justify-content: normal;
+    align-items: normal;
+  }
+
+  .noplan-content {
+    gap: 2.3rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cadeado {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .noplan-text {
+  gap: 1.5rem;
+  display: flex;
+  max-width: 20rem;
+  }
+
   .noplan-text p:first-of-type {
     font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-light);
   }
 
   .noplan-text p:last-of-type {
-    font-size: 1.4rem;
+  font-size: 1.5rem;
+  color: var(--text-highlight);
   }
 
   .noplan-text a {
-    font-size: 1.2rem;
+  font-size: 1.3rem;
+  }
+}
+
+/* 1024px - Tablets na horizontal */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .space-for-enterprise-name-in-profile {
+    display: flex;
+    justify-content: center;
+    align-items: normal;
+    padding: 2rem 1.63rem;
+    width: 12rem;
+
+  }
+
+  .highlight-rl {
+
+    font-size: 1.7rem;
+  }
+
+  .highlight-enterprise {
+    font-size: 1.1rem;
+    letter-spacing: 0.2rem;
+
+  }
+
+  .container-for-module-and-profile-settings {
+    padding: 1rem 1rem;
+
   }
 
   .profile-settings {
-    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  #balance-span, .currency {
+    font-size: 1.1rem;
+  }
+
+  .profile-settings a, #gear-for-settings {
+    font-size: 1.1rem;
+  }
+
+  .modals-aside {
+    width: 12rem;
+    padding: 2rem 1.63rem;
+    gap: 2rem;
+  }
+
+  .modal-or-plan-container h4 {
+    font-size: 1.2rem;
+  }
+
+  .modal-or-plan-container p {
+    font-size: 1.05rem;
+  }
+
+  .noplan-message {
+    padding: 1rem;
+  }
+
+  .container-for-noplan-message {
+    padding: 2rem;
+  }
+
+  .noplan-content {
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cadeado {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .noplan-text {
+  gap: 1.5rem;
+  display: flex;
+  max-width: 20rem;
+  }
+
+  .noplan-text p:first-of-type {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--text-light);
+  }
+
+  .noplan-text p:last-of-type {
+  font-size: 1.3rem;
+  color: var(--text-highlight);
+  }
+
+  .container-for-noplan-message {
+    justify-content: normal;
+    align-items: normal;
+  }
+
+  .noplan-text a {
+  font-size: 1.3rem;
+  }
+}
+
+/* 768px - Tablets verticais */
+@media (min-width: 600px) and (max-width: 768px) {
+  .space-for-enterprise-name-in-profile {
+    display: flex;
+    justify-content: center;
+    align-items: normal;
+    padding: 2rem;
+    width: 12rem;
+
+  }
+
+  .highlight-rl {
+
+    font-size: 1.5rem;
+  }
+
+  .highlight-enterprise {
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+
+  }
+
+  .container-for-module-and-profile-settings {
+    padding: 1rem 2rem;
+
+  }
+
+  .profile-settings {
+    padding: 0.5rem;
+  }
+
+  #balance-span, .currency {
+    font-size: 1rem;
+  }
+
+  .profile-settings a, #gear-for-settings {
+    font-size: 1.1rem;
+  }
+
+  .modals-aside {
+    width: 12rem;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .modal-or-plan-container h4 {
+    font-size: 1.15rem;
+  }
+
+  .modal-or-plan-container p {
+    font-size: 1.05rem;
+  }
+
+  .noplan-message {
+    padding: 1rem 2rem;
+  }
+
+  .container-for-noplan-message {
+    padding: 1rem;
+  }
+
+  .noplan-content {
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cadeado {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .noplan-text {
+  gap: 1.5rem;
+  display: flex;
+  max-width: 15rem;
+  }
+  .noplan-text p:first-of-type {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-light);
+  }
+
+  .noplan-text p:last-of-type {
+  font-size: 1.3rem;
+  color: var(--text-highlight);
+  }
+
+  .container-for-noplan-message {
+    justify-content: normal;
+    align-items: normal;
+  }
+
+  .noplan-text a {
+  font-size: 1.3rem;
+  }
+}
+
+/* 600px - Celulares grandes */
+@media (min-width: 481px) and (max-width: 599px) {
+  .space-for-enterprise-name-in-profile {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: normal;
+    padding: 2rem;
+    width: 10rem;
+
+  }
+
+  .highlight-rl {
+
+    font-size: 1.5rem;
+  }
+
+  .highlight-enterprise {
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+
+  }
+
+  .container-for-module-and-profile-settings {
+    padding: 1rem 1rem;
+
+  }
+
+  .profile-settings {
+    padding: 0.5rem;
+  }
+
+  #balance-span, .currency {
+    font-size: 1rem;
+  }
+
+  .profile-settings a, #gear-for-settings {
+    font-size: 1rem;
+  }
+
+  .modals-aside {
+    width: 10rem;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .modal-or-plan-container h4 {
+    font-size: 1.1rem;
+  }
+
+  .modal-or-plan-container p {
+    font-size: 1rem;
+  }
+
+  .noplan-message {
+    padding: 1rem 1.5rem;
+  }
+
+  .container-for-noplan-message {
+    padding: 1rem;
+  }
+
+  .noplan-content {
     gap: 1rem;
   }
+
+  .cadeado {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .noplan-text {
+  gap: 1.5rem;
+  display: flex;
+  text-align: normal;
+  align-items: normal;
+  justify-content: normal;
+  }
+
+  .noplan-content {
+    align-items: center;
+  }
+
+  .noplan-text p:first-of-type {
+    font-size: 1.35rem;
+    font-weight: bold;
+    color: var(--text-light);
+  }
+
+  .noplan-text p:last-of-type {
+  font-size: 1.05rem;
+  color: var(--text-highlight);
+  }
+
+  .container-for-noplan-message {
+    justify-content: normal;
+    align-items: normal;
+  }
+
+  .noplan-text a {
+  font-size: 1.2rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .space-for-enterprise-name-in-profile {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: normal;
+    padding: 0rem 0.5rem;
+    width: 9.35rem;
+
+  }
+
+  .highlight-rl {
+
+    font-size: 1.5rem;
+  }
+
+  .highlight-enterprise {
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+
+  }
+
+  .container-for-module-and-profile-settings {
+    padding: 1rem 1rem;
+
+  }
+
+  .profile-settings {
+    padding: 0.5rem;
+  }
+
+  #balance-span, .currency {
+    font-size: 1rem;
+  }
+
+  .profile-settings a, #gear-for-settings {
+    font-size: 1rem;
+  }
+
+  .modals-aside {
+    width: 9.35rem;
+    padding: 2rem 1.63rem;
+    gap: 2rem;
+  }
+
+  .modal-or-plan-container h4 {
+    font-size: 1rem;
+  }
+
+  .modal-or-plan-container p {
+    font-size: 1rem;
+  }
+
+  .noplan-message {
+    padding: 1rem;
+  }
+
+  .container-for-noplan-message {
+    padding: 1rem;
+  }
+
+  .noplan-content {
+    gap: 1rem;
+  }
+
+  .cadeado {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .noplan-text {
+  gap: 1.5rem;
+  display: flex;
+  text-align: normal;
+  align-items: normal;
+  justify-content: normal;
+  }
+
+  .noplan-content {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .noplan-text p:first-of-type {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--text-light);
+  }
+
+  .noplan-text p:last-of-type {
+  font-size: 1.2rem;
+  color: var(--text-highlight);
+  }
+
+  .container-for-noplan-message {
+    justify-content: normal;
+    align-items: normal;
+  }
+
+  .noplan-text a {
+  font-size: 1.3rem;
+  }
+
 }
