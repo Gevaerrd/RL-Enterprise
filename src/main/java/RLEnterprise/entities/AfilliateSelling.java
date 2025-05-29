@@ -13,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -25,26 +26,35 @@ public class AfilliateSelling {
     private Long id;
 
     @ManyToOne
-    private User user;
+    @JoinColumn(name = "seller_id")
+    private User seller;
+
+    private String buyerName;
 
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime selledAt;
+
+    private double comission;
+
+    @ManyToOne
+    @JoinColumn(name = "plan_id")
+    private Plan plan;
 
     public AfilliateSelling() {
 
     }
 
     public AfilliateSelling(User user, LocalDateTime selledAt) {
-        this.user = user;
+        this.seller = user;
         this.selledAt = selledAt;
     }
 
     public User getUser() {
-        return user;
+        return seller;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.seller = user;
     }
 
     public LocalDateTime getSelledAt() {
@@ -57,6 +67,38 @@ public class AfilliateSelling {
 
     public Long getId() {
         return id;
+    }
+
+    public double getComission() {
+        return comission;
+    }
+
+    public void setComission(double comission) {
+        this.comission = comission;
+    }
+
+    public Plan getPlan() {
+        return plan;
+    }
+
+    public void setPlan(Plan plan) {
+        this.plan = plan;
+    }
+
+    public User getSeller() {
+        return seller;
+    }
+
+    public void setSeller(User seller) {
+        this.seller = seller;
+    }
+
+    public String getBuyerName() {
+        return buyerName;
+    }
+
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
     }
 
 }

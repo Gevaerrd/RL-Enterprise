@@ -33,7 +33,7 @@ async function openWithdrawalsModal() {
         modalContent.innerHTML = '';
 
         if (withdrawals.length === 0) {
-            modalContent.innerHTML = '<span style="color:#fff;display:block;text-align:center;margin-top:1.5rem;">Nenhum saque encontrado.</span>';
+            modalContent.innerHTML = '<span style="font-size:1.5rem;color:#fff;display:block;text-align:center;margin-top:2rem;">Nenhum saque encontrado.</span>';
             return;
         }
 
@@ -48,7 +48,7 @@ async function openWithdrawalsModal() {
             else if (statusText === "RECUSADO") statusClass += " recusado";
 
             row.innerHTML = `
-                <span class="${statusClass}">${statusText}</span>
+                <span class="withdraw-status">${statusText}</span>
                 <span class="withdraw-date">${formatDate(item.requestedAt)}</span>
                 <span class="withdraw-value">R$ ${item.value.toFixed(2)}</span>
             `;

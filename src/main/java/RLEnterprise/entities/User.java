@@ -30,7 +30,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<WithdrawRequest> withdrawRequests = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "seller")
     private List<AfilliateSelling> afilliateSellings = new ArrayList<>();
 
     @ManyToOne

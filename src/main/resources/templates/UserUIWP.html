@@ -14,6 +14,23 @@
   <script src="/js/UIjs/showwithdraals.js" defer></script>
 </head>
 <body>
+  <div class="withdrals-container hidden" id="sales-modal">
+    <div class="withdrals-modal custom-withdraw-modal">
+      <div class="withdraw-modal-header">
+        <span class="withdraw-modal-title">Minhas vendas</span>
+        <span class="close-modal" id="close-sales-modal">&times;</span>
+      </div>
+      <div class="withdraw-table">
+        <div class="withdraw-table-header">
+          <span>Data</span>
+          <span>Cliente</span>
+          <span>Comissão</span>
+          <span>Plano</span>
+        </div>
+        <div id="sales-list"></div>
+      </div>
+    </div>
+  </div>
   <div class="withdrals-container hidden" id="withdrawals-modal">
     <div class="withdrals-modal custom-withdraw-modal">
       <div class="withdraw-modal-header">

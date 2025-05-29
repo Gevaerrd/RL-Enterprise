@@ -5,6 +5,8 @@
 
 package RLEnterprise.resources;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,7 @@ import RLEnterprise.entities.AfilliateSelling;
 import RLEnterprise.entities.Plan;
 import RLEnterprise.entities.User;
 import RLEnterprise.services.AfilliateCodeService;
+import RLEnterprise.services.AfilliateSellingService;
 import RLEnterprise.services.PlanService;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,6 +46,9 @@ public class RLEFrontPage {
 
     @Autowired
     AfilliateCodeService acs;
+
+    @Autowired
+    AfilliateSellingService asc;
 
     @GetMapping()
     public String home(@RequestParam(value = "afCode", required = false) String afCode,
@@ -163,14 +169,23 @@ public class RLEFrontPage {
                 // Bonifica o afiliador, se houver referenceCode
                 if (referenceCode != null) {
                     AfilliateCode code = acs.findByCode(referenceCode);
-                    AfilliateSelling afilliateSelling = new AfilliateSelling();
                     if (code != null && code.getUser() != null) {
                         User afiliador = code.getUser(); // Pegando o usuário do código de afilaido
-                        afiliador.addAfilliateSellings(afilliateSelling); // Adicionando o registro da venda afiliada
-                        afilliateSelling.setUser(afiliador); // Adicionando o usuario ao registro
+
                         double valorVenda = plano.getPrice();
                         double comissao = plano.comissionCalculate(valorVenda);
+
+                        AfilliateSelling afilliateSelling = new AfilliateSelling();
+                        afilliateSelling.setUser(afiliador); // Adicionando o usuario ao registro
+                        afilliateSelling.setBuyerName(originalUser.getName());
+                        afilliateSelling.setPlan(plano);
+                        afilliateSelling.setComission(comissao);
+                        afilliateSelling.setSelledAt(LocalDateTime.now());
+                        afilliateSelling.setPlan(plano);
+                        asc.save(afilliateSelling);
+
                         afiliador.addBalance(comissao);
+                        afiliador.addAfilliateSellings(afilliateSelling); // Adicionando o registro da venda afiliada
                         us.save(afiliador);
                     }
                 }

@@ -34,6 +34,9 @@ public class Plan {
     @OneToMany(mappedBy = "plan")
     private List<User> users = new ArrayList<>();
 
+    @OneToMany(mappedBy = "plan")
+    private List<AfilliateSelling> afilliateSellings = new ArrayList<>();
+
     public Plan() {
 
     }
@@ -100,6 +103,10 @@ public class Plan {
 
     public double comissionCalculate(double valorVenda) {
         return valorVenda * (this.comissionPercentage / 100);
+    }
+
+    public List<AfilliateSelling> getAfilliateSellings() {
+        return afilliateSellings;
     }
 
     @Override
