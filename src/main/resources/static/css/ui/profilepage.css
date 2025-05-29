@@ -524,7 +524,7 @@ body {
 .settings-menu {
   position: absolute;
   top: 60px;
-  right: 10px;
+  right: 20px;
   background: #181a2a;
   border: 1px solid var(--color-border);
   border-radius: 8px;
@@ -538,6 +538,9 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .settings-menu li {
   padding: 0.8rem 1.5rem;
@@ -569,6 +572,12 @@ body {
 .modal.hidden {
   display: none;
 }
+
+.withdrals-container.hidden {
+  display: none;
+}
+
+
 .modal-content {
   background: #23244a;
   padding: 2rem 2.5rem;
@@ -680,6 +689,134 @@ body {
   50% {
     transform: translateY(-10px);
   }
+}
+
+/* Container do modal: ocupa a tela toda, centraliza e aplica blur */
+.withdrals-container {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 20, 0.55);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal centralizado, tamanho limitado e responsivo */
+.custom-withdraw-modal {
+  background: #04030e;
+  border-radius: 1.2rem;
+  padding: 1.8rem;
+  min-width: 340px;
+  max-width: 95vw;
+  width: 420px;
+  box-shadow: 0 10px 32px #0008;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.withdraw-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  padding-right: 0.5rem; /* Garante espaço extra à direita */
+}
+
+.withdraw-modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  min-width: 220px; /* Garante largura mínima para alinhar com o X */
+}
+
+.custom-withdraw-modal .close-modal {
+  font-size: 2.2rem;
+  position: relative;
+  top: 4px;
+  right: 4px;
+  color: #888c94;
+  cursor: pointer;
+  transition: color 0.18s;
+}
+.custom-withdraw-modal .close-modal:hover {
+  color: #f87171;
+}
+
+.withdraw-table {
+  width: 100%;
+}
+
+.withdraw-table-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.15rem;
+  gap: 1rem ;
+  font-weight: 600;
+  color: #9e4dff;
+  border-bottom: 1px solid #23244a;
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.03em;
+}
+
+.withdraw-table-header span {
+  flex: 1;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0 0.5rem; /* Espaço lateral extra */
+}
+
+.withdraw-row {
+  display: flex !important;
+  gap: 1rem;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background: transparent !important;
+  border-radius: 0.7rem !important;
+  padding: 1.2rem 0 !important;
+  margin-bottom: 0.2rem !important;
+  box-shadow: none !important;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+
+.withdraw-row span {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.withdraw-row span:first-of-type {
+  font-size: 1.1rem;
+}
+
+.withdraw-row .withdraw-status {
+  font-weight: 600;
+  color: #22c55e;
+}
+.withdraw-row .withdraw-status.pendente {
+  color: #facc15;
+}
+.withdraw-row .withdraw-status.recusado {
+  color: #f87171;
+}
+
+.withdraw-row .withdraw-date {
+  color: #aaa;
+}
+
+.withdraw-row .withdraw-value {
+  font-weight: 700;
+  color: #22c55e;
+  font-size: 1.15rem;
 }
 
 @media(min-width: 1600px) and (max-width:1750px) {

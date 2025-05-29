@@ -5,9 +5,14 @@
 
 package RLEnterprise.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import RLEnterprise.entities.AfilliateCode;
+import RLEnterprise.entities.AfilliateSelling;
 import RLEnterprise.entities.Plan;
 import RLEnterprise.entities.User;
+import RLEnterprise.entities.WithdrawRequest;
 
 /**
  *
@@ -20,6 +25,8 @@ public class UserProfileDTO {
     public Plan plan;
     public AfilliateCode afilliateCode;
     private double balance;
+    private List<WithdrawRequest> withdrawRequests = new ArrayList<>();
+    private List<AfilliateSelling> afilliateSellings = new ArrayList<>();
 
     public UserProfileDTO() {
 
@@ -42,6 +49,8 @@ public class UserProfileDTO {
         if (user.getAfilliateCode() != null) {
             this.afilliateCode = user.getAfilliateCode();
         }
+        this.withdrawRequests = user.getWithdrawRequests();
+        this.afilliateSellings = user.getAfilliateSellings();
 
     }
 
@@ -94,6 +103,14 @@ public class UserProfileDTO {
 
     public double getBalance() {
         return balance;
+    }
+
+    public List<WithdrawRequest> getWithdrawRequests() {
+        return withdrawRequests;
+    }
+
+    public List<AfilliateSelling> getAfilliateSellings() {
+        return afilliateSellings;
     }
 
 }

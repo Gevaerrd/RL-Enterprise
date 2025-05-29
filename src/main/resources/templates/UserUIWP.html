@@ -10,8 +10,26 @@
   <script src="/js/planschecker/modalunlock.js" defer></script>
   <script src="/js/UIjs/uijs.js" defer></script>
   <script src="/js/UIjs/withdraw.js" defer></script>
+  <script src="/js/UIjs/showsales.js" defer></script>
+  <script src="/js/UIjs/showwithdraals.js" defer></script>
 </head>
 <body>
+  <div class="withdrals-container hidden" id="withdrawals-modal">
+    <div class="withdrals-modal custom-withdraw-modal">
+      <div class="withdraw-modal-header">
+        <span class="withdraw-modal-title">Histórico de saques</span>
+        <span class="close-modal" id="close-withdrals-modal">&times;</span>
+      </div>
+      <div class="withdraw-table">
+        <div class="withdraw-table-header">
+          <span>Status</span>
+          <span>Data</span>
+          <span>Valor</span>
+        </div>
+        <div id="withdrawals-list"></div>
+      </div>
+    </div>
+  </div>
   <header class="profile-header">
     <a href="/" class="space-for-enterprise-name-in-profile">
       <h1>
@@ -29,8 +47,8 @@
         <div id="settings-menu" class="settings-menu hidden">
           <ul>
             <li id="change-password-option"><i class="fa-solid fa-key"></i>Trocar senha</li>
-            <li id="show-sales"><i class="fa-solid fa-key"></i>Minhas vendas</li>
-            <li id="show-withdrawls"><i class="fa-solid fa-key"></i>Meus saques</li>
+            <li id="show-sales"><i class="fa-solid fa-chart-line"></i>Minhas vendas</li>
+            <li id="show-withdrawls"><i class="fa-solid fa-hand-holding-dollar"></i>Meus saques</li>
             <li id="support-option"><i class="fa-solid fa-headset"></i>Suporte</li>
           </ul>
         </div>

@@ -78,6 +78,7 @@ public class WithdrawController {
         wr.setUser(user);
         wr.setStatus(0); // 0 = PENDENTE
         wr.setRequestedAt(java.time.LocalDateTime.now());
+        wr.setValue(user.getBalance());
         withdrawRequestRepository.save(wr);
 
         user.addWithdrawRequest(wr);
