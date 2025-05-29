@@ -18,6 +18,7 @@ import com.mercadopago.resources.payment.Payment;
 
 import RLEnterprise.dto.UserProfileDTO;
 import RLEnterprise.entities.AfilliateCode;
+import RLEnterprise.entities.AfilliateSelling;
 import RLEnterprise.entities.Plan;
 import RLEnterprise.entities.User;
 import RLEnterprise.services.AfilliateCodeService;
@@ -162,8 +163,11 @@ public class RLEFrontPage {
                 // Bonifica o afiliador, se houver referenceCode
                 if (referenceCode != null) {
                     AfilliateCode code = acs.findByCode(referenceCode);
+                    AfilliateSelling afilliateSelling = new AfilliateSelling();
                     if (code != null && code.getUser() != null) {
-                        User afiliador = code.getUser();
+                        User afiliador = code.getUser(); // Pegando o usuário do código de afilaido
+                        afiliador.addAfilliateSellings(afilliateSelling); // Adicionando o registro da venda afiliada
+                        afilliateSelling.setUser(afiliador); // Adicionando o usuario ao registro
                         double valorVenda = plano.getPrice();
                         double comissao = plano.comissionCalculate(valorVenda);
                         afiliador.addBalance(comissao);

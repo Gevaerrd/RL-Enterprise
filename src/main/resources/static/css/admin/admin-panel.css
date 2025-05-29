@@ -1,0 +1,53 @@
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #f4f6fa;
+    margin: 0;
+    padding: 0;
+}
+.admin-header {
+    background: #23272f;
+    color: #fff;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logout-btn {
+    background: #e57373;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.logout-btn:hover {
+    background: #c62828;
+}
+.admin-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px #0001;
+    padding: 2rem;
+}
+.admin-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.admin-actions button {
+    background: #23272f;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.admin-actions button:hover {
+    background: #353a42;
+}

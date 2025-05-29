@@ -30,6 +30,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<WithdrawRequest> withdrawRequests = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<AfilliateSelling> afilliateSellings = new ArrayList<>();
+
     @ManyToOne
     @JoinColumn(name = "plan_id")
     private Plan plan;
@@ -130,6 +133,16 @@ public class User {
     public void addWithdrawRequest(WithdrawRequest withdrawRequest) {
         if (this.withdrawRequests != null) {
             this.withdrawRequests.add(withdrawRequest);
+        }
+    }
+
+    public List<AfilliateSelling> getAfilliateSellings() {
+        return afilliateSellings;
+    }
+
+    public void addAfilliateSellings(AfilliateSelling afilliateSellings) {
+        if (this.afilliateSellings != null) {
+            this.afilliateSellings.add(afilliateSellings);
         }
     }
 
