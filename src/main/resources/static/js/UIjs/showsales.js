@@ -21,7 +21,7 @@ async function openSalesModal() {
         salesModalContent.innerHTML = '';
 
         if (sales.length === 0) {
-            salesModalContent.innerHTML = '<span style="color:#fff;display:block;text-align:center;margin-top:1.5rem;">Nenhuma venda encontrada.</span>';
+            salesModalContent.innerHTML = '<span style="font-size:1.5rem;color:#fff;display:block;text-align:center;margin-top:1.5rem;">Nenhuma venda encontrada.</span>';
             return;
         }
 

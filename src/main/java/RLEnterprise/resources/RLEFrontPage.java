@@ -23,8 +23,8 @@ import RLEnterprise.entities.AfilliateCode;
 import RLEnterprise.entities.AfilliateSelling;
 import RLEnterprise.entities.Plan;
 import RLEnterprise.entities.User;
+import RLEnterprise.repositories.AfilliateSellingRepository;
 import RLEnterprise.services.AfilliateCodeService;
-import RLEnterprise.services.AfilliateSellingService;
 import RLEnterprise.services.PlanService;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -48,7 +48,7 @@ public class RLEFrontPage {
     AfilliateCodeService acs;
 
     @Autowired
-    AfilliateSellingService asc;
+    AfilliateSellingRepository asr;
 
     @GetMapping()
     public String home(@RequestParam(value = "afCode", required = false) String afCode,
@@ -105,97 +105,73 @@ public class RLEFrontPage {
 
             HttpSession session = request.getSession(false);
 
-            // Caso tenha dado bug na sessão eu recupero pela externalReference
+            // Recupera o usuário pelo e-mail e seta na sessão se necessário
+            User originalUser = null;
             if (session == null || session.getAttribute("user") == null) {
-                // Cria nova sessão se não existir
                 session = request.getSession(true);
-
-                // Recupera o usuário pelo e-mail e seta na sessão
-                User originalUser = us.findByEmail(email);
+                originalUser = us.findByEmail(email);
                 if (originalUser != null) {
                     UserProfileDTO userDTO = new UserProfileDTO(originalUser);
                     session.setAttribute("user", userDTO);
-
-                    // Associa o plano ao usuário e cód afiliado
-                    if (planoId != null) {
-                        Plan plano = ps.findById(Long.parseLong(planoId));
-                        plano.addUser(originalUser);
-
-                        // Cria o código de afiliado para o novo usuário
-                        AfilliateCode afCode = new AfilliateCode();
-                        afCode.setCode(acs.generateCode());
-                        afCode.setUser(originalUser);
-                        acs.save(afCode);
-
-                        originalUser.setAfilliateCode(afCode);
-                        us.save(originalUser);
-
-                        // Bonifica o afiliador, se houver referenceCode
-                        if (referenceCode != null) {
-                            AfilliateCode code = acs.findByCode(referenceCode);
-                            if (code != null && code.getUser() != null) {
-                                User afiliador = code.getUser();
-                                double valorVenda = plano.getPrice();
-                                double comissao = plano.comissionCalculate(valorVenda);
-                                afiliador.addBalance(comissao);
-                                us.save(afiliador);
-                            }
-                        }
-
-                        UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
-                        session.setAttribute("user", updatedDTO);
-                    }
-                    return "PurchaseCompleted";
                 } else {
                     return "redirect:/";
                 }
-            }
-
-            // Se o usuário já está logado, associa o plano normalmente
-            if (email != null && planoId != null) {
-                User originalUser = us.findByEmail(email);
-                Plan plano = ps.findById(Long.parseLong(planoId));
-
-                // Cria o código de afiliado para o novo usuário
-                AfilliateCode afCode = new AfilliateCode();
-                afCode.setCode(acs.generateCode());
-                afCode.setUser(originalUser);
-                acs.save(afCode);
-
-                originalUser.setAfilliateCode(afCode);
-                originalUser.setPlan(plano);
-                us.save(originalUser);
-
-                // Bonifica o afiliador, se houver referenceCode
-                if (referenceCode != null) {
-                    AfilliateCode code = acs.findByCode(referenceCode);
-                    if (code != null && code.getUser() != null) {
-                        User afiliador = code.getUser(); // Pegando o usuário do código de afilaido
-
-                        double valorVenda = plano.getPrice();
-                        double comissao = plano.comissionCalculate(valorVenda);
-
-                        AfilliateSelling afilliateSelling = new AfilliateSelling();
-                        afilliateSelling.setUser(afiliador); // Adicionando o usuario ao registro
-                        afilliateSelling.setBuyerName(originalUser.getName());
-                        afilliateSelling.setPlan(plano);
-                        afilliateSelling.setComission(comissao);
-                        afilliateSelling.setSelledAt(LocalDateTime.now());
-                        afilliateSelling.setPlan(plano);
-                        asc.save(afilliateSelling);
-
-                        afiliador.addBalance(comissao);
-                        afiliador.addAfilliateSellings(afilliateSelling); // Adicionando o registro da venda afiliada
-                        us.save(afiliador);
-                    }
-                }
-
-                UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
-                session.setAttribute("user", updatedDTO);
-                return "PurchaseCompleted";
             } else {
-                return "redirect:/";
+                UserProfileDTO userDTO = (UserProfileDTO) session.getAttribute("user");
+                originalUser = us.findByEmail(userDTO.getEmail());
             }
+
+            // Associa o plano ao usuário e código de afiliado
+            if (planoId != null && originalUser != null) {
+                Plan plano = ps.findById(Long.parseLong(planoId));
+                if (plano != null) {
+                    plano.addUser(originalUser);
+
+                    // Cria o código de afiliado para o novo usuário
+                    AfilliateCode afCode = new AfilliateCode();
+                    afCode.setCode(acs.generateCode());
+                    afCode.setUser(originalUser);
+                    acs.save(afCode);
+
+                    originalUser.setAfilliateCode(afCode);
+                    originalUser.setPlan(plano);
+                    us.save(originalUser);
+
+                    // Bonifica o afiliador, se houver referenceCode
+                    if (referenceCode != null) {
+                        AfilliateCode code = acs.findByCode(referenceCode);
+                        if (code != null && code.getUser() != null) {
+                            User afiliador = code.getUser();
+
+                            // Verifica no banco se já existe uma venda igual
+                            boolean jaExiste = asr.existsBySellerAndBuyerNameAndPlan(
+                                    afiliador, originalUser.getName(), plano);
+                            if (!jaExiste) {
+                                double valorVenda = plano.getPrice();
+                                double comissao = plano.comissionCalculate(valorVenda);
+                                comissao = Math.round(comissao * 100.0) / 100.0;
+
+                                AfilliateSelling afilliateSelling = new AfilliateSelling();
+                                afilliateSelling.setUser(afiliador);
+                                afilliateSelling.setBuyerName(originalUser.getName());
+                                afilliateSelling.setPlan(plano);
+                                afilliateSelling.setComission(comissao);
+                                afilliateSelling.setSelledAt(LocalDateTime.now());
+                                asr.save(afilliateSelling);
+
+                                afiliador.addBalance(comissao);
+                                afiliador.addAfilliateSellings(afilliateSelling);
+                                us.save(afiliador);
+                            }
+                        }
+                    }
+
+                    UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
+                    session.setAttribute("user", updatedDTO);
+                    return "PurchaseCompleted";
+                }
+            }
+            return "redirect:/";
         } catch (Exception e) {
             // Se der qualquer erro, redireciona para a home
             return "redirect:/";

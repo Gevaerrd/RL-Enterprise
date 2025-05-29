@@ -87,9 +87,9 @@ public class PlanController {
             // /?afCode=ABC123&outroParametro=valor
             // URLs de redirecionamento após o pagamento
             PreferenceBackUrlsRequest backUrls = PreferenceBackUrlsRequest.builder()
-                    .success("https://06bc-2804-1530-64e-ee00-b87b-2691-e45d-8a8b.ngrok-free.app/sucesso")
-                    .failure("https://06bc-2804-1530-64e-ee00-b87b-2691-e45d-8a8b.ngrok-free.app/")
-                    .pending("https://06bc-2804-1530-64e-ee00-b87b-2691-e45d-8a8b.ngrok-free.app/")
+                    .success("https://ac2b-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/sucesso")
+                    .failure("https://ac2b-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/")
+                    .pending("https://ac2b-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/")
                     .build();
 
             // Monta a preferência de pagamento

@@ -1,5 +1,4 @@
 const myWithdrawals = document.querySelector("#show-withdrawls");
-const mySales = document.querySelector("#show-sales");
 const modalContainer = document.getElementById("withdrawals-modal");
 const modalContent = document.getElementById("withdrawals-list");
 const closeWithdrawalsBtn = document.getElementById("close-withdrals-modal");
@@ -62,7 +61,6 @@ async function openWithdrawalsModal() {
 }
 
 myWithdrawals.addEventListener('click', openWithdrawalsModal);
-if (mySales) mySales.addEventListener('click', openWithdrawalsModal);
 
 closeWithdrawalsBtn.addEventListener('click', () => {
     modalContainer.classList.add("hidden");
