@@ -708,9 +708,8 @@ body {
   background: #0a081e;
   border-radius: 1.2rem;
   padding: 1.8rem;
-  min-width: 340px;
   max-width: 95vw;
-  width: 420px;
+  min-width: 420px;
   box-shadow: 0 10px 32px #0008;
   color: #fff;
   display: flex;
@@ -770,7 +769,7 @@ body {
   flex: 1;
   text-align: center;
   color: #b0b3c6;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   padding: 0 0.5rem; /* Espaço lateral extra */
 }
 
@@ -818,6 +817,61 @@ body {
   font-weight: 700;
   color: #4ade80 ;
   font-size: 1.15rem;
+}
+
+/* Alinhamento perfeito das colunas do modal de vendas */
+.withdraw-table-header,
+.withdraw-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+}
+
+.withdraw-table-header span,
+.withdraw-row span {
+  flex: 1 1 0;
+  text-align: center;
+  min-width: 120px;
+  max-width: 200px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.withdraw-table-header span.withdraw-value,
+.withdraw-row span.withdraw-value {
+  color: #4ade80;
+  font-weight: 700;
+  min-width: 140px;
+  max-width: 220px;
+  font-size: 1.2rem;
+}
+
+.withdraw-table-header span.withdraw-date,
+.withdraw-row span.withdraw-date {
+  min-width: 120px;
+  max-width: 160px;
+}
+
+.withdraw-table-header span.withdraw-client,
+.withdraw-row span.withdraw-client {
+  min-width: 120px;
+  max-width: 160px;
+}
+
+.withdraw-table-header span.withdraw-plan,
+.withdraw-row span.withdraw-plan {
+  min-width: 120px;
+  max-width: 160px;
+}
+
+#sales-list,
+#withdrawals-list {
+  max-height: 22rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0.5rem;
 }
 
 @media(min-width: 1600px) and (max-width:1750px) {

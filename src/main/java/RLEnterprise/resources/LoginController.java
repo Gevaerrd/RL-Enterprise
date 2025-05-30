@@ -28,8 +28,20 @@ public class LoginController {
     @Autowired
     private CaptchaService captchaService;
 
+    // Mapa para tentativas e bloqueio por IP
+    private final java.util.Map<String, Integer> loginAttempts = new java.util.HashMap<>();
+    private final java.util.Map<String, Long> blockedUntil = new java.util.HashMap<>();
+
     @PostMapping("")
     public ResponseEntity<?> loginUser(@RequestBody UserLoginDTO userDTO, HttpServletRequest request, Model model) {
+
+        String clientIp = request.getRemoteAddr();
+
+        // Proteção brute-force por IP
+        if (blockedUntil.containsKey(clientIp) && blockedUntil.get(clientIp) > System.currentTimeMillis()) {
+            return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
+                    .body(Collections.singletonMap("Error", "Muitas tentativas. Tente novamente em alguns minutos."));
+        }
 
         HttpSession existingSession = request.getSession(false);
         if (existingSession != null && existingSession.getAttribute("user") != null) {
@@ -46,6 +58,7 @@ public class LoginController {
 
         // Valida o login
         if (us.validLogin(userDTO)) {
+            loginAttempts.put(clientIp, 0); // Zera tentativas ao logar
             HttpSession session = request.getSession(); // Cria uma sessão
             UserProfileDTO userFromDb = us.findUserDTOByEmail(userDTO.getEmail()); // Pega um DTO do Service
             userFromDb.updateFirstName();
@@ -55,6 +68,17 @@ public class LoginController {
 
             // Retorna pro JS o redirect com o usuario já setado pra sessão
             return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/profile"));
+        }
+
+        // Incrementa tentativas
+        int attempts = loginAttempts.getOrDefault(clientIp, 0) + 1;
+        loginAttempts.put(clientIp, attempts);
+
+        if (attempts >= 5) {
+            blockedUntil.put(clientIp, System.currentTimeMillis() + 5 * 60 * 1000); // 5 minutos bloqueado
+            loginAttempts.put(clientIp, 0);
+            return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
+                    .body(Collections.singletonMap("Error", "Muitas tentativas. Tente novamente em alguns minutos."));
         }
 
         // Login inválido

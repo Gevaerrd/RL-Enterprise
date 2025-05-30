@@ -1,19 +1,31 @@
 document.getElementById('withdraw-btn').onclick = () => {
+  // Preenche o saldo automaticamente e bloqueia edição
+  const saldoSpan = document.getElementById('real-balance');
+  const valorInput = document.getElementById('withdraw-amount');
+  if (saldoSpan && valorInput) {
+    valorInput.value = saldoSpan.innerText.replace(',', '.');
+    valorInput.readOnly = true;
+  }
+
+  // Preenche CPF se já existir e bloqueia edição
+  const cpfInput = document.getElementById('withdraw-cpf');
+  if (cpfInput) {
+    const cpfConta = cpfInput.getAttribute('data-cpf');
+    if (cpfConta && cpfConta.length >= 11) {
+      cpfInput.value = cpfConta;
+      cpfInput.readOnly = true;
+    } else {
+      cpfInput.value = "";
+      cpfInput.readOnly = false;
+    }
+  }
+
   document.getElementById('withdraw-modal').classList.remove('hidden');
 };
 
 document.getElementById('close-withdraw-modal').onclick = () => {
   document.getElementById('withdraw-modal').classList.add('hidden');
 };
-
-// Esconde o campo CPF se já estiver cadastrado (backend pode renderizar isso com um atributo data-cpf-set="true")
-window.addEventListener('DOMContentLoaded', () => {
-  const cpfInput = document.getElementById('withdraw-cpf');
-  const cpfGroup = cpfInput.closest('label') || cpfInput;
-  if (cpfInput && cpfInput.hasAttribute('data-cpf-set')) {
-    cpfGroup.style.display = 'none';
-  }
-});
 
 document.getElementById('withdraw-form').onsubmit = async function(e) {
   e.preventDefault();
@@ -25,9 +37,9 @@ document.getElementById('withdraw-form').onsubmit = async function(e) {
   const msg = document.getElementById('withdraw-message');
   msg.innerText = "";
 
-  // Só envia CPF se o campo estiver visível
+  // Só envia CPF se o campo não estiver readonly
   const payload = {};
-  if (cpfInput && cpfInput.offsetParent !== null) {
+  if (cpfInput && !cpfInput.readOnly) {
     payload.cpf = cpf;
   }
 

@@ -107,4 +107,12 @@ public class UserService {
         }
         return null;
     }
+
+    public User findByCpf(String cpf) {
+        User user = userRepository.findByCpf(cpf);
+        if (user != null) {
+            return user;
+        }
+        return null;
+    }
 }

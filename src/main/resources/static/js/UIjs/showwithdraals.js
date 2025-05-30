@@ -48,7 +48,7 @@ async function openWithdrawalsModal() {
 
             row.innerHTML = `
                 <span class="withdraw-status">${statusText}</span>
-                <span class="withdraw-date">${formatDate(item.requestedAt)}</span>
+                <span style="margin-left: 1rem"; class="withdraw-date">${formatDate(item.requestedAt)}</span>
                 <span class="withdraw-value">R$ ${item.value.toFixed(2)}</span>
             `;
             modalContent.appendChild(row);

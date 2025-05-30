@@ -207,6 +207,8 @@
                 step="0.01"
                 placeholder="Valor para saque"
                 required
+                readonly
+                th:value="${user.balance}"
               />
             </div>
           </div>
@@ -219,6 +221,9 @@
                 maxlength="14"
                 placeholder="Digite seu CPF"
                 required
+                th:value="${user.cpf}"
+                th:readonly="${user.cpf != null}"
+                data-cpf="${user.cpf}"
               />
             </div>
           </div>

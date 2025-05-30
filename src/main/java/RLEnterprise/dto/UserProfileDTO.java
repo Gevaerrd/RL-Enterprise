@@ -25,6 +25,7 @@ public class UserProfileDTO {
     public Plan plan;
     public AfilliateCode afilliateCode;
     private double balance;
+    private String cpf;
     private List<WithdrawRequest> withdrawRequests = new ArrayList<>();
     private List<AfilliateSelling> afilliateSellings = new ArrayList<>();
 
@@ -51,7 +52,7 @@ public class UserProfileDTO {
         }
         this.withdrawRequests = user.getWithdrawRequests();
         this.afilliateSellings = user.getAfilliateSellings();
-
+        this.cpf = user.getCpf();
     }
 
     public String getName() {
@@ -111,6 +112,14 @@ public class UserProfileDTO {
 
     public List<AfilliateSelling> getAfilliateSellings() {
         return afilliateSellings;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
 }

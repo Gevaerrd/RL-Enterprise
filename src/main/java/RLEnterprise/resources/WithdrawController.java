@@ -31,6 +31,32 @@ public class WithdrawController {
     @Autowired
     private WithdrawRequestRepository withdrawRequestRepository;
 
+    private boolean isValidCPF(String cpf) {
+        if (cpf == null)
+            return false;
+        if (cpf.length() != 11 || cpf.chars().distinct().count() == 1)
+            return false;
+        try {
+            int d1 = 0, d2 = 0;
+            for (int i = 0; i < 9; i++) {
+                int digito = Character.getNumericValue(cpf.charAt(i));
+                d1 += digito * (10 - i);
+                d2 += digito * (11 - i);
+            }
+            int resto1 = (d1 * 10) % 11;
+            if (resto1 == 10)
+                resto1 = 0;
+            d2 += resto1 * 2;
+            int resto2 = (d2 * 10) % 11;
+            if (resto2 == 10)
+                resto2 = 0;
+            return resto1 == Character.getNumericValue(cpf.charAt(9)) &&
+                    resto2 == Character.getNumericValue(cpf.charAt(10));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     @PostMapping("/withdraw")
     public Map<String, Object> withdraw(@RequestBody Map<String, String> payload, HttpSession session) {
         Map<String, Object> resp = new HashMap<>();
@@ -64,9 +90,21 @@ public class WithdrawController {
 
         // Checa/salva CPF se necessário
         String cpf = payload.get("cpf");
+        cpf = (cpf != null) ? cpf.replaceAll("\\D", "") : "";
         if (user.getCpf() == null || user.getCpf().isEmpty()) {
-            if (cpf == null || cpf.length() < 11) {
+            if (cpf.length() != 11) {
                 resp.put("error", "Informe um CPF válido para PIX.");
+                return resp;
+            }
+            // Validação de formato e dígitos
+            if (!isValidCPF(cpf)) {
+                resp.put("error", "CPF inválido.");
+                return resp;
+            }
+            // Checa se já existe usuário com esse CPF
+            User userByCpf = userService.findByCpf(cpf);
+            if (userByCpf != null && !userByCpf.getId().equals(user.getId())) {
+                resp.put("error", "Este CPF já está cadastrado em outra conta.");
                 return resp;
             }
             user.setCpf(cpf);

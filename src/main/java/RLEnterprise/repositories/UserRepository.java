@@ -23,4 +23,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findBytwoFactorCode(String twoFactorCode);
 
+    User findByCpf(String cpf);
+
 }
