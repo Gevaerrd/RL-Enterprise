@@ -5,6 +5,8 @@
 
 package RLEnterprise.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -24,5 +26,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findBytwoFactorCode(String twoFactorCode);
 
     User findByCpf(String cpf);
+
+    List<User> findAll();
+
+    List<User> findByNameContainingIgnoreCase(String name);
 
 }

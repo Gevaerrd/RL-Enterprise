@@ -6,6 +6,8 @@
 package RLEnterprise.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,23 +25,19 @@ public class PerfilController {
     UserService us;
 
     @RequestMapping("/profile")
-    public String userDashboard(HttpServletRequest request, Model model) {
-
-        HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("user") == null) {
-            return "redirect:/";
-        }
-
-        UserProfileDTO userDTO = (UserProfileDTO) session.getAttribute("user");
-        User user = us.findByEmail(userDTO.getEmail());
+    public String userDashboard(Model model) {
+        // Obtém o usuário autenticado do contexto do Spring Security
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) auth.getPrincipal();
+        System.out.println(user.toString());
+        // Monta o DTO para a view (opcional, se quiser usar o DTO)
+        UserProfileDTO userDTO = us.findUserDTOByEmail(user.getEmail());
         model.addAttribute("user", userDTO);
 
-        if (user.getPlan() != null) { // Se o usuario tiver um plano
-            return "UserUIWP"; // Retorna esse HTML
-        }
-
-        else {
-            return "UserUINP"; // Caso contrário esse
+        if (user.getPlan() != null) {
+            return "UserUIWP";
+        } else {
+            return "UserUINP";
         }
     }
 

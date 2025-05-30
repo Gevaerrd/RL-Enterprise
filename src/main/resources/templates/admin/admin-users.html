@@ -1,0 +1,99 @@
+<!-- filepath: src/main/resources/templates/admin/admin-users.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Usuários</title>
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <nav>
+        <a href="/admin">Dashboard</a>
+        <a href="/admin/withdrawals">Saques</a>
+        <a href="/admin/finance">Financeiro</a>
+    </nav>
+    <main>
+        <h2>Usuários</h2>
+        <form id="searchForm" onsubmit="return false;">
+            <input type="search" id="userSearch" placeholder="Buscar usuário...">
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Plano</th>
+                    <th>Código Afiliado</th>
+                    <th>Saldo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <form th:action="@{/admin/users/update}" method="post">
+                        <td th:text="${user.id}"></td>
+                        <td><input type="text" name="name" th:value="${user.name}"/></td>
+                        <td><input type="text" name="email" th:value="${user.email}"/></td>
+                        <td><input type="text" name="cpf" th:value="${user.cpf}"/></td>
+                        <td>
+                            <select name="plan">
+                                <option th:each="plan : ${plans}"
+                                        th:value="${plan.name}"
+                                        th:text="${plan.name}"
+                                        th:selected="${user.plan != null and user.plan.name == plan.name}">
+                                </option>
+                            </select>
+                        </td>
+                        <td th:text="${user.afilliateCode != null ? user.afilliateCode.code : ''}"></td>
+                        <td th:text="${user.balance}"></td>
+                        <td class="table-actions">
+                            <input type="hidden" name="id" th:value="${user.id}"/>
+                            <button type="submit" class="btn">Salvar</button>
+                        </td>
+                    </form>
+                    <td class="table-actions">
+                        <form th:action="@{/admin/users/delete}" method="post" style="display:inline;">
+                            <input type="hidden" name="id" th:value="${user.id}"/>
+                            <button type="button" class="btn-danger" onclick="confirmDelete(this)">Excluir</button>
+                        </form>
+                        <form th:action="@{/admin/users/remove-plan-affiliate}" method="post" style="display:inline;">
+                            <input type="hidden" name="id" th:value="${user.id}"/>
+                            <button type="submit" class="btn">Zerar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script>
+    // Busca instantânea
+    document.getElementById('userSearch').addEventListener('input', function() {
+        const value = this.value.toLowerCase();
+        document.querySelectorAll('tbody tr').forEach(row => {
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(value) ? '' : 'none';
+        });
+    });
+    // Modal de confirmação para exclusão
+    function confirmDelete(btn) {
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: "Essa ação não pode ser desfeita!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#7c3aed',
+            cancelButtonColor: '#be123c',
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                btn.closest('form').submit();
+            }
+        });
+    }
+    </script>
+</body>
+</html>

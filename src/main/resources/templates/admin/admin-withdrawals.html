@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Saques</title>
+    <link rel="stylesheet" href="/css/admin/admin.css">
+</head>
+<body>
+    <nav>
+        <a href="/admin">Dashboard</a>
+        <a href="/admin/users">Usuários</a>
+        <a href="/admin/finance">Financeiro</a>
+    </nav>
+    <main>
+        <h2>Saques</h2>
+        <form method="get" action="/admin/withdrawals">
+            <label>Status:
+                <select name="status">
+                    <option value="">Todos</option>
+                    <option value="0" th:selected="${status == 0}">Pendente</option>
+                    <option value="1" th:selected="${status == 1}">Aprovado</option>
+                    <option value="2" th:selected="${status == 2}">Recusado</option>
+                </select>
+            </label>
+            <button type="submit">Filtrar</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuário</th>
+                    <th>CPF</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="w : ${withdrawals}">
+                    <td th:text="${w.id}"></td>
+                    <td th:text="${w.user.name}"></td>
+                    <td th:text="${w.user.cpf}"></td>
+                    <td th:text="${w.value}"></td>
+                    <td th:text="${w.status == 0 ? 'Pendente' : (w.status == 1 ? 'Aprovado' : 'Recusado')}"></td>
+                    <td th:text="${#temporals.format(w.requestedAt, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td>
+                        <div th:if="${w.status == 0}">
+                            <form th:action="@{/admin/withdrawals/update}" method="post" style="display:inline;">
+                                <input type="hidden" name="id" th:value="${w.id}"/>
+                                <button name="status" value="1" type="submit">Aprovar</button>
+                                <button name="status" value="2" type="submit" style="color:red;">Recusar</button>
+                            </form>
+                        </div>
+                        <span th:if="${w.status != 0}">-</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

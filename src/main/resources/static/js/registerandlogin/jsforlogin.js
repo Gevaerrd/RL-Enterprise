@@ -18,6 +18,7 @@ formForLogin.addEventListener("submit", async function (e) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(jsonDataForLogin),
+            credentials: "include" // <-- ESSENCIAL!
         });
 
         let result = {};

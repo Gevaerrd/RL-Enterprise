@@ -5,6 +5,8 @@
 
 package RLEnterprise.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -114,5 +116,13 @@ public class UserService {
             return user;
         }
         return null;
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    public void updateUser(User user) {
+        userRepository.save(user);
     }
 }

@@ -34,13 +34,19 @@ public class SecurityConfig {
                                 "/api/**",
                                 "/register",
                                 "/login",
+                                "/userlogout",
                                 "/")
-                        .permitAll() // Libera tudo isso
-                        .anyRequest().permitAll() // Libera o resto
-                )
-                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
-                .formLogin(form -> form.disable());
-
+                        .permitAll()
+                        .requestMatchers("/r13nt3rp1se4dmind4shbo4rd/**").hasRole("ADMIN")
+                        .anyRequest().authenticated())
+                .exceptionHandling(ex -> ex
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            response.sendRedirect("/");
+                        })
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            response.sendRedirect("/");
+                        }))
+                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
         return http.build();
     }
 

@@ -1,7 +1,12 @@
 package RLEnterprise.entities;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +20,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_user")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +32,8 @@ public class User {
     private String cpf;
     private String twoFactorCode;
     private Long twoFactorCodeGeneratedAt;
+    private String role = "USER";
+
     @OneToMany(mappedBy = "user")
     private List<WithdrawRequest> withdrawRequests = new ArrayList<>();
 
@@ -43,6 +50,10 @@ public class User {
 
     public User() {
 
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User(String email, String password) {
@@ -102,6 +113,10 @@ public class User {
         this.balance += balance;
     }
 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     public String getTwoFactorCode() {
         return twoFactorCode;
     }
@@ -146,6 +161,14 @@ public class User {
         }
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -186,6 +209,36 @@ public class User {
         sb.append(", afilliateCode=").append(afilliateCode);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + this.role));
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
     }
 
 }

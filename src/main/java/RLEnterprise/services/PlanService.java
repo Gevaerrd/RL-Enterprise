@@ -42,4 +42,12 @@ public class PlanService {
         pr.deleteById(id);
     }
 
+    public Plan findByName(String name) {
+        return pr.findByName(name);
+    }
+
+    public List<Plan> findAll() {
+        return pr.findAll();
+    }
+
 }

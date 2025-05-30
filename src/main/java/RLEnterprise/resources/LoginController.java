@@ -1,10 +1,14 @@
 package RLEnterprise.resources;
 
 import java.util.Collections;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import RLEnterprise.dto.UserLoginDTO;
 import RLEnterprise.dto.UserProfileDTO;
+import RLEnterprise.entities.User;
 import RLEnterprise.services.CaptchaService;
 import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -61,10 +66,22 @@ public class LoginController {
             loginAttempts.put(clientIp, 0); // Zera tentativas ao logar
             HttpSession session = request.getSession(); // Cria uma sessão
             UserProfileDTO userFromDb = us.findUserDTOByEmail(userDTO.getEmail()); // Pega um DTO do Service
+            User userEntity = us.findByEmail(userDTO.getEmail()); // Use a entidade User!
             userFromDb.updateFirstName();
             session.setAttribute("user", userFromDb); // Coloca a sessão pro usuario
             model.addAttribute("user", userFromDb); // Passa o usuario pro front end
             session.setMaxInactiveInterval(1800); // Tempo máximo de inatividade
+
+            // >>> INÍCIO: Integração com Spring Security <<<
+            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
+                    userEntity,
+                    null,
+                    List.of(new SimpleGrantedAuthority("ROLE_" + userEntity.getRole())));
+            SecurityContextHolder.getContext().setAuthentication(auth);
+            // ESSENCIAL: Salva o contexto na sessão para manter o login nas próximas
+            // requisições
+            request.getSession().setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+            // >>> FIM: Integração com Spring Security <<<
 
             // Retorna pro JS o redirect com o usuario já setado pra sessão
             return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/profile"));

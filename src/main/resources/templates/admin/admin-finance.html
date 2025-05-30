@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Financeiro - Admin</title>
+    <link rel="stylesheet" href="/css/admin/admin.css">
+</head>
+<body>
+    <nav>
+        <a href="/admin">Dashboard</a>
+        <a href="/admin/withdrawals">Saques</a>
+        <a href="/admin/finance">Financeiro</a>
+    </nav>
+    <main>
+        <h2>Financeiro</h2>
+        <form method="get" action="#" style="margin-bottom:2rem; display:flex; gap:2rem; align-items:flex-end;">
+            <div>
+                <label for="month">Mês:</label>
+                <select name="month" id="month">
+                    <option value="">Todos</option>
+                    <option th:each="i : ${#numbers.sequence(1,12)}"
+                            th:value="${i}"
+                            th:text="${i}"
+                            th:selected="${month == i}"></option>
+                </select>
+            </div>
+            <div>
+                <label for="userId">Usuário:</label>
+                <select name="userId" id="userId">
+                    <option value="">Todos</option>
+                    <option th:each="u : ${users}"
+                            th:value="${u.id}"
+                            th:text="${u.name}"
+                            th:selected="${userId == u.id}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Filtrar</button>
+        </form>
+
+        <div style="margin-bottom:2rem;">
+            <strong>Total de Vendas:</strong> <span th:text="${totalSales}">0.00</span><br>
+            <strong>Total Comissão Afiliados:</strong> <span th:text="${totalAfilliate}">0.00</span>
+        </div>
+
+        <table>
+            <thead>
+    <tr>
+        <th>ID Venda</th>
+        <th>Data</th>
+        <th>Vendedor</th>
+        <th>Nome do Comprador</th>
+        <th>Comissão Afiliado</th>
+        <th>Plano</th>
+    </tr>
+        </thead>
+            <tbody>
+                <tr th:each="sale : ${sales}">
+                    <td th:text="${sale.id}"></td>
+                    <td th:text="${sale.selledAt != null ? #temporals.format(sale.selledAt, 'dd/MM/yyyy HH:mm') : ''}"></td>
+                    <td th:text="${sale.seller != null ? sale.seller.name : ''}"></td>
+                    <td th:text="${sale.buyerName != null ? sale.buyerName : ''}"></td>
+                    <td th:text="${sale.comission}"></td>
+                    <td th:text="${sale.plan != null ? sale.plan.name : ''}"></td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(sales)}">
+                    <td colspan="6" style="text-align:center;">Nenhuma venda encontrada.</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
