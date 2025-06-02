@@ -194,5 +194,108 @@ a {
   color: #721c24;
 }
 
+/* Mobile pequeno (até 400px) */
+@media (max-width: 400px) {
+  .space-of-login-form {
+    padding: 1.2rem 0.5rem;
+    gap: 1rem;
+    min-width: 90vw;
+    max-width: 98vw;
+  }
+  .space-of-login-form .name-of-enterprise h1 {
+    font-size: 2.2rem;
+  }
+  .space-of-login-form .name-of-enterprise h2 {
+    font-size: 1.1rem;
+  }
+  .space-of-login-form h2 {
+    font-size: 1.3rem;
+  }
+  .space-of-login-form .input-group input {
+    width: 13rem;
+    font-size: 0.95rem;
+    padding: 1rem 2.2rem;
+  }
+  .space-of-login-form button,
+  .organization-off-login-form button {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    max-width: 13rem;
+  }
+  .space-of-login-form .close-modal {
+    font-size: 2rem;
+    top: 0.7rem;
+    right: 1rem;
+  }
+}
 
+/* Celulares (até 600px) */
+@media (max-width: 600px) {
+  .space-of-login-form {
+    padding: 1.5rem 1rem;
+    gap: 1.2rem;
+    min-width: 80vw;
+    max-width: 95vw;
+  }
+  .space-of-login-form .name-of-enterprise h1 {
+    font-size: 2.8rem;
+  }
+  .space-of-login-form .name-of-enterprise h2 {
+    font-size: 1.3rem;
+  }
+  .space-of-login-form h2 {
+    font-size: 1.7rem;
+  }
+  .space-of-login-form .input-group input {
+    width: 16rem;
+    font-size: 1rem;
+    padding: 1.1rem 2.5rem;
+  }
+  .space-of-login-form button,
+  .organization-off-login-form button {
+    font-size: 1.1rem;
+    padding: 1.1rem 2.2rem;
+    max-width: 16rem;
+  }
+  .space-of-login-form .close-modal {
+    font-size: 2.1rem;
+    top: 1rem;
+    right: 1.2rem;
+  }
+}
+
+/* Tablets (até 900px) */
+@media (max-width: 900px) {
+  .space-of-login-form {
+    padding: 2rem 2rem;
+    gap: 1.5rem;
+    min-width: 60vw;
+    max-width: 80vw;
+  }
+  .space-of-login-form .name-of-enterprise h1 {
+    font-size: 3.2rem;
+  }
+  .space-of-login-form .name-of-enterprise h2 {
+    font-size: 1.5rem;
+  }
+  .space-of-login-form h2 {
+    font-size: 2.2rem;
+  }
+  .space-of-login-form .input-group input {
+    width: 18rem;
+    font-size: 1.05rem;
+    padding: 1.2rem 2.8rem;
+  }
+  .space-of-login-form button,
+  .organization-off-login-form button {
+    font-size: 1.2rem;
+    padding: 1.2rem 2.5rem;
+    max-width: 18rem;
+  }
+  .space-of-login-form .close-modal {
+    font-size: 2.2rem;
+    top: 1.1rem;
+    right: 1.3rem;
+  }
+}
 

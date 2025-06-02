@@ -1110,6 +1110,72 @@ body {
   .noplan-text a {
   font-size: 1.3rem;
   }
+
+  .withdrals-modal {
+    padding: 1.5rem;
+  }
+
+  .withdraw-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .withdraw-table-header span {
+    font-size: 1.2rem;
+  }
+
+  .custom-withdraw-modal, .withdraw-content {
+    min-width: 70vw;
+    max-width: 85vw;
+    border-radius: 0.9rem;
+  }
+
+  .custom-withdraw-modal .close-modal,
+  .withdraw-content .close-modal {
+    font-size: 1.5rem;
+    top: 0.6rem;
+    right: 0.6rem;
+  }
+
+  .withdraw-table-header span,
+  .withdraw-row span {
+    font-size: 1rem;
+    min-width: 80px;
+    max-width: 180px;
+    padding: 0 6px;
+  }
+
+  .sales-list .withdraw-row .withdraw-value {
+    color: #4ade80;
+    font-size: 1.2rem;
+    min-width: 80px;
+    max-width: 180px;
+    padding: 0 6px;
+  }
+
+  .withdraw-row span:first-of-type {
+    font-size: 1rem;
+  }
+
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-value {
+    color: rgb(74, 222, 128);
+    min-width: 80px;
+    max-width: 180px;
+    font-size: 1rem;
+  }
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-client {
+    min-width: 80px;
+    max-width: 140px;
+    font-size: 1rem;
+  }
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-plan {
+    min-width: 80px;
+    max-width: 140px;
+    font-size: 1rem;
+  }
+
+  .withdraw-modal-header {
+    gap: 0rem;
+  }
 }
 
 /* 768px - Tablets verticais */
@@ -1212,6 +1278,76 @@ body {
 
   .noplan-text a {
   font-size: 1.3rem;
+  }
+
+  .withdrals-modal {
+    padding: 1rem;
+  }
+
+  .withdraw-modal-title {
+    font-size: 1.3rem;
+  }
+
+  .withdraw-table-header span{
+    font-size: 1.3rem;
+  }
+
+  .custom-withdraw-modal, .withdraw-content {
+    min-width: 89vw;
+    max-width: 99vw;
+    border-radius: 0.5rem;
+  }
+
+  .withdraw-modal-title {
+    font-size: 1.2rem;
+  }
+
+  .custom-withdraw-modal .close-modal,
+  .withdraw-content .close-modal {
+    font-size: 1rem;
+    top: 0.2rem;
+    right: 0.2rem;
+  }
+
+  .withdraw-table-header span,
+  .withdraw-row span {
+    font-size: 1rem;
+    min-width: 30px;
+    max-width: 140px;
+    padding: 0;
+  }
+
+  .sales-list .withdraw-row .withdraw-value {
+    color: #4ade80 ;
+    font-size: 1rem;
+    min-width: 30px;
+    max-width: 160px;
+    padding: 0;
+  }
+  .withdraw-row span:first-of-type {
+    font-size: 1rem;
+  
+  }
+
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-value {
+      color: rgb(74, 222, 128);
+      min-width: 30px;
+      max-width: 160px;
+      font-size: 1rem;
+  }
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-client {
+      min-width: 30px;
+      max-width: 160px;
+      font-size: 1rem;
+  }
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-plan {
+      min-width: 30px;
+      max-width: 160px;
+      font-size: 1rem;
+  }
+
+  .withdraw-modal-header {
+    gap: 0rem;
   }
 }
 
@@ -1321,6 +1457,76 @@ body {
   .noplan-text a {
   font-size: 1.2rem;
   }
+
+  .withdrals-modal {
+    padding: 1rem;
+  }
+
+  .withdraw-modal-title {
+    font-size: 1.3rem;
+  }
+
+  .withdraw-table-header span{
+    font-size: 1.1rem;
+  }
+
+  .custom-withdraw-modal, .withdraw-content {
+    min-width: 92vw;
+    max-width: 99vw;
+    border-radius: 0.5rem;
+  }
+
+  .withdraw-modal-title {
+    font-size: 1.2rem;
+  }
+
+  .custom-withdraw-modal .close-modal,
+  .withdraw-content .close-modal {
+    font-size: 1rem;
+    top: 0.2rem;
+    right: 0.2rem;
+  }
+
+  .withdraw-table-header span,
+  .withdraw-row span {
+    font-size: 0.8rem;
+    min-width: 30px;
+    max-width: 120px;
+    padding: 0;
+  }
+
+  .sales-list .withdraw-row .withdraw-value {
+    color: #4ade80 ;
+    font-size: 0.85rem;
+    min-width: 30px;
+    max-width: 120px;
+    padding: 0;
+  }
+  .withdraw-row span:first-of-type {
+    font-size: 0.85rem;
+  
+  }
+
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-value {
+      color: rgb(74, 222, 128);
+      min-width: 30px;
+      max-width: 120px;
+      font-size: 0.85rem;
+      padding-right: 1rem;
+  }
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-client {
+      padding-right: 1.5rem;
+      min-width: 30px;
+      max-width: auto;
+      font-size: 0.85rem;
+  }
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-plan {
+      padding-left: 0.5rem;
+      min-width: 30px;
+      max-width: 120px;
+      font-size: 0.85rem;
+  }
+
 }
 
 
@@ -1399,8 +1605,8 @@ body {
   }
 
   .cadeado {
-    width: 6rem;
-    height: 6rem;
+    width: 4.5rem;
+    height: 4.5rem;
   }
 
   .noplan-text {
@@ -1412,8 +1618,8 @@ body {
   }
 
   .noplan-content {
-    align-items: center;
     flex-direction: column;
+    
   }
 
   .noplan-text p:first-of-type {
@@ -1433,8 +1639,81 @@ body {
   }
 
   .noplan-text a {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   }
+
+  .withdrals-modal {
+    padding: 1rem;
+  }
+
+  .withdraw-modal-title {
+    font-size: 1.3rem;
+  }
+
+  .withdraw-table-header span{
+    font-size: 1.1rem;
+  }
+
+  .custom-withdraw-modal, .withdraw-content {
+    min-width: 98vw;
+    max-width: 99vw;
+    border-radius: 0.5rem;
+  }
+
+  .withdraw-modal-title {
+    font-size: 1rem;
+  }
+
+  .custom-withdraw-modal .close-modal,
+  .withdraw-content .close-modal {
+    font-size: 1rem;
+    top: 0.2rem;
+    right: 0.2rem;
+  }
+
+  .withdraw-table-header span,
+  .withdraw-row span {
+    font-size: 0.8rem;
+    min-width: 30px;
+    max-width: 120px;
+    padding: 0;
+  }
+
+  .sales-list .withdraw-row .withdraw-value {
+    color: #4ade80 ;
+    font-size: 0.8rem;
+    min-width: 30px;
+    max-width: 120px;
+    padding: 0;
+  }
+  .withdraw-row span:first-of-type {
+    font-size: 0.85rem;
+  
+  }
+
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-value {
+    color: rgb(74, 222, 128);
+    min-width: 30px;
+    max-width: 120px;
+    font-size: 0.85rem;
+}
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-client {
+    padding-right: 1.2rem;
+    min-width: 30px;
+    max-width: auto;
+    font-size: 0.85rem;
+}
+  .withdraw-table-header span.withdraw-value, .withdraw-row span.withdraw-plan {
+    padding-left: 0.5rem;
+    min-width: 30px;
+    max-width: 120px;
+    font-size: 0.85rem;
+}
+
+  
+
+
+
 
 
 }

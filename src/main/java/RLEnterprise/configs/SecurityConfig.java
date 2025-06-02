@@ -35,6 +35,9 @@ public class SecurityConfig {
                                 "/login",
                                 "/userlogout",
                                 "/sucesso",
+                                "/api2fa/request",
+                                "/api2fa/verify-2fa",
+                                "/api2fa/reset-password",
                                 "/")
                         .permitAll()
                         .requestMatchers("/r13nt3rp1se4dmind4shbo4rd/**").hasRole("ADMIN")

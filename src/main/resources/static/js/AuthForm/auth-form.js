@@ -312,6 +312,7 @@ if (forgotPasswordFormElement) {
             }
 
         } catch (error) {
+            console.log(error);
             forgotPasswordMessage.textContent = 'Erro ao enviar e-mail. Tente novamente.';
             forgotPasswordMessage.classList.add('error');
         }
