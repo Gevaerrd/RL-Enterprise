@@ -91,7 +91,7 @@ body {
   overflow: hidden;
 }
 
-.plano-card::before {
+.plan-card::before {
   content: "";
   position: absolute;
   top: -50%;

@@ -6,8 +6,11 @@
 package RLEnterprise.resources;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,10 +33,6 @@ import RLEnterprise.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-/**
- *
- * @author Pichau
- */
 @Controller
 @RequestMapping()
 public class RLEFrontPage {
@@ -87,7 +86,7 @@ public class RLEFrontPage {
 
         try {
             // Inicializa o SDK do Mercado Pago
-            MercadoPagoConfig.setAccessToken("TEST-4636741219981499-051910-ac3b75d31d236ac8dfa10b1d52903529-544953103");
+            MercadoPagoConfig.setAccessToken("TEST-6319189669364487-060211-2f159b54e42c2ca497cd6d1459bc635b-544953103");
             PaymentClient paymentClient = new PaymentClient();
             Payment payment = paymentClient.get(Long.parseLong(paymentId));
             String externalReference = payment.getExternalReference();
@@ -168,6 +167,16 @@ public class RLEFrontPage {
 
                     UserProfileDTO updatedDTO = new UserProfileDTO(originalUser);
                     session.setAttribute("user", updatedDTO);
+
+                    // Atualiza o contexto do Spring Security para refletir o usuário atualizado
+                    UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
+                            originalUser,
+                            null,
+                            Collections.emptyList() // ou use as authorities do seu usuário, se necessário
+                    );
+                    SecurityContextHolder.getContext().setAuthentication(auth);
+                    session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+
                     return "PurchaseCompleted";
                 }
             }

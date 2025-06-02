@@ -26,7 +26,6 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/h2-console/**",
                                 "/css/**",
                                 "/js/**",
                                 "/images/**",
@@ -35,6 +34,7 @@ public class SecurityConfig {
                                 "/register",
                                 "/login",
                                 "/userlogout",
+                                "/sucesso",
                                 "/")
                         .permitAll()
                         .requestMatchers("/r13nt3rp1se4dmind4shbo4rd/**").hasRole("ADMIN")

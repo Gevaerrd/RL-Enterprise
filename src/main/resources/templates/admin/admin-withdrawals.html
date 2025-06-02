@@ -7,13 +7,13 @@
 </head>
 <body>
     <nav>
-        <a href="/admin">Dashboard</a>
-        <a href="/admin/users">Usuários</a>
-        <a href="/admin/finance">Financeiro</a>
+        <a href="/r13nt3rp1se4dmind4shbo4rd">Dashboard</a>
+        <a href="/r13nt3rp1se4dmind4shbo4rd/users">Usuários</a>
+        <a href="/r13nt3rp1se4dmind4shbo4rd/finance">Financeiro</a>
     </nav>
     <main>
         <h2>Saques</h2>
-        <form method="get" action="/admin/withdrawals">
+        <form method="get" action="/r13nt3rp1se4dmind4shbo4rd/withdrawals">
             <label>Status:
                 <select name="status">
                     <option value="">Todos</option>
@@ -39,14 +39,14 @@
             <tbody>
                 <tr th:each="w : ${withdrawals}">
                     <td th:text="${w.id}"></td>
-                    <td th:text="${w.user.name}"></td>
-                    <td th:text="${w.user.cpf}"></td>
+                    <td th:text="${w.user != null ? w.user.name : 'Sem usuário'}"></td>
+                    <td th:text="${w.user != null ? w.user.cpf : '-'}"></td>
                     <td th:text="${w.value}"></td>
                     <td th:text="${w.status == 0 ? 'Pendente' : (w.status == 1 ? 'Aprovado' : 'Recusado')}"></td>
                     <td th:text="${#temporals.format(w.requestedAt, 'dd/MM/yyyy HH:mm')}"></td>
                     <td>
                         <div th:if="${w.status == 0}">
-                            <form th:action="@{/admin/withdrawals/update}" method="post" style="display:inline;">
+                            <form th:action="@{/r13nt3rp1se4dmind4shbo4rd/withdrawals/update}" method="post" style="display:inline;">
                                 <input type="hidden" name="id" th:value="${w.id}"/>
                                 <button name="status" value="1" type="submit">Aprovar</button>
                                 <button name="status" value="2" type="submit" style="color:red;">Recusar</button>

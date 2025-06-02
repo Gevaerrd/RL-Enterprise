@@ -107,3 +107,79 @@ body {
     width: 100%;
   }
 }
+
+/* Mobile pequeno (até 400px) */
+@media (max-width: 400px) {
+  .container {
+    gap: 1.2rem;
+    padding: 1.2rem;
+  }
+  .checkmark {
+    font-size: 4.5rem;
+  }
+  .message {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .progress-bar {
+    width: 12rem;
+    height: 0.4rem;
+  }
+}
+
+/* Celulares (até 600px) */
+@media (max-width: 600px) {
+  .container {
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  .checkmark {
+    font-size: 6rem;
+  }
+  .message {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .progress-bar {
+    width: 16rem;
+    height: 0.5rem;
+  }
+}
+
+/* Tablets (até 900px) */
+@media (max-width: 900px) {
+  .container {
+    gap: 1.8rem;
+    padding: 2rem;
+  }
+  .checkmark {
+    font-size: 8rem;
+  }
+  .message {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .progress-bar {
+    width: 20rem;
+    height: 0.6rem;
+  }
+}
+
+/* Telas grandes (acima de 900px) */
+@media (min-width: 901px) {
+  .container {
+    gap: 2rem;
+    padding: 2.5rem;
+  }
+  .checkmark {
+    font-size: 10rem;
+  }
+  .message {
+    font-size: 2.4rem;
+    text-align: center;
+  }
+  .progress-bar {
+    width: 25rem;
+    height: 0.6rem;
+  }
+}

@@ -183,25 +183,6 @@ body {
   gap: 0.1rem;
 }
 
-#withdraw-btn {
-  background: #15181d;
-  color: #f5f5f5;
-  border: none;
-  border-radius: 0.7rem;
-  padding: 1rem 2.2rem;
-  font-size: 1.35rem;
-  font-weight: 700;
-  cursor: pointer;
-  margin-left: 1.2rem;
-  transition: background 0.2s, transform 0.2s;
-  box-shadow: 0 0.15rem 0.5rem rgba(0,0,0,0.13);
-  letter-spacing: 0.02em;
-}
-#withdraw-btn:hover {
-  background: #181b20;
-  transform: translateY(-0.12rem) scale(1.04);
-}
-
 .modal:not(.hidden) {
   display: flex;
 }
@@ -959,6 +940,11 @@ body {
     font-size: 1.2rem;
   }
 
+  #real-balance {
+    font-size: 1.2rem;
+  }
+
+
   .profile-settings a, #gear-for-settings {
     font-size: 1.2rem;
   }
@@ -1055,6 +1041,11 @@ body {
   #balance-span, .currency {
     font-size: 1.1rem;
   }
+
+  #real-balance {
+    font-size: 1.1rem;
+  }
+
 
   .profile-settings a, #gear-for-settings {
     font-size: 1.1rem;
@@ -1156,6 +1147,11 @@ body {
     font-size: 1rem;
   }
 
+  #real-balance {
+    font-size: 1rem;
+  }
+
+
   .profile-settings a, #gear-for-settings {
     font-size: 1.1rem;
   }
@@ -1199,13 +1195,13 @@ body {
   max-width: 15rem;
   }
   .noplan-text p:first-of-type {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: bold;
     color: var(--text-light);
   }
 
   .noplan-text p:last-of-type {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--text-highlight);
   }
 
@@ -1252,6 +1248,10 @@ body {
   }
 
   #balance-span, .currency {
+    font-size: 1rem;
+  }
+
+  #real-balance {
     font-size: 1rem;
   }
 
@@ -1360,6 +1360,14 @@ body {
     font-size: 1rem;
   }
 
+  #balance-span {
+    display: flex;
+  }
+
+  #real-balance {
+    font-size: 1rem;
+  }
+
   .profile-settings a, #gear-for-settings {
     font-size: 1rem;
   }
@@ -1409,13 +1417,13 @@ body {
   }
 
   .noplan-text p:first-of-type {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: bold;
     color: var(--text-light);
   }
 
   .noplan-text p:last-of-type {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-highlight);
   }
 
@@ -1427,5 +1435,6 @@ body {
   .noplan-text a {
   font-size: 1.3rem;
   }
+
 
 }

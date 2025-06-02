@@ -48,12 +48,13 @@ public class LoginController {
                     .body(Collections.singletonMap("Error", "Muitas tentativas. Tente novamente em alguns minutos."));
         }
 
-        HttpSession existingSession = request.getSession(false);
-        if (existingSession != null && existingSession.getAttribute("user") != null) {
-            // Usuário já está logado
-            return ResponseEntity.ok().body(Collections.singletonMap("redirect", "/profile"));
-            // Retorna pra pagina de usuario
+        // Invalida a sessão antiga antes de criar uma nova (importante para troca de
+        // usuário)
+        HttpSession oldSession = request.getSession(false);
+        if (oldSession != null) {
+            oldSession.invalidate();
         }
+        HttpSession session = request.getSession(true);
 
         // String recaptchaResponse = userDTO.getRecaptcha();
         // if (!captchaService.isCaptchaValid(recaptchaResponse)) {
@@ -64,13 +65,12 @@ public class LoginController {
         // Valida o login
         if (us.validLogin(userDTO)) {
             loginAttempts.put(clientIp, 0); // Zera tentativas ao logar
-            HttpSession session = request.getSession(); // Cria uma sessão
-            UserProfileDTO userFromDb = us.findUserDTOByEmail(userDTO.getEmail()); // Pega um DTO do Service
-            User userEntity = us.findByEmail(userDTO.getEmail()); // Use a entidade User!
+            UserProfileDTO userFromDb = us.findUserDTOByEmail(userDTO.getEmail());
+            User userEntity = us.findByEmail(userDTO.getEmail());
             userFromDb.updateFirstName();
-            session.setAttribute("user", userFromDb); // Coloca a sessão pro usuario
-            model.addAttribute("user", userFromDb); // Passa o usuario pro front end
-            session.setMaxInactiveInterval(1800); // Tempo máximo de inatividade
+            session.setAttribute("user", userFromDb);
+            model.addAttribute("user", userFromDb);
+            session.setMaxInactiveInterval(1800);
 
             // >>> INÍCIO: Integração com Spring Security <<<
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
@@ -80,7 +80,7 @@ public class LoginController {
             SecurityContextHolder.getContext().setAuthentication(auth);
             // ESSENCIAL: Salva o contexto na sessão para manter o login nas próximas
             // requisições
-            request.getSession().setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
             // >>> FIM: Integração com Spring Security <<<
 
             // Retorna pro JS o redirect com o usuario já setado pra sessão

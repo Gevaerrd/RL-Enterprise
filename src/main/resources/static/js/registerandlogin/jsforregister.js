@@ -52,6 +52,7 @@ formToSendUser.addEventListener('submit', async function (e) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(jsonData),
+            credentials: "include",
         });
 
         const result = await response.json();

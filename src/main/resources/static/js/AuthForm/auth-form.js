@@ -22,6 +22,33 @@ const forgotPasswordFormElement = document.getElementById("forgot-password-form"
 const forgotPasswordEmailInput = document.getElementById("forgot-email");
 const forgotPasswordMessage = document.getElementById("forgot-message");
 
+// Fechar o login ao clicar fora
+if (loginSection && spaceOfLoginForm) {
+    spaceOfLoginForm.addEventListener('click', function(e) {
+        if (e.target === spaceOfLoginForm) {
+            loginSection.classList.add('hidden');
+        }
+    });
+}
+
+// Fechar o registro ao clicar fora
+if (registerSection && spaceOfRegisterForm) {
+    spaceOfRegisterForm.addEventListener('click', function(e) {
+        if (e.target === spaceOfRegisterForm) {
+            registerSection.classList.add('hidden');
+        }
+    });
+}
+
+// Fechar o forgot password ao clicar fora
+if (forgotPasswordSection) {
+    forgotPasswordSection.addEventListener('click', function(e) {
+        if (e.target === forgotPasswordSection) {
+            forgotPasswordSection.classList.add('hidden');
+        }
+    });
+}
+
 // Troca de login para registro
 if (linkToRegister) {
     linkToRegister.addEventListener("click", (e) => {
@@ -66,46 +93,13 @@ if (backToLoginLink) {
     });
 }
 
-// Fechar o formulário de registro ao clicar fora
-document.addEventListener('click', (e) => {
-    if (
-        registerSection && !registerSection.classList.contains('hidden') &&
-        spaceOfRegisterForm && !spaceOfRegisterForm.contains(e.target) &&
-        e.target !== buttonToRF &&
-        e.target.id !== "link-to-login" &&
-        e.target.id !== "link-to-register" &&
-        (forgotPasswordSection.classList.contains('hidden'))
-    ) {
-        registerSection.classList.add('hidden');
-    }
-});
-
-// Fechar o formulário de forgot password ao clicar fora
-document.addEventListener('click', (e) => {
-    if (
-        forgotPasswordSection && !forgotPasswordSection.classList.contains('hidden') &&
-        forgotPasswordSection.querySelector('.space-of-forgot-password-form') &&
-        !forgotPasswordSection.querySelector('.space-of-forgot-password-form').contains(e.target) &&
-        e.target !== backToLoginLink &&
-        e.target.id !== "link-to-login" &&
-        e.target.id !== "link-to-register"
-    ) {
-        forgotPasswordSection.classList.add('hidden');
-    }
-});
-
-// Fechar o formulário de login ao clicar fora
-document.addEventListener('click', (e) => {
-    if (
-        loginSection && !loginSection.classList.contains('hidden') &&
-        spaceOfLoginForm && !spaceOfLoginForm.contains(e.target) &&
-        e.target !== buttonToShowLF &&
-        e.target.id !== "link-to-login" &&
-        e.target.id !== "link-to-register" &&
-        (forgotPasswordSection.classList.contains('hidden'))
-    ) {
-        loginSection.classList.add('hidden');
-    }
+document.querySelectorAll('.close-modal').forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Esconde todos os modais
+        if (loginSection) loginSection.classList.add('hidden');
+        if (registerSection) registerSection.classList.add('hidden');
+        if (forgotPasswordSection) forgotPasswordSection.classList.add('hidden');
+    });
 });
 
 // Abrir login form pelo botão

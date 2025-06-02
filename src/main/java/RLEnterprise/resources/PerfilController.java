@@ -29,7 +29,6 @@ public class PerfilController {
         // Obtém o usuário autenticado do contexto do Spring Security
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) auth.getPrincipal();
-        System.out.println(user.toString());
         // Monta o DTO para a view (opcional, se quiser usar o DTO)
         UserProfileDTO userDTO = us.findUserDTOByEmail(user.getEmail());
         model.addAttribute("user", userDTO);

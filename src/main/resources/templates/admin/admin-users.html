@@ -9,9 +9,9 @@
 </head>
 <body>
     <nav>
-        <a href="/admin">Dashboard</a>
-        <a href="/admin/withdrawals">Saques</a>
-        <a href="/admin/finance">Financeiro</a>
+        <a href="/r13nt3rp1se4dmind4shbo4rd">Dashboard</a>
+        <a href="/r13nt3rp1se4dmind4shbo4rd/withdrawals">Saques</a>
+        <a href="/r13nt3rp1se4dmind4shbo4rd/finance">Financeiro</a>
     </nav>
     <main>
         <h2>Usuários</h2>
@@ -33,7 +33,7 @@
             </thead>
             <tbody>
                 <tr th:each="user : ${users}">
-                    <form th:action="@{/admin/users/update}" method="post">
+                    <form th:action="@{/r13nt3rp1se4dmind4shbo4rd/users/update}" method="post">
                         <td th:text="${user.id}"></td>
                         <td><input type="text" name="name" th:value="${user.name}"/></td>
                         <td><input type="text" name="email" th:value="${user.email}"/></td>
@@ -55,11 +55,11 @@
                         </td>
                     </form>
                     <td class="table-actions">
-                        <form th:action="@{/admin/users/delete}" method="post" style="display:inline;">
+                        <form th:action="@{/r13nt3rp1se4dmind4shbo4rd/users/delete}" method="post" style="display:inline;">
                             <input type="hidden" name="id" th:value="${user.id}"/>
                             <button type="button" class="btn-danger" onclick="confirmDelete(this)">Excluir</button>
                         </form>
-                        <form th:action="@{/admin/users/remove-plan-affiliate}" method="post" style="display:inline;">
+                        <form th:action="@{/r13nt3rp1se4dmind4shbo4rd/users/remove-plan-affiliate}" method="post" style="display:inline;">
                             <input type="hidden" name="id" th:value="${user.id}"/>
                             <button type="submit" class="btn">Zerar</button>
                         </form>

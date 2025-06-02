@@ -57,16 +57,16 @@
       <div class="profile-settings nogap-forbalance">
         <span id="balance-span" class="balance-label">Saldo: <span class="currency">R$</span></span>
         <span id="real-balance" class="balance-value" th:text="${user.balance}"></span>
-        <button id="withdraw-btn">Saque</button>
       </div>
       <h3 th:if="${user.afilliateCode != null}" th:text="${user.afilliateCode.code}"></h3>
       <div class="profile-settings">
         <div id="settings-menu" class="settings-menu hidden">
           <ul>
-            <li id="change-password-option"><i class="fa-solid fa-key"></i>Trocar senha</li>
-            <li id="show-sales"><i class="fa-solid fa-chart-line"></i>Minhas vendas</li>
-            <li id="show-withdrawls"><i class="fa-solid fa-hand-holding-dollar"></i>Meus saques</li>
-            <li id="support-option"><i class="fa-solid fa-headset"></i>Suporte</li>
+            <li id="show-sales"><i class="fa-solid fa-chart-line"></i> Minhas vendas</li>
+            <li id="show-withdrawls"><i class="fa-solid fa-hand-holding-dollar"></i> Meus saques</li>
+            <li id="withdraw-btn"><i class="fa-solid fa-money-bill-wave"></i> Sacar</li>
+            <li id="change-password-option"><i class="fa-solid fa-unlock-keyhole"></i> Trocar senha</li>
+            <li id="support-option"><i class="fa-solid fa-headset"></i> Suporte</li>
           </ul>
         </div>
         <i class="fa-solid fa-gear" id="gear-for-settings"></i>
@@ -221,9 +221,8 @@
                 maxlength="14"
                 placeholder="Digite seu CPF"
                 required
-                th:value="${user.cpf}"
-                th:readonly="${user.cpf != null}"
-                data-cpf="${user.cpf}"
+                th:value="${user.cpf != null ? user.cpf : ''}"
+                th:attr="readonly=${user.cpf != null ? 'readonly' : null},data-cpf=${user.cpf != null ? user.cpf : ''}"
               />
             </div>
           </div>

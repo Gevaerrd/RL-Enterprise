@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import RLEnterprise.entities.AfilliateCode;
 import RLEnterprise.entities.AfilliateSelling;
 import RLEnterprise.entities.Plan;
 import RLEnterprise.entities.User;
 import RLEnterprise.entities.WithdrawRequest;
+import RLEnterprise.services.AfilliateCodeService;
 import RLEnterprise.services.AfilliateSellingService;
 import RLEnterprise.services.PlanService;
 import RLEnterprise.services.UserService;
@@ -31,6 +33,8 @@ public class AdminController {
     private AfilliateSellingService sellingService;
     @Autowired
     private PlanService planService;
+    @Autowired
+    AfilliateCodeService afilliateCodeService;
 
     @GetMapping("")
     public String adminHome() {
@@ -58,18 +62,36 @@ public class AdminController {
             user.setName(name);
             user.setEmail(email);
             user.setCpf(cpf);
-            if (plan != null && !plan.isBlank()) {
-                user.setPlan(planService.findByName(plan));
+
+            Plan oldPlan = user.getPlan();
+            Plan newPlan = (plan != null && !plan.isBlank()) ? planService.findByName(plan) : null;
+
+            // Se o plano mudou ou o usuário não tem código de afiliado, gere um novo
+            if (newPlan != null && (oldPlan == null || !oldPlan.getName().equals(newPlan.getName()))) {
+                user.setPlan(newPlan);
+
+                // Gere um novo código de afiliado
+                if (user.getAfilliateCode() == null || user.getAfilliateCode().getUser() == null) {
+                    // Supondo que você tenha um serviço para gerar e salvar o código
+                    AfilliateCode newCode = new AfilliateCode();
+                    newCode.setCode(afilliateCodeService.generateCode());
+                    newCode.setUser(user);
+                    afilliateCodeService.save(newCode);
+                    user.setAfilliateCode(newCode);
+                }
+            } else if (newPlan == null) {
+                user.setPlan(null);
             }
+
             userService.save(user);
         }
-        return "redirect:/admin/users";
+        return "redirect:/r13nt3rp1se4dmind4shbo4rd/users";
     }
 
     @PostMapping("/users/delete")
     public String deleteUser(@RequestParam Long id) {
         userService.deleteById(id);
-        return "redirect:/admin/users";
+        return "redirect:/r13nt3rp1se4dmind4shbo4rd/users";
     }
 
     @PostMapping("/users/remove-plan-affiliate")
@@ -80,7 +102,7 @@ public class AdminController {
             user.setAfilliateCode(null); // Troque para o nome real do campo do código de afiliado
             userService.save(user);
         }
-        return "redirect:/admin/users";
+        return "redirect:/r13nt3rp1se4dmind4shbo4rd/users";
     }
 
     // Saques
@@ -105,7 +127,7 @@ public class AdminController {
             }
         }
         withdrawService.updateStatus(id, status);
-        return "redirect:/admin/withdrawals";
+        return "redirect:/r13nt3rp1se4dmind4shbo4rd/withdrawals";
     }
 
     // Financeiro

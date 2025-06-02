@@ -87,9 +87,9 @@ public class PlanController {
             // /?afCode=ABC123&outroParametro=valor
             // URLs de redirecionamento após o pagamento
             PreferenceBackUrlsRequest backUrls = PreferenceBackUrlsRequest.builder()
-                    .success("https://ac2b-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/sucesso")
-                    .failure("https://ac2b-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/")
-                    .pending("https://ac2b-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/")
+                    .success("https://6ffb-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/sucesso")
+                    .failure("https://6ffb-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/")
+                    .pending("https://6ffb-2804-1530-64e-ee00-11d5-e5a2-234e-2b24.ngrok-free.app/")
                     .build();
 
             // Monta a preferência de pagamento
@@ -114,12 +114,14 @@ public class PlanController {
 
         // Tratamento de erro do Mercado Pago
         catch (MPException e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Erro ao criar pagamento: " + e.getMessage());
         }
 
         // Tratamento de erro para plano não encontrado
         catch (IllegalArgumentException e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plano não encontrado.");
         }
     }
