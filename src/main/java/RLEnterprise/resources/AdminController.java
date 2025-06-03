@@ -1,5 +1,6 @@
 package RLEnterprise.resources;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,15 +73,18 @@ public class AdminController {
 
                 // Gere um novo código de afiliado
                 if (user.getAfilliateCode() == null || user.getAfilliateCode().getUser() == null) {
-                    // Supondo que você tenha um serviço para gerar e salvar o código
                     AfilliateCode newCode = new AfilliateCode();
                     newCode.setCode(afilliateCodeService.generateCode());
                     newCode.setUser(user);
                     afilliateCodeService.save(newCode);
                     user.setAfilliateCode(newCode);
                 }
+
+                // Atualiza a data de início do plano ao salvar
+                user.setPlanStartDate(LocalDateTime.now());
             } else if (newPlan == null) {
                 user.setPlan(null);
+                user.setPlanStartDate(null); // Limpa a data se o plano for removido
             }
 
             userService.save(user);

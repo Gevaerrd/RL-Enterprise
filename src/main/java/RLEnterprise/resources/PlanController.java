@@ -114,14 +114,12 @@ public class PlanController {
 
         // Tratamento de erro do Mercado Pago
         catch (MPException e) {
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Erro ao criar pagamento: " + e.getMessage());
         }
 
         // Tratamento de erro para plano não encontrado
         catch (IllegalArgumentException e) {
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plano não encontrado.");
         }
     }

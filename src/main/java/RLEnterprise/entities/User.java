@@ -1,5 +1,6 @@
 package RLEnterprise.entities;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,6 +34,7 @@ public class User implements UserDetails {
     private String twoFactorCode;
     private Long twoFactorCodeGeneratedAt;
     private String role = "USER";
+    private LocalDateTime planStartDate;
 
     @OneToMany(mappedBy = "user")
     private List<WithdrawRequest> withdrawRequests = new ArrayList<>();
@@ -167,6 +169,14 @@ public class User implements UserDetails {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public LocalDateTime getPlanStartDate() {
+        return planStartDate;
+    }
+
+    public void setPlanStartDate(LocalDateTime planStartDate) {
+        this.planStartDate = planStartDate;
     }
 
     @Override

@@ -5,6 +5,8 @@
 
 package RLEnterprise.resources;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,6 +34,18 @@ public class PerfilController {
         User user = us.findByEmail(userAuth.getEmail()); // Busca o usuário atualizado do banco
         UserProfileDTO userDTO = us.findUserDTOByEmail(user.getEmail());
         model.addAttribute("user", userDTO);
+
+        // Lógica do aviso de expiração
+        if (user.getPlan() != null && user.getPlanStartDate() != null) {
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime expiration = user.getPlanStartDate().plusDays(30); // ou a duração do seu plano
+            long daysLeft = java.time.Duration.between(now, expiration).toDays();
+
+            if (daysLeft <= 3 && daysLeft > 0) {
+                model.addAttribute("planExpiringSoon", true);
+                model.addAttribute("daysLeft", daysLeft);
+            }
+        }
 
         if (user.getPlan() != null) {
             return "UserUIWP";

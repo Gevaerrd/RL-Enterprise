@@ -134,6 +134,7 @@ public class RLEFrontPage {
 
                     originalUser.setAfilliateCode(afCode);
                     originalUser.setPlan(plano);
+                    originalUser.setPlanStartDate(LocalDateTime.now()); // <-- Aqui seta a data de início do plano
                     us.save(originalUser);
 
                     // Bonifica o afiliador, se houver referenceCode
